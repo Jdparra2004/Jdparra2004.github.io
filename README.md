@@ -1,2 +1,3 @@
 # Jdparra2004.github.io
-Mi own web page
+
+Estructura general del proyecto
