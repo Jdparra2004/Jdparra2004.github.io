@@ -1,5 +1,97 @@
-/* Jerarquía de tipografias
-    1. Tipografía principal del sitio: BricolageGrotesque
-    2. Elementos de estilo / firmas / acentos: DancingScript
-    3. Subtítulos o textos secundarios: MyriadBengali
+/* Archivo styles.css
+    Este archivo contiene los estilos globales del sitio web personal de Juan David Parra Cantor.
+    Estructura limpia, ordenada y documentada con comentarios descriptivos en formato lineal.
 */
+
+/* -------------------------------------------- */
+/* Jerarquía tipográfica del sitio web
+    Este bloque define el orden y propósito de cada una de las tres fuentes usadas en el proyecto.
+    1. Tipografía principal y base del sitio: BricolageGrotesque
+    2. Tipografía para detalles, acentos, firmas y elementos decorativos: DancingScript
+    3. Tipografía para subtítulos, textos secundarios y contenido complementario: MyriadBengali
+*/
+:root {
+    --font-primary: "BricolageGrotesque";
+    --font-accent: "DancingScript";
+    --font-secondary: "MyriadBengali";
+}
+
+/* Clases tipográficas globales */
+.font-primary {
+    font-family: var(--font-primary);
+}
+
+.font-accent {
+    font-family: var(--font-accent);
+}
+
+.font-secondary {
+    font-family: var(--font-secondary);
+}
+
+/* -------------------------------------------- */
+/* Sistema de color del sitio
+    Paleta diseñada para mantener coherencia visual, profesionalismo y elegancia.
+    - Color primario: #1A1A1A (negro suave)
+    - Color secundario: #E63946 (rojo acento)
+    - Color de fondo principal: #F5F5F5 (gris muy claro)
+    - Color neutro: #6C757D (gris para elementos secundarios)
+*/
+:root {
+    --color-primary: #1A1A1A;
+    --color-secondary: #E63946;
+    --color-background: #F5F5F5;
+    --color-neutral: #6C757D;
+}
+
+body {
+    font-family: var(--font-primary);
+    margin: 0;
+    padding: 0;
+    background-color: var(--color-background);
+    color: var(--color-primary);
+}
+
+/* -------------------------------------------- */
+/* Estilos para el header del sitio
+    Aquí se definen los estilos principales del encabezado y la barra de navegación.
+*/
+#header {
+    background-color: white;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--color-neutral);
+}
+
+#header .logo h1 {
+    margin: 0;
+    font-size: 24px;
+    font-family: var(--font-primary);
+}
+
+/* Barra de navegación */
+nav.barra {
+    background-color: var(--color-primary);
+    padding: 10px 0;
+}
+
+nav.barra ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+}
+
+nav.barra ul li a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 16px;
+    transition: 0.3s ease;
+}
+
+nav.barra ul li a:hover {
+    color: var(--color-secondary);
+}
+
+/* -------------------------------------------- */
