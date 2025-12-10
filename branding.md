@@ -10,6 +10,30 @@ La línea gráfica combina una estética  **técnica** ,  **minimalista** ,  **f
 
 ## 2. Tipografías
 
+A continuación se incluyen también las declaraciones `@font-face` con las rutas exactas para cada familia tipográfica utilizada en el proyecto.
+
+### **Declaración de fuentes (@font-face)**
+
+```css
+@font-face {
+    font-family: "BricolageGrotesque";
+    src: url("assets/fonts/BricolageGrotesque/BricolageGrotesque-Bold.ttf")
+        format("truetype");
+}
+
+@font-face {
+    font-family: "DancingScript";
+    src: url("assets/fonts/DancingScript/DancingScript-Bold.ttf")
+        format("truetype");
+}
+
+@font-face {
+    font-family: "MyriadBengali";
+    src: url("assets/fonts/MyriadBengali/myriad-bengali-bold.ttf")
+        format("truetype");
+}
+```
+
 El proyecto emplea tres fuentes con roles claros y no intercambiables.
 
 ### **1. Bricolage Grotesque — (Titulares / Jerarquía principal)**
