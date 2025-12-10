@@ -1,97 +1,151 @@
-/* Archivo styles.css
-    Este archivo contiene los estilos globales del sitio web personal de Juan David Parra Cantor.
-    Estructura limpia, ordenada y documentada con comentarios descriptivos en formato lineal.
+/* Archivo: styles.css
+    Autor: Juan David Parra Cantor
+    Propósito: Sistema de estilos principal del sitio web personal
+    Descripción: Define la estructura visual base, tipografías, colores,
+    espaciados y componentes iniciales.
+    Fecha de creación: 09/12/2025
 */
 
-/* -------------------------------------------- */
-/* Jerarquía tipográfica del sitio web
-    Este bloque define el orden y propósito de cada una de las tres fuentes usadas en el proyecto.
-    1. Tipografía principal y base del sitio: BricolageGrotesque
-    2. Tipografía para detalles, acentos, firmas y elementos decorativos: DancingScript
-    3. Tipografía para subtítulos, textos secundarios y contenido complementario: MyriadBengali
-*/
-:root {
-    --font-primary: "BricolageGrotesque";
-    --font-accent: "DancingScript";
-    --font-secondary: "MyriadBengali";
+/* -------------------------------------------------------------
+    1. Reset básico del navegador
+   ------------------------------------------------------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-/* Clases tipográficas globales */
-.font-primary {
-    font-family: var(--font-primary);
-}
-
-.font-accent {
-    font-family: var(--font-accent);
-}
-
-.font-secondary {
-    font-family: var(--font-secondary);
-}
-
-/* -------------------------------------------- */
-/* Sistema de color del sitio
-    Paleta diseñada para mantener coherencia visual, profesionalismo y elegancia.
-    - Color primario: #1A1A1A (negro suave)
-    - Color secundario: #E63946 (rojo acento)
-    - Color de fondo principal: #F5F5F5 (gris muy claro)
-    - Color neutro: #6C757D (gris para elementos secundarios)
-*/
-:root {
-    --color-primary: #1A1A1A;
-    --color-secondary: #E63946;
-    --color-background: #F5F5F5;
-    --color-neutral: #6C757D;
+html {
+    scroll-behavior: smooth;
 }
 
 body {
-    font-family: var(--font-primary);
-    margin: 0;
-    padding: 0;
-    background-color: var(--color-background);
-    color: var(--color-primary);
+    background-color: #E6E8EB; /* Fondo gris claro */
+    color: #1D1F21; /* Texto grafito profundo */
+    font-family: "MyriadBengali", sans-serif;
+    line-height: 1.5;
 }
 
-/* -------------------------------------------- */
-/* Estilos para el header del sitio
-    Aquí se definen los estilos principales del encabezado y la barra de navegación.
-*/
-#header {
-    background-color: white;
+/* -------------------------------------------------------------
+    2. Tipografías globales y jerarquías
+   ------------------------------------------------------------- */
+h1, h2, h3, h4 {
+    font-family: "BricolageGrotesque", sans-serif;
+    color: #2A4065; /* Azul acero */
+}
+
+p {
+    font-family: "MyriadBengali", sans-serif;
+}
+
+.acento {
+    font-family: "DancingScript", cursive;
+    color: #E3A5A0; /* Coral suave */
+}
+
+/* -------------------------------------------------------------
+    3. Estilos principales del Header y Navbar
+   ------------------------------------------------------------- */
+header {
+    background-color: #1D1F21; /* Gris grafito */
     padding: 20px 0;
-    border-bottom: 1px solid var(--color-neutral);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
 }
 
-#header .logo h1 {
-    margin: 0;
-    font-size: 24px;
-    font-family: var(--font-primary);
+header .contenedor-principal {
+    width: 90%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-/* Barra de navegación */
-nav.barra {
-    background-color: var(--color-primary);
-    padding: 10px 0;
+header .logo img {
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    object-fit: cover;
 }
 
-nav.barra ul {
+header h1 {
+    font-size: 1.8rem;
+    color: #E6E8EB; /* Texto claro */
+    margin-left: 15px;
+}
+
+/* Navbar */
+nav ul {
     list-style: none;
     display: flex;
-    justify-content: center;
-    padding: 0;
-    margin: 0;
+    gap: 25px;
 }
 
-nav.barra ul li a {
-    color: white;
+nav ul li a {
     text-decoration: none;
-    margin: 0 15px;
-    font-size: 16px;
-    transition: 0.3s ease;
+    color: #E6E8EB;
+    font-family: "MyriadBengali", sans-serif;
+    font-weight: bold;
+    transition: 0.3s;
 }
 
-nav.barra ul li a:hover {
-    color: var(--color-secondary);
+nav ul li a:hover {
+    color: #E3A5A0; /* Coral suave */
+    text-decoration: underline;
 }
 
-/* -------------------------------------------- */
+/* -------------------------------------------------------------
+    4. Hero principal
+   ------------------------------------------------------------- */
+#hero {
+    width: 100%;
+    padding: 80px 0;
+    background: linear-gradient(135deg, #2A4065, #1D1F21);
+    color: #E6E8EB;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+#hero h2 {
+    font-size: 2.4rem;
+    margin-bottom: 10px;
+}
+
+#hero p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+/* -------------------------------------------------------------
+    5. Secciones base
+   ------------------------------------------------------------- */
+section {
+    padding: 60px 0;
+    width: 90%;
+    margin: auto;
+}
+
+section h2 {
+    margin-bottom: 20px;
+    font-size: 2rem;
+}
+
+/* -------------------------------------------------------------
+    6. Footer
+   ------------------------------------------------------------- */
+footer {
+    background-color: #1D1F21;
+    padding: 20px;
+    margin-top: 40px;
+    text-align: center;
+    color: #E6E8EB;
+    font-size: 0.9rem;
+}
+
+footer a {
+    color: #D6A95F; /* Dorado mate */
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
