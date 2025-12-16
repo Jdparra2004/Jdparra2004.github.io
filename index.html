@@ -9,81 +9,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portafolio de Juan David Parra Cantor</title>
+    <title>Portafolio — Juan David Parra Cantor</title>
     <link rel="stylesheet" href="assets/css/styles.css">
 
-    <!-- Fuentes Locales -->
+    <!-- Tus fuentes locales -->
     <style>
         @font-face {
             font-family: 'Bricolage Grotesque';
-            src: url('assets/fonts/BricolageGrotesque/BricolageGrotesque-Bold.ttf') 
-                format('ttf'),
-                url('assets/fonts/BricolageGrotesque/BricolageGrotesque-Regular.ttf') format('ttf');
-            font-weight: normal;
-            font-style: normal;
+            src: url('assets/fonts/BricolageGrotesque/BricolageGrotesque-Regular.ttf');
         }
-
-                @font-face {
+        @font-face {
             font-family: 'Dancing Script';
-            src: url('assets/fonts/DancingScript/DancingScript-Bold.ttf') 
-                format('ttf'),
-                url('assets/fonts/DancingScript/DancingScript-Regular.ttf') format('ttf');
-            font-weight: normal;
-            font-style: normal;
+            src: url('assets/fonts/DancingScript/DancingScript-Regular.ttf');
         }
-                @font-face {
+        @font-face {
             font-family: 'Myriad Bengali';
-            src: url('assets/fonts/MyriadBengali/MyriadBengali-Bold.ttf') 
-                format('ttf'),
-                url('assets/fonts/MyriadBengali/MyriadBengali-Regular.ttf') format('ttf');
-            font-weight: normal;
-            font-style: normal;
+            src: url('assets/fonts/MyriadBengali/MyriadBengali-Regular.ttf');
         }
     </style>
 </head>
 
 <body>
-    <!--Header-->
-    <header id="header">
-        <div class="header-container">
-            <div class="logo">
-                <img src="assets/img/perfil/logo.png" alt=" Logo Juan David Parra Cantor">
-                <h1>Portafolio de Juan David Parra Cantor</h1>
-            </div>
-        </div>
-        
+
+<!-- HEADER -->
+<header class="header">
+    <div class="header-container">
+        <img src="assets/img/perfil/logo.png" alt="Logo" class="logo">
         <nav class="nav">
-            <ul>
-                <li>
-                    <a href="index.html" class="active">Inicio</a>
-                </li>
-                <li>
-                    <a href="about.html">Sobre mi</a>
-                </li>
-                <li>
-                    <a href="projects.html">Proyectos</a>
-                </li>
-                <li>
-                    <a href="contacto.html">Contacto</a>
-                </li>
-                <li>
-                    <a href="blog.html">Blog</a>
-                </li>
-            </ul>
+            <a href="index.html" class="active">Inicio</a>
+            <a href="about.html">Sobre mí</a>
+            <a href="projects.html">Proyectos</a>
+            <a href="blog.html">Blog</a>
+            <a href="contacto.html">Contacto</a>
         </nav>
-    </header>
+    </div>
+</header>
 
-    <!--Hero-->
-    <section id="Hero">
-        <div class="hero-content">
-            <img src="assets/img/perfil/banner.png" alt="Banner Juan David Parra">
-            <h2>Bienvenido a mi Portafolio</h2>
-            <p>Soy Juan David Parra Cantor, un desarrollador apasionado por la
-                tecnología y la innovación. Aquí encontrarás mis proyectos, habilidades y
-                experiencias.</p>
-            <a href="about.html" class="btn">Conoce más sobre mí</a>
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-text">
+        <h1>Hola, soy <span>Juan David</span></h1>
+        <p>Desarrollador & creador de herramientas innovadoras.  
+        Explora mis proyectos, mi blog y todo lo que estoy construyendo.</p>
+
+        <div class="hero-buttons">
+            <a href="projects.html" class="btn-primary">Mis proyectos</a>
+            <a href="about.html" class="btn-secondary">Sobre mí</a>
         </div>
-    </section>
-</body>
+    </div>
 
+    <div class="hero-image">
+        <img src="assets/img/perfil/banner.png" alt="Banner">
+    </div>
+</section>
+
+<!-- SECCIÓN DESTACADA / PROYECTOS -->
+<section class="highlight">
+    <h2>Proyectos Destacados</h2>
+
+    <div class="cards">
+        <div class="card">
+            <h3>Interpreter Notepad</h3>
+            <p>Aplicación clínica con backend embebido en Electron.</p>
+            <a href="#" class="card-btn">Ver más</a>
+        </div>
+
+        <div class="card">
+            <h3>ThermoSolver</h3>
+            <p>Herramienta para cálculos termodinámicos.</p>
+            <a href="#" class="card-btn">Ver más</a>
+        </div>
+
+        <div class="card">
+            <h3>Blog Personal</h3>
+            <p>Escribo sobre software, tecnología y diseño.</p>
+            <a href="blog.html" class="card-btn">Leer</a>
+        </div>
+    </div>
+</section>
+
+</body>
 </html>

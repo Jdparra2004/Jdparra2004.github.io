@@ -1,0 +1,164 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    background-color: #f3f4f6;
+    color: #111;
+}
+
+/* HEADER */
+.header {
+    background: #ffffff;
+    padding: 15px 40px;
+    border-bottom: 1px solid #e5e7eb;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    height: 60px;
+}
+
+.nav a {
+    margin-left: 25px;
+    text-decoration: none;
+    font-weight: 600;
+    color: #333;
+    transition: 0.3s;
+}
+
+.nav a:hover,
+.nav .active {
+    color: #007bff;
+}
+
+/* HERO */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 80px 40px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.hero-text {
+    max-width: 600px;
+}
+
+.hero-text h1 {
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.hero-text h1 span {
+    color: #007bff;
+}
+
+.hero-text p {
+    margin-top: 15px;
+    font-size: 1.2rem;
+    color: #444;
+}
+
+.hero-buttons {
+    margin-top: 25px;
+}
+
+.btn-primary,
+.btn-secondary {
+    padding: 12px 22px;
+    border-radius: 10px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.btn-primary {
+    background: #007bff;
+    color: white;
+    margin-right: 10px;
+}
+
+.btn-primary:hover {
+    background: #005fcc;
+}
+
+.btn-secondary {
+    border: 2px solid #007bff;
+    color: #007bff;
+}
+
+.btn-secondary:hover {
+    background: #007bff;
+    color: white;
+}
+
+/* HERO IMG */
+.hero-image img {
+    width: 420px;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+/* PROYECTOS DESTACADOS */
+.highlight {
+    margin-top: 80px;
+    text-align: center;
+    padding-bottom: 80px;
+}
+
+.highlight h2 {
+    font-size: 2.3rem;
+}
+
+.cards {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.card {
+    background: white;
+    width: 300px;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    text-align: left;
+}
+
+.card h3 {
+    font-size: 1.4rem;
+}
+
+.card p {
+    margin: 10px 0;
+    color: #555;
+}
+
+.card-btn {
+    display: inline-block;
+    margin-top: 10px;
+    color: #007bff;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.card-btn:hover {
+    text-decoration: underline;
+}
