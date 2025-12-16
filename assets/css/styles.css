@@ -4,175 +4,167 @@
     Fecha: 15 de Diciembre de 2025
    ========================================================== */
 
-/* ---- RESET ---- */
+/* RESET */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-html {
-    scroll-behavior: smooth;
-}
-
 body {
-    font-family: var(--font-body);
-    background: var(--color-light);
-    color: var(--text-dark);
-    line-height: 1.6;
+    font-family: 'Bricolage Grotesque', sans-serif;
+    background-color: #f3f4f6;
+    color: #111;
 }
 
-/* ---- CONTENEDOR GENERAL ---- */
-.container {
-    width: 90%;
-    max-width: var(--max-width);
-    margin: 0 auto;
+/* HEADER */
+.header {
+    background: #ffffff;
+    padding: 15px 40px;
+    border-bottom: 1px solid #e5e7eb;
+    position: sticky;
+    top: 0;
+    z-index: 10;
 }
 
-/* ==========================================================
-    HEADER
-   ========================================================== */
-
-header {
-    background: var(--color-dark);
-    padding: var(--space-m) 0;
-    box-shadow: var(--shadow-soft);
-}
-
-header .logo {
+.header-container {
+    max-width: 1200px;
+    margin: auto;
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    gap: var(--space-m);
 }
 
-header .logo img {
-    width: 55px;
-}
-
-header h1 {
-    font-family: var(--font-title);
-    color: var(--text-light);
-    font-size: 1.8rem;
-}
-
-/* ---- NAV ---- */
-.nav ul {
-    display: flex;
-    gap: var(--space-l);
-    list-style: none;
-    margin-top: var(--space-s);
+.logo {
+    height: 60px;
 }
 
 .nav a {
-    color: var(--text-light);
+    margin-left: 25px;
     text-decoration: none;
-    font-size: 1rem;
-    transition: 0.2s;
+    font-weight: 600;
+    color: #333;
+    transition: 0.3s;
 }
 
-.nav a:hover {
-    color: var(--color-accent-coral);
-}
-
+.nav a:hover,
 .nav .active {
-    color: var(--color-accent-gold);
+    color: #007bff;
 }
 
-/* ==========================================================
-    HERO
-   ========================================================== */
-
-#Hero {
-    padding: var(--space-xxl) 0;
-    background: linear-gradient(
-        135deg,
-        var(--color-primary) 0%,
-        var(--color-dark) 100%
-    );
-    text-align: center;
-    color: var(--text-light);
+/* HERO */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 80px 40px;
+    max-width: 1200px;
+    margin: auto;
 }
 
-#Hero img {
-    width: 100%;
-    max-width: 650px;
-    margin-bottom: var(--space-l);
-    border-radius: var(--radius-m);
-    box-shadow: var(--shadow-soft);
+.hero-text {
+    max-width: 600px;
 }
 
-#Hero h2 {
-    font-family: var(--font-title);
-    font-size: var(--fz-h1);
-    margin-bottom: var(--space-m);
+.hero-text h1 {
+    font-size: 3rem;
+    font-weight: 700;
 }
 
-#Hero p {
-    font-size: var(--fz-body);
-    width: 80%;
-    margin: 0 auto var(--space-l);
-    max-width: 700px;
+.hero-text h1 span {
+    color: #007bff;
 }
 
-/* ---- BOTÓN ---- */
-.btn {
-    background: var(--color-accent-gold);
-    color: var(--text-dark);
-    padding: var(--space-s) var(--space-m);
-    border-radius: var(--radius-s);
-    font-weight: bold;
+.hero-text p {
+    margin-top: 15px;
+    font-size: 1.2rem;
+    color: #444;
+}
+
+.hero-buttons {
+    margin-top: 25px;
+}
+
+.btn-primary,
+.btn-secondary {
+    padding: 12px 22px;
+    border-radius: 10px;
+    font-weight: 600;
     text-decoration: none;
-    transition: 0.2s;
-    display: inline-block;
 }
 
-.btn:hover {
-    background: #c99753;
+.btn-primary {
+    background: #007bff;
+    color: white;
+    margin-right: 10px;
 }
 
-/* ==========================================================
-    TARJETAS
-   ========================================================== */
+.btn-primary:hover {
+    background: #005fcc;
+}
+
+.btn-secondary {
+    border: 2px solid #007bff;
+    color: #007bff;
+}
+
+.btn-secondary:hover {
+    background: #007bff;
+    color: white;
+}
+
+/* HERO IMG */
+.hero-image img {
+    width: 420px;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+/* PROYECTOS DESTACADOS */
+.highlight {
+    margin-top: 80px;
+    text-align: center;
+    padding-bottom: 80px;
+}
+
+.highlight h2 {
+    font-size: 2.3rem;
+}
+
+.cards {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
 
 .card {
-    background: var(--color-light);
-    padding: var(--space-l);
-    border-radius: var(--radius-m);
-    box-shadow: var(--shadow-soft);
-    transition: 0.2s;
+    background: white;
+    width: 300px;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    text-align: left;
 }
 
-.card:hover {
-    transform: translateY(-3px);
+.card h3 {
+    font-size: 1.4rem;
 }
 
-/* ==========================================================
-    GRID UNIVERSAL
-   ========================================================== */
-
-.grid {
-    display: grid;
-    gap: var(--space-l);
+.card p {
+    margin: 10px 0;
+    color: #555;
 }
 
-.grid-2 {
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+.card-btn {
+    display: inline-block;
+    margin-top: 10px;
+    color: #007bff;
+    font-weight: 600;
+    text-decoration: none;
 }
 
-.grid-3 {
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+.card-btn:hover {
+    text-decoration: underline;
 }
-
-/* ==========================================================
-    FOOTER
-   ========================================================== */
-
-footer {
-    margin-top: var(--space-xxl);
-    padding: var(--space-l) 0;
-    background: var(--color-dark);
-    color: var(--text-light);
-    text-align: center;
-    font-size: 0.9rem;
-}
-
