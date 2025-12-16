@@ -1,47 +1,62 @@
 /* ============================================================
-   THEME.CSS — Variables de Marca (Brand Tokens)
-   Autor: Juan David Parra Cantor
-   Fecha: 2025
+    THEME.CSS — Variables de Marca (Brand Tokens)
+    Autor: Juan David Parra Cantor
+    Fecha: 15 de Diciembre de 2025
    ============================================================ */
 
+/* ---------- PALETA DE COLORES ---------- */
 :root {
-    /* --- Colores Principales --- */
-    --color-azul-acero: #2A4065;
-    --color-grafito: #1D1F21;
-    --color-gris-claro: #E6E8EB;
+    /* Principales */
+    --color-primary: #2A4065;        /* Azul Acero */
+    --color-dark: #1D1F21;           /* Gris Grafito */
+    --color-light: #E6E8EB;          /* Gris Claro */
 
-    /* --- Colores Secundarios --- */
-    --color-coral: #E3A5A0;
-    --color-dorado: #D6A95F;
+    /* Secundarios */
+    --color-accent-coral: #E3A5A0;
+    --color-accent-gold: #D6A95F;
 
-    /* --- Estados --- */
-    --color-verde: #3A8F6D;
-    --color-rojo: #C55A57;
+    /* Estados */
+    --color-success: #3A8F6D;
+    --color-error: #C55A57;
 
-    /* --- Tipografías --- */
-    --font-titulos: "BricolageGrotesque", sans-serif;
-    --font-cuerpo: "MyriadBengali", sans-serif;
+    /* Texto */
+    --text-dark: #1D1F21;
+    --text-light: #F5F5F5;
+    --text-muted: #8A8D90;
+
+    /* Tipografías */
+    --font-title: "BricolageGrotesque", sans-serif;
+    --font-body: "MyriadBengali", sans-serif;
     --font-script: "DancingScript", cursive;
 
-    /* --- Tamaños de Fuente --- */
-    --text-xs: 0.75rem;
-    --text-sm: 0.875rem;
-    --text-md: 1rem;
-    --text-lg: 1.25rem;
-    --text-xl: 1.75rem;
-    --text-xxl: 2.5rem;
+    /* Tamaños de texto */
+    --fz-h1: 3rem;
+    --fz-h2: 2.2rem;
+    --fz-h3: 1.6rem;
+    --fz-body: 1.1rem;
 
-    /* --- Spacing System (4px scale) --- */
+    /* Spacing Scale */
     --space-xs: 4px;
-    --space-sm: 8px;
-    --space-md: 16px;
-    --space-lg: 24px;
+    --space-s: 8px;
+    --space-m: 16px;
+    --space-l: 24px;
     --space-xl: 32px;
     --space-xxl: 48px;
 
-    /* --- Bordes y Sombras --- */
-    --radius-sm: 8px;
-    --radius-lg: 12px;
+    /* Bordes y sombras */
+    --radius-s: 8px;
+    --radius-m: 12px;
 
     --shadow-soft: 0 2px 6px rgba(0,0,0,0.12);
+
+    /* Layout */
+    --max-width: 1200px;
+}
+
+/* ---------- MODO OSCURO ---------- */
+:root.dark {
+    --color-light: #1F2124;
+    --color-dark: #141516;
+    --text-dark: #E6E8EB;
+    --shadow-soft: 0 2px 8px rgba(0,0,0,0.35);
 }
