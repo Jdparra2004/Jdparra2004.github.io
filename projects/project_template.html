@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Título del Proyecto — Juan David Parra Cantor</title>
 
-    <link rel="stylesheet" href="assets/css/theme.css">
-    <link rel="stylesheet" href="assets/css/styles.css">
+    <!-- Estilos globales -->
+    <link rel="stylesheet" href="../assets/css/styles.css">
 
-    <!-- Fuentes -->
+    <!-- Fuentes locales -->
     <style>
         @font-face {
             font-family: 'Bricolage Grotesque';
@@ -41,11 +41,11 @@
     </div>
 </header>
 
-<!-- HERO PROYECTO -->
-<section class="hero" style="padding-bottom: 40px;">
+<!-- HERO DEL PROYECTO (usa el estilo global del hero) -->
+<section class="hero project-hero">
     <div class="hero-text">
-        <h1 style="font-size: 2.5rem;">Título del Proyecto</h1>
-        <p style="max-width: 600px;">
+        <h1>Título del Proyecto</h1>
+        <p>
             Breve descripción general del proyecto: propósito, enfoque,
             tecnologías principales y lo que lo hace especial.
         </p>
@@ -61,45 +61,44 @@
     </div>
 </section>
 
-<!-- DETALLE DEL PROYECTO -->
-<section class="project-content" style="max-width: 1200px; margin: auto; padding: 60px 40px;">
+<!-- CONTENIDO DEL PROYECTO -->
+<section class="project-content">
     
-    <!-- SECCIÓN: Descripción -->
+    <!-- DESCRIPCIÓN -->
     <h2>Descripción</h2>
-    <p style="margin-top: 10px;">
-        Aquí va una explicación completa del proyecto: motivación, problema que resuelve,
-        público objetivo, decisiones técnicas, aprendizajes, etc.
+    <p>
+        Aquí va una explicación completa del proyecto: motivación,
+        problema que resuelve, público objetivo, decisiones técnicas, aprendizajes, etc.
     </p>
 
-    <!-- SECCIÓN: Tecnologías -->
-    <h2 style="margin-top: 40px;">Tecnologías utilizadas</h2>
-    <ul style="margin-top: 10px; color: #444; line-height: 1.7;">
+    <!-- TECNOLOGÍAS -->
+    <h2>Tecnologías utilizadas</h2>
+    <ul class="project-list">
         <li>Lenguajes principales</li>
         <li>Frameworks</li>
         <li>Base de datos</li>
         <li>Herramientas auxiliares</li>
     </ul>
 
-    <!-- SECCIÓN: Características -->
-    <h2 style="margin-top: 40px;">Características del proyecto</h2>
-    <ul style="margin-top: 10px; color: #444; line-height: 1.7;">
+    <!-- CARACTERÍSTICAS -->
+    <h2>Características del proyecto</h2>
+    <ul class="project-list">
         <li>Función o módulo principal 1</li>
         <li>Función o módulo principal 2</li>
         <li>Función o módulo principal 3</li>
     </ul>
 
-    <!-- SECCIÓN: Galería -->
-    <h2 style="margin-top: 40px;">Galería</h2>
-    <div style="display: flex; gap: 20px; flex-wrap: wrap; margin-top: 20px;">
-        <img src="../assets/img/projects/ejemplo1.png" alt="Captura 1" style="width: 300px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
-        <img src="../assets/img/projects/ejemplo2.png" alt="Captura 2" style="width: 300px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+    <!-- GALERÍA -->
+    <h2>Galería</h2>
+    <div class="gallery">
+        <img src="../assets/img/projects/ejemplo1.png" alt="Captura 1">
+        <img src="../assets/img/projects/ejemplo2.png" alt="Captura 2">
     </div>
 
-    <!-- SECCIÓN: Estado -->
-    <h2 style="margin-top: 40px;">Estado del proyecto</h2>
-    <p style="margin-top: 10px;">
-        🔧 En desarrollo / 🚀 Completado / 🧪 Planificado  
-        (Puedes elegir uno)
+    <!-- ESTADO -->
+    <h2>Estado del proyecto</h2>
+    <p class="project-status">
+        🔧 En desarrollo / 🚀 Completado / 🧪 Planificado
     </p>
 
 </section>
