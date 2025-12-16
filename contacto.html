@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto — Juan David Parra Cantor</title>
+
+    <link rel="stylesheet" href="assets/css/theme.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+
+    <!-- Fuentes -->
+    <style>
+        @font-face {
+            font-family: 'Bricolage Grotesque';
+            src: url('assets/fonts/BricolageGrotesque/BricolageGrotesque-Regular.ttf');
+        }
+        @font-face {
+            font-family: 'Dancing Script';
+            src: url('assets/fonts/DancingScript/DancingScript-Regular.ttf');
+        }
+        @font-face {
+            font-family: 'Myriad Bengali';
+            src: url('assets/fonts/MyriadBengali/MyriadBengali-Regular.ttf');
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header class="header">
+    <div class="header-container">
+        <img src="assets/img/perfil/logo.png" alt="Logo" class="logo">
+
+        <nav class="nav">
+            <a href="index.html">Inicio</a>
+            <a href="about.html">Sobre mí</a>
+            <a href="projects.html">Proyectos</a>
+            <a href="blog.html">Blog</a>
+            <a href="contacto.html" class="active">Contacto</a>
+        </nav>
+    </div>
+</header>
+
+<!-- HERO CONTACTO -->
+<section class="hero">
+    <div class="hero-text">
+        <h1>Hablemos</h1>
+        <p>Puedes escribirme para colaboraciones, proyectos, o simplemente para conectar.</p>
+    </div>
+
+    <div class="hero-image">
+        <img src="assets/img/perfil/banner.png" alt="Imagen contacto">
+    </div>
+</section>
+
+<!-- FORMULARIO DE CONTACTO -->
+<section class="contact-section" style="max-width: 1200px; margin: auto; padding: 60px 40px;">
+
+    <h2 style="text-align: center; font-size: 2.2rem;">Envíame un mensaje</h2>
+
+    <form class="contact-form" style="margin-top: 40px; max-width: 700px; margin-left: auto; margin-right: auto;">
+
+        <label>Nombre</label>
+        <input type="text" placeholder="Tu nombre" required
+                style="padding: 12px; border-radius: 8px; border: 1px solid #ccc; width: 100%; margin-bottom: 20px;">
+
+        <label>Correo electrónico</label>
+        <input type="email" placeholder="tu@email.com" required
+                style="padding: 12px; border-radius: 8px; border: 1px solid #ccc; width: 100%; margin-bottom: 20px;">
+
+        <label>Mensaje</label>
+        <textarea placeholder="Escribe tu mensaje..." rows="6" required
+                    style="padding: 12px; border-radius: 8px; border: 1px solid #ccc; width: 100%; margin-bottom: 20px;"></textarea>
+
+        <button class="btn-primary" style="width: 100%; font-size: 1.1rem;">
+            Enviar mensaje
+        </button>
+
+    </form>
+</section>
+
+</body>
+</html>
