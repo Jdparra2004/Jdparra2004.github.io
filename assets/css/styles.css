@@ -233,37 +233,54 @@ body {
     font-weight: 600;
 }
 
-/* ================================
-    Estilos para Blog post page
-================================ */
+/* ============================
+   ESTILOS PARA LOS POSTS
+   ============================ */
 
-/* BLOG POST PAGE */
-.blog-post {
-    max-width: 800px;
+.blog-post-container {
+    max-width: 900px;
     margin: 60px auto;
-    padding: 20px;
+    padding: 0 20px;
 }
 
-.blog-post h1 {
-    font-size: 2.5rem;
-    color: var(--text-primary);
+.blog-post {
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+.post-title {
+    font-size: 2.3rem;
+    font-weight: 700;
 }
 
 .post-meta {
-    margin-top: 10px;
+    margin-top: 8px;
     color: #666;
     font-size: 0.95rem;
 }
 
-.post-cover img {
+.post-cover {
     width: 100%;
+    margin: 25px 0;
     border-radius: 12px;
-    margin: 30px 0;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
 }
 
 .post-content {
-    font-size: 1.15rem;
-    line-height: 1.8;
-    color: var(--text-secondary);
+    margin-top: 25px;
+    line-height: 1.75;
+    color: #444;
+    font-size: 1.1rem;
 }
+
+.post-content h2 {
+    margin-top: 30px;
+    font-size: 1.6rem;
+}
+
+.post-content p {
+    margin: 15px 0;
+}
+
+
