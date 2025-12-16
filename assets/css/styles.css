@@ -4,6 +4,10 @@
     Fecha: 15 de Diciembre de 2025
    ========================================================== */
 
+/* ==========================================================
+   STYLES.CSS — Estilos globales, layout y componentes
+   ========================================================== */
+
 /* RESET */
 * {
     margin: 0;
@@ -12,16 +16,16 @@
 }
 
 body {
-    font-family: 'Bricolage Grotesque', sans-serif;
-    background-color: #f3f4f6;
-    color: #111;
+    font-family: var(--font-title);
+    background-color: var(--color-bg);
+    color: var(--color-text);
 }
 
 /* HEADER */
 .header {
-    background: #ffffff;
+    background: var(--color-white);
     padding: 15px 40px;
-    border-bottom: 1px solid #e5e7eb;
+    border-bottom: 1px solid var(--color-border);
     position: sticky;
     top: 0;
     z-index: 10;
@@ -43,13 +47,13 @@ body {
     margin-left: 25px;
     text-decoration: none;
     font-weight: 600;
-    color: #333;
-    transition: 0.3s;
+    color: var(--color-text-light);
+    transition: var(--transition-medium);
 }
 
 .nav a:hover,
 .nav .active {
-    color: #007bff;
+    color: var(--color-primary);
 }
 
 /* HERO */
@@ -69,55 +73,59 @@ body {
 .hero-text h1 {
     font-size: 3rem;
     font-weight: 700;
+    font-family: var(--font-title);
 }
 
 .hero-text h1 span {
-    color: #007bff;
+    color: var(--color-primary);
 }
 
 .hero-text p {
     margin-top: 15px;
     font-size: 1.2rem;
-    color: #444;
+    color: var(--color-muted);
+    font-family: var(--font-body);
 }
 
 .hero-buttons {
     margin-top: 25px;
 }
 
+/* BOTONES */
 .btn-primary,
 .btn-secondary {
     padding: 12px 22px;
-    border-radius: 10px;
+    border-radius: var(--radius-md);
     font-weight: 600;
     text-decoration: none;
+    transition: var(--transition-medium);
 }
 
 .btn-primary {
-    background: #007bff;
-    color: white;
+    background: var(--color-primary);
+    color: var(--color-white);
     margin-right: 10px;
 }
 
 .btn-primary:hover {
-    background: #005fcc;
+    background: var(--color-primary-dark);
 }
 
 .btn-secondary {
-    border: 2px solid #007bff;
-    color: #007bff;
+    border: 2px solid var(--color-primary);
+    color: var(--color-primary);
 }
 
 .btn-secondary:hover {
-    background: #007bff;
-    color: white;
+    background: var(--color-primary);
+    color: var(--color-white);
 }
 
 /* HERO IMG */
 .hero-image img {
     width: 420px;
-    border-radius: 12px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-strong);
 }
 
 /* PROYECTOS DESTACADOS */
@@ -129,6 +137,7 @@ body {
 
 .highlight h2 {
     font-size: 2.3rem;
+    font-family: var(--font-title);
 }
 
 .cards {
@@ -140,29 +149,32 @@ body {
 }
 
 .card {
-    background: white;
+    background: var(--color-white);
     width: 300px;
     padding: 25px;
-    border-radius: 15px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-soft);
     text-align: left;
 }
 
 .card h3 {
     font-size: 1.4rem;
+    font-family: var(--font-title);
 }
 
 .card p {
     margin: 10px 0;
-    color: #555;
+    color: var(--color-muted);
+    font-family: var(--font-body);
 }
 
 .card-btn {
     display: inline-block;
     margin-top: 10px;
-    color: #007bff;
+    color: var(--color-primary);
     font-weight: 600;
     text-decoration: none;
+    transition: var(--transition-fast);
 }
 
 .card-btn:hover {
