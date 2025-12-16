@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog — Juan David Parra Cantor</title>
+
+    <link rel="stylesheet" href="assets/css/theme.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+
+    <!-- Fuentes -->
+    <style>
+        @font-face {
+            font-family: 'Bricolage Grotesque';
+            src: url('assets/fonts/BricolageGrotesque/BricolageGrotesque-Regular.ttf');
+        }
+        @font-face {
+            font-family: 'Dancing Script';
+            src: url('assets/fonts/DancingScript/DancingScript-Regular.ttf');
+        }
+        @font-face {
+            font-family: 'Myriad Bengali';
+            src: url('assets/fonts/MyriadBengali/MyriadBengali-Regular.ttf');
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header class="header">
+    <div class="header-container">
+        <img src="assets/img/perfil/logo.png" alt="Logo" class="logo">
+        <nav class="nav">
+            <a href="index.html">Inicio</a>
+            <a href="about.html">Sobre mí</a>
+            <a href="projects.html">Proyectos</a>
+            <a href="blog.html" class="active">Blog</a>
+            <a href="contacto.html">Contacto</a>
+        </nav>
+    </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" style="padding-bottom: 40px;">
+    <div class="hero-text">
+        <h1>Blog personal</h1>
+        <p style="max-width: 600px;">
+            Reflexiones, guías, aprendizaje continuo y desarrollo profesional.  
+            Aquí encontrarás mis ideas, proyectos, avances, notas técnicas y descubrimientos.
+        </p>
+    </div>
+</section>
+
+<!-- BUSCADOR -->
+<section style="max-width: 1000px; margin: auto; padding: 40px;">
+    <div style="display: flex; justify-content: center;">
+        <input 
+            type="text" 
+            id="searchInput"
+            placeholder="Buscar artículos..."
+            style="
+                width: 100%;
+                max-width: 600px;
+                padding: 14px 20px;
+                border-radius: 12px;
+                border: 1px solid #ccc;
+                font-size: 1rem;
+                outline: none;
+                transition: 0.3s;
+            ">
+    </div>
+</section>
+
+<!-- LISTADO DE POSTS -->
+<section style="max-width: 1000px; margin: auto; padding: 20px 40px;">
+    
+    <!-- TEMPLATE JEKYLL -->
+    <div id="postsContainer">
+        {% raw %}
+        {% for post in site.posts %}
+        <article class="blog-card">
+            <img src="{{ post.image }}" alt="Imagen del post" class="blog-card-img">
+
+            <div class="blog-card-content">
+                <h2>{{ post.title }}</h2>
+
+                <p class="blog-date">
+                    {{ post.date | date: "%d de %B de %Y" }}
+                </p>
+
+                <p class="blog-excerpt">
+                    {{ post.excerpt | strip_html | truncate: 150 }}
+                </p>
+
+                <a href="{{ post.url }}" class="btn-primary" style="margin-top: 10px;">
+                    Leer más
+                </a>
+            </div>
+        </article>
+        {% endfor %}
+        {% endraw %}
+    </div>
+
+</section>
+
+<!-- JS — BUSCADOR -->
+<script>
+    const input = document.getElementById("searchInput");
+    const posts = document.querySelectorAll(".blog-card");
+
+    input.addEventListener("keyup", () => {
+        const term = input.value.toLowerCase();
+
+        posts.forEach(post => {
+            const text = post.innerText.toLowerCase();
+            post.style.display = text.includes(term) ? "flex" : "none";
+        });
+    });
+</script>
+
+</body>
+</html>
