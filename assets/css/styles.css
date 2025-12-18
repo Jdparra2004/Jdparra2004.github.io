@@ -20,7 +20,7 @@ body {
 
 /*Encapsula toda la página*/
 .page-wrapper {
-    min-height: 100vh;
+    min-height: 10vh;
     background-color: var(--color-white);
     display: flex;
     flex-direction: column;
