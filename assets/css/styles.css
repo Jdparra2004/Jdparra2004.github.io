@@ -23,6 +23,15 @@ body {
     color: var(--color-text);
 }
 
+/*Encapsula toda la página*/
+.page-wrapper {
+    min-height: 100vh;
+    background-color: var(--color-white);
+    display: flex;
+    flex-direction: column;
+}
+
+
 /* HEADER */
 .header {
     background: var(--color-white);
