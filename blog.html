@@ -3,89 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog — Juan David Parra Cantor</title>
+    <title>Proyectos — Juan David Parra Cantor</title>
 
-    <link rel="stylesheet" href="../assets/css/theme.css">
-    <link rel="stylesheet" href="../assets/css/styles.css">
+    <!-- CSS global -->
+    <link rel="stylesheet" href="assets/css/theme.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
 
-    <!-- Fuentes -->
+    <!-- Fuentes locales -->
     <style>
         @font-face {
             font-family: 'Bricolage Grotesque';
-            src: url('../assets/fonts/BricolageGrotesque/BricolageGrotesque-Regular.ttf');
+            src: url('assets/fonts/BricolageGrotesque/BricolageGrotesque-Regular.ttf');
         }
         @font-face {
             font-family: 'Dancing Script';
-            src: url('../assets/fonts/DancingScript/DancingScript-Regular.ttf');
+            src: url('assets/fonts/DancingScript/DancingScript-Regular.ttf');
         }
         @font-face {
             font-family: 'Myriad Bengali';
-            src: url('../assets/fonts/MyriadBengali/MyriadBengali-Regular.ttf');
-        }
-
-        /* ESTILOS EXCLUSIVOS PARA EL BLOG */
-        .blog-container {
-            max-width: 1200px;
-            margin: auto;
-            padding: 60px 40px;
-        }
-
-        .blog-header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .blog-search {
-            margin: 25px auto;
-            max-width: 500px;
-        }
-
-        .blog-search input {
-            width: 100%;
-            padding: 14px 18px;
-            border-radius: 12px;
-            border: 1px solid var(--border);
-            background: var(--bg-secondary);
-            color: var(--text);
-            font-size: 1rem;
-            transition: 0.2s;
-        }
-
-        .blog-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .blog-card {
-            background: var(--bg-secondary);
-            border: 1px solid var(--border);
-            border-radius: 14px;
-            padding: 25px;
-            box-shadow: var(--shadow);
-            transition: 0.25s;
-        }
-
-        .blog-card:hover {
-            transform: translateY(-6px);
-            box-shadow: var(--shadow-hover);
-        }
-
-        .blog-card h3 {
-            font-size: 1.35rem;
-            margin-bottom: 10px;
-        }
-
-        .blog-card p {
-            opacity: 0.85;
-            margin-bottom: 15px;
-        }
-
-        .blog-card a {
-            color: var(--primary);
-            font-weight: 600;
-            text-decoration: none;
+            src: url('assets/fonts/MyriadBengali/MyriadBengali-Regular.ttf');
         }
     </style>
 </head>
@@ -95,58 +31,62 @@
 <!-- HEADER -->
 <header class="header">
     <div class="header-container">
-        <img src="../assets/img/perfil/logo.png" alt="Logo" class="logo">
+        <img src="assets/img/perfil/logo.png" alt="Logo" class="logo">
         <nav class="nav">
-            <a href="../index.html">Inicio</a>
-            <a href="../about.html">Sobre mí</a>
-            <a href="../projects.html">Proyectos</a>
-            <a href="blog.html" class="active">Blog</a>
-            <a href="../contacto.html">Contacto</a>
+            <a href="index.html">Inicio</a>
+            <a href="about.html">Sobre mí</a>
+            <a href="projects.html" class="active">Proyectos</a>
+            <a href="blog.html">Blog</a>
+            <a href="contacto.html">Contacto</a>
         </nav>
     </div>
 </header>
 
-<!-- BLOG -->
-<section class="blog-container">
-
-    <div class="blog-header">
-        <h1>Blog personal</h1>
-        <p>Mis reflexiones, tutoriales y notas sobre desarrollo, tecnología y proyectos.</p>
-    </div>
-
-    <!-- BUSCADOR -->
-    <div class="blog-search">
-        <input type="text" id="buscador" placeholder="Buscar artículos...">
-    </div>
-
-    <!-- LISTA DE POSTS -->
-    <div class="blog-grid" id="posts-list">
-
-        {% for post in site.posts %}
-        <div class="blog-card" data-title="{{ post.title | downcase }}">
-            <h3>{{ post.title }}</h3>
-            <p>{{ post.excerpt | strip_html | truncate: 120 }}</p>
-            <a href="{{ post.url }}">Leer más →</a>
-        </div>
-        {% endfor %}
-
+<!-- HERO / TÍTULO PRINCIPAL -->
+<section class="hero" style="padding: 60px 40px;">
+    <div class="hero-text">
+        <h1>Mis Proyectos</h1>
+        <p>Una colección de herramientas, aplicaciones, experimentos y desarrollos personales.  
+        Todos organizados y documentados de manera clara.</p>
     </div>
 </section>
 
-<!-- Script de búsqueda -->
-<script>
-    const input = document.getElementById("buscador");
-    const cards = document.querySelectorAll(".blog-card");
+<!-- GRID DE PROYECTOS -->
+<section class="highlight" style="margin-top: 40px;">
+    <h2>Listado completo</h2>
 
-    input.addEventListener("input", () => {
-        const q = input.value.toLowerCase();
+    <div class="cards">
 
-        cards.forEach(card => {
-            const title = card.getAttribute("data-title");
-            card.style.display = title.includes(q) ? "block" : "none";
-        });
-    });
-</script>
+        <!-- Proyecto 1 -->
+        <div class="card">
+            <h3>Interpreter Notepad</h3>
+            <p>Editor clínico con backend embebido en Electron, historial, generación automática y más.</p>
+            <a href="/projects/project_template.html" class="card-btn">Explorar proyecto</a>
+        </div>
+
+        <!-- Proyecto 2 -->
+        <div class="card">
+            <h3>ThermoSolver</h3>
+            <p>Calculadora termodinámica avanzada con módulos independientes y estructura modular.</p>
+            <a href="/projects/thermosolver/" class="card-btn">Explorar proyecto</a>
+        </div>
+
+        <!-- Proyecto 3 -->
+        <div class="card">
+            <h3>Blog / Documentación</h3>
+            <p>Mi espacio técnico, análisis, guías, investigación y documentación extendida.</p>
+            <a href="blog.html" class="card-btn">Ver artículos</a>
+        </div>
+
+        <!-- Proyecto 4 (ejemplo futuro) -->
+        <div class="card">
+            <h3>CLI Tools Pack</h3>
+            <p>Conjunto de utilidades en Python para automatizar procesos comunes.</p>
+            <a href="#" class="card-btn">Pronto…</a>
+        </div>
+
+    </div>
+</section>
 
 </body>
 </html>
