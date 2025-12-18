@@ -5,7 +5,7 @@
    ============================================================ */
 
 :root {
-    /* 🎨 Colores principales */
+    /* Colores principales */
     --color-primary: #007bff;
     --color-primary-dark: #005fcc;
 
@@ -20,12 +20,12 @@
     --shadow-soft: 0 4px 20px rgba(0,0,0,0.08);
     --shadow-strong: 0 8px 25px rgba(0,0,0,0.15);
 
-    /* 🔠 Tipografías */
+    /* Tipografías */
     --font-title: 'Bricolage Grotesque', sans-serif;
     --font-body: 'Myriad Bengali', sans-serif;
     --font-accent: 'Dancing Script', cursive;
 
-    /* 📏 Espaciado (simples pero escalables) */
+    /* Espaciado (simples pero escalables) */
     --space-xs: 4px;
     --space-sm: 8px;
     --space-md: 16px;
@@ -33,11 +33,11 @@
     --space-xl: 32px;
     --space-xxl: 48px;
 
-    /* 🌐 Bordes */
+    /* Bordes */
     --radius-sm: 8px;
     --radius-md: 12px;
 
-    /* 🎚️ Transiciones */
+    /* Transiciones */
     --transition-fast: 0.2s;
     --transition-medium: 0.3s;
 }
