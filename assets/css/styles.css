@@ -319,12 +319,13 @@ main {
    ========================================================== */
 
 .error-404 {
-    min-height: calc(100vh - 120px);
+    flex-grow: 1;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 40px 20px;
 }
+
 
 .error-contenido {
     text-align: center;
