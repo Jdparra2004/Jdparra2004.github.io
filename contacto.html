@@ -61,34 +61,49 @@
 
                 <h2 style="text-align: center; font-size: 2.2rem;">Envíame un mensaje</h2>
 
-                <form class="contact-form" style="margin-top: 40px; max-width: 700px; margin-left: auto; 
-                    margin-right: auto;">
+                <form id="contactForm" class="contact-form">
 
-                    <label>Nombre</label>
-                    <input type="text" placeholder="Tu nombre" required
-                            style="padding: 12px; border-radius: 8px; border: 1px solid #ccc; width: 100%; 
-                                margin-bottom: 20px;">
+                    <!-- Nombre -->
+                    <label for="name">Nombre</label>
+                    <input type="text" id="name" name="name" placeholder="Tu nombre" required>
 
-                    <label>Asunto</label>
-                        <input type="text" placeholder="Asunto" required
-                            style="padding: 12px; border-radius: 8px; border: 1px solid #ccc; width: 100%; 
-                                margin-bottom: 20px;">
+                    <!-- Asunto -->
+                    <label for="subject">Asunto</label>
+                    <select id="subject" name="subject" required>
+                        <option value="">Selecciona un asunto</option>
+                        <option value="Dudas">Dudas</option>
+                        <option value="Colaboración profesional">Colaboración profesional</option>
+                        <option value="Consulta técnica">Consulta técnica</option>
+                        <option value="Colaboración en proyecto">Colaboración en proyecto</option>
+                        <option value="Correcciones">Correcciones</option>
+                        <option value="Otro">Otro</option>
+                    </select>
 
-                    <label>Correo electrónico</label>
-                    <input type="email" placeholder="tu@email.com" required
-                            style="padding: 12px; border-radius: 8px; border: 1px solid #ccc; width: 100%; 
-                                margin-bottom: 20px;">
+                    <!-- Asunto personalizado (solo si eligen "Otro") -->
+                    <div id="customSubjectContainer" style="display: none;">
+                        <label for="customSubject">Especifica el asunto</label>
+                        <input type="text" id="customSubject" placeholder="Escribe el asunto">
+                    </div>
 
-                    <label>Mensaje</label>
-                    <textarea placeholder="Escribe tu mensaje..." rows="6" required
-                                style="padding: 12px; border-radius: 8px; border: 1px solid #ccc; width: 
-                                    100%; margin-bottom: 20px;"></textarea>
+                    <!-- Correo -->
+                    <label for="email">Correo electrónico</label>
+                    <input type="email" id="email" name="email" placeholder="tu@email.com" required>
 
-                    <button class="btn-primary" style="width: 100%; font-size: 1.1rem;">
+                    <!-- Mensaje -->
+                    <label for="message">Mensaje</label>
+                    <textarea id="message" name="message" rows="6" placeholder="Escribe tu mensaje..." 
+                        required></textarea>
+
+                    <!-- Estado del formulario -->
+                    <p id="formStatus" style="margin-top: 15px;"></p>
+
+                    <!-- Botón -->
+                    <button type="submit" class="btn-primary" id="submitBtn">
                         Enviar mensaje
                     </button>
 
                 </form>
+
             </section>
         </main>
 
