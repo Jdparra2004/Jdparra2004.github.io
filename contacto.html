@@ -57,54 +57,63 @@
             </section>
 
             <!-- FORMULARIO DE CONTACTO -->
-            <section class="contact-section" style="max-width: 1200px; margin: auto; padding: 40px 10px;">
+            <section class="contact-section">
+                <div class="contact-container">
 
-                <h2 style="text-align: center; font-size: 2.2rem;">Envíame un mensaje</h2>
+                    <h2 class="contact-title">Envíame un mensaje</h2>
 
-                <form id="contactForm" class="contact-form">
+                    <form id="contactForm" class="contact-form">
 
-                    <!-- Nombre -->
-                    <label for="name">Nombre</label>
-                    <input type="text" id="name" name="name" placeholder="Tu nombre" required>
+                        <!-- Nombre -->
+                        <div class="form-group">
+                            <label for="name">Nombre</label>
+                            <input type="text" id="name" name="name" placeholder="Tu nombre" required>
+                        </div>
 
-                    <!-- Asunto -->
-                    <label for="subject">Asunto</label>
-                    <select id="subject" name="subject" required>
-                        <option value="">Selecciona un asunto</option>
-                        <option value="Dudas">Dudas</option>
-                        <option value="Colaboración profesional">Colaboración profesional</option>
-                        <option value="Consulta técnica">Consulta técnica</option>
-                        <option value="Colaboración en proyecto">Colaboración en proyecto</option>
-                        <option value="Correcciones">Correcciones</option>
-                        <option value="Otro">Otro</option>
-                    </select>
+                        <!-- Asunto -->
+                        <div class="form-group">
+                            <label for="subject">Asunto</label>
+                            <select id="subject" name="subject" required>
+                                <option value="">Selecciona un asunto</option>
+                                <option value="Dudas">Dudas</option>
+                                <option value="Colaboración profesional">Colaboración profesional</option>
+                                <option value="Consulta técnica">Consulta técnica</option>
+                                <option value="Colaboración en proyecto">Colaboración en proyecto</option>
+                                <option value="Correcciones">Correcciones</option>
+                                <option value="Otro">Otro</option>
+                            </select>
+                        </div>
 
-                    <!-- Asunto personalizado (solo si eligen "Otro") -->
-                    <div id="customSubjectContainer" style="display: none;">
-                        <label for="customSubject">Especifica el asunto</label>
-                        <input type="text" id="customSubject" placeholder="Escribe el asunto">
-                    </div>
+                        <!-- Asunto personalizado -->
+                        <div class="form-group" id="customSubjectContainer" style="display:none;">
+                            <label for="customSubject">Especifica el asunto</label>
+                            <input type="text" id="customSubject" placeholder="Escribe el asunto">
+                        </div>
 
-                    <!-- Correo -->
-                    <label for="email">Correo electrónico</label>
-                    <input type="email" id="email" name="email" placeholder="tu@email.com" required>
+                        <!-- Correo -->
+                        <div class="form-group">
+                            <label for="email">Correo electrónico</label>
+                            <input type="email" id="email" name="email" placeholder="tu@email.com" required>
+                        </div>
 
-                    <!-- Mensaje -->
-                    <label for="message">Mensaje</label>
-                    <textarea id="message" name="message" rows="6" placeholder="Escribe tu mensaje..." 
-                        required></textarea>
+                        <!-- Mensaje -->
+                        <div class="form-group">
+                            <label for="message">Mensaje</label>
+                            <textarea id="message" name="message" rows="6" placeholder="Escribe tu mensaje..." required></textarea>
+                        </div>
 
-                    <!-- Estado del formulario -->
-                    <p id="formStatus" style="margin-top: 15px;"></p>
+                        <!-- Estado -->
+                        <p id="formStatus" class="form-status"></p>
 
-                    <!-- Botón -->
-                    <button type="submit" class="btn-primary" id="submitBtn">
-                        Enviar mensaje
-                    </button>
+                        <!-- Botón -->
+                        <button type="submit" class="btn-primary form-submit" id="submitBtn">
+                            Enviar mensaje
+                        </button>
 
-                </form>
-
+                    </form>
+                </div>
             </section>
+
         </main>
 
         <!-- Footer simple  -->
