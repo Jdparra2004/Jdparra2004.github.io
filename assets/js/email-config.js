@@ -7,5 +7,5 @@
 */
 
 (function () {
-    emailjs.init("TU_PUBLIC_KEY_AQUI");
+    emailjs.init("gj8TMdXOaWDqBYHnp");
 })();
