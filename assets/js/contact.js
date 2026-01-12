@@ -4,6 +4,7 @@
     Descripción:
         Maneja la interacción del formulario de contacto,
         valida los campos y envía el mensaje usando EmailJS.
+        Incluye autorespuesta automática al usuario.
  */
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -17,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const submitBtn = document.getElementById("submitBtn");
 
     /* 
-    Control del campo "Otro" en Asunto
+        Control del campo "Otro" en Asunto
     */
     subjectSelect.addEventListener("change", function () {
         if (subjectSelect.value === "Otro") {
@@ -47,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 ? customSubjectInput.value
                 : subjectSelect.value;
 
-        /* Parámetros enviados al template de EmailJS */
+        /* Parámetros enviados a los templates de EmailJS */
         const templateParams = {
             name: document.getElementById("name").value,
             email: document.getElementById("email").value,
@@ -56,14 +57,27 @@ document.addEventListener("DOMContentLoaded", function () {
             time: new Date().toLocaleString()
         };
 
-        /* Envío mediante EmailJS */
+        /* 
+            Envío principal (correo que te llega a ti)
+        */
         emailjs
             .send(
-                "service_1i5dw85",
-                "template_754zb2j",
+                "service_1i5dw85",      // Service ID
+                "template_754zb2j",     // Template principal (admin)
                 templateParams
             )
             .then(function () {
+
+                /* 
+                    Autorespuesta al usuario
+                    Se utiliza un segundo template en EmailJS
+                */
+                emailjs.send(
+                    "service_1i5dw85",      // Mismo servicio
+                    "template_rcpxxey", //ID template respuesta
+                    templateParams
+                );
+
                 statusText.textContent = "Mensaje enviado correctamente.";
                 statusText.style.color = "green";
                 form.reset();
