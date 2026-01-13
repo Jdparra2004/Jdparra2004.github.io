@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
     /* -----------------------------------------
-       Funciones auxiliares
+        Funciones auxiliares
        ----------------------------------------- */
 
     function renderizarProyecto(project) {
@@ -50,6 +50,23 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("projectDescription").textContent =
             project.description;
 
+        /* Galería */
+        const gallerySection = document.getElementById("projectGallerySection");
+        const galleryContainer = document.getElementById("projectGallery");
+
+        if (project.gallery && project.gallery.length > 0) {
+            galleryContainer.innerHTML = "";
+
+            project.gallery.forEach(imgSrc => {
+                const img = document.createElement("img");
+                img.src = imgSrc;
+                img.alt = project.title;
+                galleryContainer.appendChild(img);
+            });
+        } else {
+            gallerySection.style.display = "none";
+        }
+
         /* Tecnologías */
         const techList = document.getElementById("projectTechnologies");
         techList.innerHTML = "";
@@ -59,6 +76,21 @@ document.addEventListener("DOMContentLoaded", function () {
             li.textContent = tech;
             techList.appendChild(li);
         });
+
+        /* Obtener fechas desde GitHub */
+        fetch(project.repository.replace("https://github.com/", "https://api.github.com/repos/"))
+            .then(response => response.json())
+            .then(repoData => {
+                document.getElementById("projectStartDate").textContent =
+                    new Date(repoData.created_at).toLocaleDateString();
+
+                document.getElementById("projectLastUpdate").textContent =
+                    new Date(repoData.updated_at).toLocaleDateString();
+            })
+            .catch(() => {
+                document.getElementById("projectStartDate").textContent = "No disponible";
+                document.getElementById("projectLastUpdate").textContent = "No disponible";
+            });
 
         /* Repositorio */
         const repoLink = document.getElementById("projectRepository");

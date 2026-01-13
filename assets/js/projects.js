@@ -23,10 +23,13 @@ document.addEventListener("DOMContentLoaded", function () {
                     <h3>${project.title}</h3>
                     <p>${project.shortDescription}</p>
 
+                    <p><strong>Estado:</strong> ${project.status}</p>
+
                     <a href="projects/project.html?id=${project.id}" class="card-btn">
-                        Ver proyecto
+                        Ver proyecto →
                     </a>
                 `;
+
 
                 projectsGrid.appendChild(card);
             });

@@ -3,6 +3,10 @@
     "id": "interpreter-notepad",
     "title": "Interpreter Notepad",
     "shortDescription": "Intérprete de expresiones matemáticas con entorno gráfico.",
+    "gallery": [
+    "../assets/img/projects/interpreter/1.png",
+    "../assets/img/projects/interpreter/2.png"
+    ],
     "description": "Interpreter Notepad es una aplicación de escritorio diseñada para evaluar expresiones matemáticas, facilitar pruebas lógicas y apoyar procesos de aprendizaje en programación e ingeniería.",
     "status": "active",
     "technologies": [
