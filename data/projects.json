@@ -1,0 +1,24 @@
+[
+    {
+    "id": "interpreter-notepad",
+    "title": "Interpreter Notepad",
+    "shortDescription": "Intérprete de expresiones matemáticas con entorno gráfico.",
+    "description": "Interpreter Notepad es una aplicación de escritorio diseñada para evaluar expresiones matemáticas, facilitar pruebas lógicas y apoyar procesos de aprendizaje en programación e ingeniería.",
+    "status": "active",
+    "technologies": [
+        "Python",
+        "Tkinter"
+    ],
+    "repository": "https://github.com/Jdparra2004/interprete-notepad",
+    "license": "MIT",
+    "downloads": [
+        {
+        "version": "v1.0.0",
+        "date": "2025-01-10",
+        "type": "exe",
+        "platform": "Windows",
+        "url": "https://github.com/Jdparra2004/interpreter-notepad/releases/download/v1.0.0/InterpreterNotepad.exe"
+        }
+    ]
+    }
+]

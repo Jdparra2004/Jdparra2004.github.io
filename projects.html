@@ -60,39 +60,11 @@
             </section>
 
             <!-- GRID DE PROYECTOS -->
-            <section class="highlight" style="margin-top: 40px;">
-                <h2>Listado completo</h2>
+            <section class="projects-section">
+                <div class="projects-container">
 
-                <div class="cards">
-
-                    <!-- Proyecto 1 -->
-                    <div class="card">
-                        <h3>Interpreter Notepad</h3>
-                        <p>Editor clínico con backend embebido en Electron, historial, generación automática y más.</p>
-                        <a href="/projects/project_template.html" class="card-btn">Explorar proyecto</a>
-                    </div>
-
-                    <!-- Proyecto 2 -->
-                    <div class="card">
-                        <h3>ThermoSolver</h3>
-                        <p>Calculadora termodinámica avanzada con módulos independientes y estructura modular.</p>
-                        <a href="/projects/thermosolver/" class="card-btn">Explorar proyecto</a>
-                    </div>
-
-                    <!-- Proyecto 3 -->
-                    <div class="card">
-                        <h3>Blog / Documentación</h3>
-                        <p>Mi espacio técnico, análisis, guías, investigación y documentación extendida.</p>
-                        <a href="blog.html" class="card-btn">Ver artículos</a>
-                    </div>
-
-                    <!-- Proyecto 4 (ejemplo futuro) -->
-                    <div class="card">
-                        <h3>CLI Tools Pack</h3>
-                        <p>Conjunto de utilidades en Python para automatizar procesos comunes.</p>
-                        <a href="#" class="card-btn">Pronto…</a>
-                    </div>
-
+                    <!-- Aquí se renderizan los proyectos -->
+                    <div id="projectsGrid" class="projects-grid"></div>
                 </div>
             </section>
         </main>
@@ -101,6 +73,8 @@
         <footer class="footer">
             <p class="footer-texto">© 2026 Juan David Parra Cantor</p>
         </footer>
-    </div>    
+    </div>  
+    
+    <script src="assets/js/projects.js"></script>
 </body>
 </html>
