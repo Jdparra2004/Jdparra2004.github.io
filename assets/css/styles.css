@@ -439,7 +439,7 @@ main {
 }
 
 /* ==========================================================
-   PROYECTOS — Listado
+    PROYECTOS — Listado
    ========================================================== */
 
 .projects-section {
@@ -465,3 +465,121 @@ main {
     box-shadow: var(--shadow-soft);
 }
 
+/* ==========================================================
+    PROJECT — Hero
+   ========================================================== */
+
+.project-hero {
+    background-color: var(--color-bg);
+    padding: 80px 40px 40px;
+}
+
+.project-hero-container {
+    max-width: 1200px;
+    margin: auto;
+}
+
+.project-hero h1 {
+    font-size: 3rem;
+    font-family: var(--font-title);
+    margin-bottom: 10px;
+}
+
+#projectShortDescription {
+    font-size: 1.2rem;
+    font-family: var(--font-body);
+    color: var(--color-muted);
+    max-width: 700px;
+}
+
+
+/* ==========================================================
+    PROJECT — Contenido
+   ========================================================== */
+
+.project-content {
+    max-width: 1200px;
+    margin: auto;
+    padding: 60px 40px;
+}
+
+.project-section {
+    margin-bottom: 60px;
+}
+
+.project-section h2 {
+    font-size: 1.9rem;
+    font-family: var(--font-title);
+    margin-bottom: 15px;
+}
+
+.project-section p {
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #444;
+}
+
+/* ==========================================================
+    PROJECT — Tecnologías
+   ========================================================== */
+
+#projectTechnologies {
+    list-style: none;
+    padding-left: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+#projectTechnologies li {
+    background-color: var(--color-bg);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-family: var(--font-body);
+    color: var(--color-text);
+}
+
+
+/* ==========================================================
+    PROJECT — Descargas
+   ========================================================== */
+
+#projectDownloads {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.download-item {
+    background-color: var(--color-white);
+    padding: 20px;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-soft);
+}
+
+.download-item strong {
+    font-size: 1rem;
+    display: block;
+    margin-bottom: 6px;
+}
+
+.download-item a {
+    color: var(--color-primary);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.download-item a:hover {
+    text-decoration: underline;
+}
+
+/* ==========================================================
+    PROJECT — Repositorio
+   ========================================================== */
+
+.project-section a.btn-secondary {
+    margin-top: 10px;
+    display: inline-block;
+}
