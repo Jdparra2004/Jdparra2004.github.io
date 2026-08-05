@@ -1,2 +1,10 @@
 // Ignore text files
 *.txt
+
+# Graphify outputs and cache
+graphify-out/
+.graphify/
+
+# Gemini CLI / local environment files
+.gemini/
+GEMINI.md
