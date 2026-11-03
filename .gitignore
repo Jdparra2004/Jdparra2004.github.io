@@ -8,3 +8,6 @@ graphify-out/
 # Gemini CLI / local environment files
 .gemini/
 GEMINI.md
+
+#Skills de agente
+.agents/
