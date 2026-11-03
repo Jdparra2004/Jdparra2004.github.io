@@ -1,0 +1,83 @@
+# ==============================================================================
+# Configuración Oficial de Despliegue en Netlify
+# Portafolio Profesional de Juan David Parra Cantor
+# ==============================================================================
+
+[build]
+  publish = "."
+
+# ------------------------------------------------------------------------------
+# 1. Redirecciones y Rutas Limpias (Clean URLs)
+# ------------------------------------------------------------------------------
+
+[[redirects]]
+  from = "/inicio"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/proyectos"
+  to = "/projects.html"
+  status = 200
+
+[[redirects]]
+  from = "/sobre-mi"
+  to = "/about.html"
+  status = 200
+
+[[redirects]]
+  from = "/blog"
+  to = "/blog.html"
+  status = 200
+
+[[redirects]]
+  from = "/contacto"
+  to = "/contacto.html"
+  status = 200
+
+# Redirección personalizada de error 404
+[[redirects]]
+  from = "/*"
+  to = "/404.html"
+  status = 404
+
+# ------------------------------------------------------------------------------
+# 2. Cabeceras de Seguridad y Políticas HTTP
+# ------------------------------------------------------------------------------
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    X-XSS-Protection = "1; mode=block"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+# ------------------------------------------------------------------------------
+# 3. Optimización de Caché y Entrega de Assets
+# ------------------------------------------------------------------------------
+
+# Fuentes locales (Inmutables por 1 año para rendimiento óptimo)
+[[headers]]
+  for = "/assets/fonts/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    Access-Control-Allow-Origin = "*"
+
+# Imágenes, favicons y recursos gráficos (Caché por 30 días)
+[[headers]]
+  for = "/assets/img/*"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
+
+# Archivos CSS y JavaScript (Caché de revalidación rápida con stale-while-revalidate)
+[[headers]]
+  for = "/assets/css/*"
+  [headers.values]
+    Cache-Control = "public, max-age=86400, stale-while-revalidate=604800"
+
+[[headers]]
+  for = "/assets/js/*"
+  [headers.values]
+    Cache-Control = "public, max-age=86400, stale-while-revalidate=604800"

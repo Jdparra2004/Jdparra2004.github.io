@@ -1,193 +1,156 @@
-# Sistema Visual y Guía de Estilos
+# Sistema Visual y Manual de Marca
+
+> **Documento Canónico Oficial**: Consulta el [MANUAL_DE_MARCA.md](file:///D:/2Portafolio/Jdparra2004.github.io/MANUAL_DE_MARCA.md) para el libro de marca extendido y el [DESIGN.md](file:///D:/2Portafolio/Jdparra2004.github.io/DESIGN.md) para la especificación completa de tokens de diseño bajo el estándar Stitch / Google DESIGN.md.
+
+---
 
 ## 1. Identidad General
 
-Este documento establece la identidad visual oficial del proyecto, definiendo las reglas de estilo, tipografías, colores, espaciados y lineamientos para asegurar coherencia estética en todo el sitio.
+Este documento resume la identidad visual oficial del portafolio personal de **Juan David Parra Cantor**, definiendo las reglas de estilo, tipografías, colores, espaciados y lineamientos para asegurar coherencia y máxima elegancia en todo el sitio web previo y posterior a su despliegue en **Netlify**.
 
-La línea gráfica combina una estética  **técnica** ,  **minimalista** ,  **futurista ligera** , con detalles **tradicionales** que evocan precisión y oficio.
+La línea gráfica combina una estética **técnica**, **minimalista** y de **artesanía de software (quiet luxury tech)**, inspirada en la disciplina de Linear y Stripe, combinada con detalles cálidos y humanistas.
 
 ---
 
-## 2. Tipografías
+## 2. Declaración Canónica de Tipografías (@font-face)
 
-A continuación se incluyen también las declaraciones `@font-face` con las rutas exactas para cada familia tipográfica utilizada en el proyecto.
-
-### **Declaración de fuentes (@font-face)**
+El proyecto emplea fuentes locales almacenadas en `assets/fonts/`:
 
 ```css
 @font-face {
-    font-family: "BricolageGrotesque";
-    src: url("assets/fonts/BricolageGrotesque/BricolageGrotesque-Bold.ttf")
-        format("truetype");
+    font-family: "Bricolage Grotesque";
+    src: url("../fonts/BricolageGrotesque/BricolageGrotesque-Bold.ttf") format("truetype");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
-    font-family: "DancingScript";
-    src: url("assets/fonts/DancingScript/DancingScript-Bold.ttf")
-        format("truetype");
+    font-family: "Bricolage Grotesque";
+    src: url("../fonts/BricolageGrotesque/BricolageGrotesque-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
-    font-family: "MyriadBengali";
-    src: url("assets/fonts/MyriadBengali/myriad-bengali-bold.ttf")
-        format("truetype");
+    font-family: "Myriad Bengali";
+    src: url("../fonts/MyriadBengali/MyriadBengali-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Dancing Script";
+    src: url("../fonts/DancingScript/DancingScript-Bold.ttf") format("truetype");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
 }
 ```
 
-El proyecto emplea tres fuentes con roles claros y no intercambiables.
+### Roles Tipográficos:
+1. **Bricolage Grotesque — (Titulares / Jerarquía principal)**
+   - Uso: Títulos principales (`h1`, `h2`, `h3`), logotipos, encabezados de tarjeta.
+   - Esencia: Geométrica, técnica, con carácter arquitectónico.
+   - Regla: No usar en párrafos largos.
 
-### **1. Bricolage Grotesque — (Titulares / Jerarquía principal)**
+2. **Myriad Bengali — (Cuerpo / Lectura extendida)**
+   - Uso: Textos explicativos, párrafos, notas de blog, documentación.
+   - Esencia: Neutra, limpia, con altísima legibilidad en pantallas.
+   - Regla: Tamaño base 1rem (16px), interlineado generoso (1.6 – 1.7).
 
-* Uso: títulos grandes, secciones, encabezados.
-* Características: estructurada, moderna, con personalidad técnica.
-* Lineamiento: evitar usarla en párrafos largos.
+3. **Dancing Script — (Firma & Gestos Humanistas)**
+   - Uso: Firmas personales, dedicatorias, notas de autor o fechas emotivas.
+   - Esencia: Manuscrita, fluida y cálida.
+   - Regla: Uso moderado y reservado; **nunca** en botones o menús.
 
-### **2. Myriad Bengali — (Cuerpo / Larga lectura)**
-
-* Uso: textos extensos, párrafos, documentación.
-* Características: alta legibilidad, limpia y neutra.
-* Lineamiento: tamaño base 1rem–1.125rem, interlineado amplio.
-
-### **3. Dancing Script — (Detalles finos / Acentos)**
-
-* Uso: firmas, pequeños gestos visuales, un subtítulo emocional.
-* Características: caligráfica, expresiva.
-* Lineamiento: uso extremadamente moderado; nunca en bloques largos.
-
----
-
-## 3. Paleta de Colores
-
-La paleta busca equilibrio entre profesionalismo, serenidad técnica y un toque cálido premium.
-
-### **Colores principales**
-
-* **Azul Acero (#2A4065)** — Color primario
-  * Uso: encabezados, botones principales, secciones importantes.
-* **Gris Grafito (#1D1F21)** — Fondo oscuro técnico
-  * Uso: headers, footers, áreas de foco.
-* **Gris Claro (#E6E8EB)** — Fondo neutro
-  * Uso: tarjetas, bloques de contenido, áreas de lectura.
-
-### **Colores secundarios**
-
-* **Coral Suave (#E3A5A0)** — Acentos cálidos
-  * Uso: microdetalles, subrayados, indicadores.
-  * Regla: máximo 5% de uso total.
-* **Dorado Mate (#D6A95F)** — Acento premium
-  * Uso: separadores, líneas finas, detalles elegantes.
-  * Regla: nunca usarlo como fondo.
-
-### **Color de alerta / éxito (opcional)**
-
-* **Verde Técnico (#3A8F6D)** — Estados correctos.
-* **Rojo Diseño (#C55A57)** — Errores o alertas.
+4. **Monospace Complementario — (Código y Cómputo)**
+   - Uso: Fórmulas térmicas, variables matemáticas, snippets de código y comandos CLI.
 
 ---
 
-## 4. Jerarquía Tipográfica
+## 3. Paleta de Colores Maestra
 
-### **Títulos**
+La paleta equilibra autoridad de ingeniería, contraste óptimo (WCAG AAA) y detalles cálidos premium.
 
-* h1: Bricolage, 2.5rem–3rem, color azul acero
-* h2: Bricolage, 1.8rem–2.2rem
-* h3: Bricolage, 1.3rem–1.6rem
+### **Colores Estructurales**
+* **Azul Acero Profundo (`#1E3A5F`)** — Color de marca primario
+  * Uso: Encabezados destacados, botones principales, énfasis institucional.
+* **Gris Grafito Noche (`#121417` / `#1D1F21`)** — Lienzo oscuro técnico
+  * Uso: Header, footer, terminales y áreas de enfoque.
+* **Gris Platino Suave (`#F8F9FA` / `#E6E8EB`)** — Lienzo claro editorial
+  * Uso: Fondo principal del sitio, descanso visual.
+* **Blanco Puro (`#FFFFFF`)** — Superficie de tarjetas
+  * Uso: Tarjetas de proyectos, modales, campos de formulario.
 
-### **Texto de párrafo**
+### **Colores de Acento (Regla del 10%)**
+* **Dorado Champán Mate (`#D6A95F`)** — Acento de excelencia técnica
+  * Uso: Separadores milimétricos, anillos de foco accesibles, indicadores activos de navegación.
+  * Regla: Nunca usar como fondo completo.
+* **Coral Suave (`#E3A5A0`)** — Acento de calidez humana
+  * Uso: Subrayados dinámicos en hovers, microindicadores, enlaces emotivos.
+  * Regla: Máximo 5% del balance visual.
 
-* p: Myriad Bengali, 1rem–1.125rem, color grafito profundo
-* Interlineado: 1.4–1.6
-
-### **Elementos con Dancing Script**
-
-* Subtítulos secundarios muy cortos
-* Firmas, notas o frases personales
-* Tamaño sugerido: 1.2rem–1.5rem
-
----
-
-## 5. Sistema de Espaciado (Spacing Scale)
-
-Escala modular basada en múltiplos de 4 para consistencia.
-
-* XS — 4px
-* S — 8px
-* M — 16px
-* L — 24px
-* XL — 32px
-* XXL — 48px
-
-Reglas:
-
-* Márgenes grandes para secciones verticales: 48–64px
-* Padding interno de tarjetas: 16–24px
-* Nunca mezclar valores que no estén en esta escala.
+### **Estados y Semántica**
+* **Verde Técnico (`#2E7D5B`)** — Proyectos activos, compilación exitosa.
+* **Rojo Alerta (`#C55A57`)** — Errores de validación, estados críticos.
 
 ---
 
-## 6. Bordes, Sombras y Estética General
+## 4. Jerarquía Tipográfica y Espaciado
 
-### **Bordes**
+### Títulos
+* **Hero / Display**: Bricolage Grotesque, `2.5rem – 3.25rem` (40px – 52px), Azul Acero o Grafito Profundo.
+* **H1 / H2**: Bricolage Grotesque, `1.75rem – 2.25rem` (28px – 36px).
+* **H3**: Bricolage Grotesque, `1.25rem – 1.45rem` (20px – 23px).
 
-* Redondeado estándar: 8px
-* Redondeado grande (tarjetas): 12px
+### Textos de Párrafo
+* **Párrafo base (`p`)**: Myriad Bengali, `1rem` (16px), color `#111418` o `#475467`. Interlineado `1.65`.
+* **Lead / Intro**: Myriad Bengali, `1.15rem – 1.25rem`, interlineado `1.7`.
 
-### **Sombras**
-
-* Suaves y técnicas, sin dramatismo:
-  * `0 2px 6px rgba(0,0,0,0.12)`
-
-### **Reglas de estilo general**
-
-* Minimalista: eliminar ruido visual
-* Contraste suficiente para accesibilidad
-* Usar color coral o dorado solo como acento, no como base
-* Consistencia rigurosa en márgenes y tipografías
-
----
-
-## 7. Componentes Base (Lineamientos Visuales)
-
-### **Navbar**
-
-* Fondo gris grafito
-* Texto en gris claro
-* Hover: subrayado coral suave
-* Estética: limpia, espaciada y sin saturación
-
-### **Botones**
-
-* Primario: azul acero, texto blanco
-* Secundario: fondo claro, borde azul acero
-* Ghost: texto azul acero sin borde
-* Hover: aumento sutil de luminosidad
-
-### **Tarjetas / Blocks**
-
-* Fondo gris claro
-* Bordes redondeados 12px
-* Sombra técnica mínima
-* Título en Bricolage, contenido en Myriad
+### Escala de Espaciado Modular (Múltiplos de 4px / 8px)
+* `2xs`: 4px
+* `xs`: 8px
+* `sm`: 12px
+* `md`: 16px
+* `lg`: 24px
+* `xl`: 32px
+* `2xl`: 48px
+* `3xl`: 64px
+* `section`: 80px
 
 ---
 
-## 8. Uso de Íconos
+## 5. Bordes, Sombras y Elevación
 
-* Estilo lineal o duotono suave
-* Color base: azul acero o gris grafito
-* No usar íconos rellenos saturados
-
----
-
-## 9. Lineamientos de Marca
-
-* Profesional, claro y moderno
-* Sin extravagancias innecesarias
-* Un toque cálido humano con Dancing Script cuando corresponda
-* Consistencia por encima de creatividad desbordada
+* **Bordes**:
+  * Estándar elementos / inputs: `8px – 10px`
+  * Tarjetas de proyectos: `16px`
+  * Badges / Píldoras: `9999px`
+* **Líneas divisorias**: `1px solid #E2E5EA` (en claro) y `1px solid #262B33` (en oscuro).
+* **Sombras Técnicas**:
+  * Tarjeta estática: `0 2px 8px -2px rgba(18, 20, 23, 0.05), 0 1px 3px 0 rgba(18, 20, 23, 0.03)`
+  * Hover interactivo: `0 12px 28px -4px rgba(18, 20, 23, 0.08)`
+  * Focus visible accesible: `0 0 0 3px rgba(214, 169, 95, 0.35)`
 
 ---
 
-## 10. Evolución
+## 6. Componentes Clave
 
-Este documento puede actualizarse a medida que el proyecto crezca. Toda modificación debe mantener coherencia con la identidad principal aquí establecida.
+* **Navbar**: Fondo grafito noche (`#121417`) con `backdrop-filter: blur(12px)`. Enlaces con hover y activo en dorado mate (`#D6A95F`) y coral (`#E3A5A0`).
+* **Botones Primarios**: Fondo Azul Acero (`#1E3A5F`), texto blanco, esquinas redondeadas 10px, elevación sutil al hover.
+* **Tarjetas**: Superficie blanca, borde milimétrico, padding de 24px, badges de tecnologías y hover interactivo suave.
+
+---
+
+## 7. Preparación para Migración a Netlify
+
+* Archivo de configuración central: `netlify.toml` con cabeceras de seguridad (`X-Frame-Options`, `X-Content-Type-Options`, `Referrer-Policy`) y políticas de caché inmutable para fuentes locales e imágenes.
+* Formulario de contacto habilitado mediante atributo `data-netlify="true"`.
+* Rutas y redirecciones limpias sin extensión `.html` y página 404 personalizada.
+
+---
+
+*Para detalles exhaustivos, consulta los archivos [MANUAL_DE_MARCA.md](file:///D:/2Portafolio/Jdparra2004.github.io/MANUAL_DE_MARCA.md) y [DESIGN.md](file:///D:/2Portafolio/Jdparra2004.github.io/DESIGN.md).*
