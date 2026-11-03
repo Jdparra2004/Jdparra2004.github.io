@@ -81,10 +81,10 @@ Para garantizar impacto y legibilidad, ningún elemento textual o gráfico debe 
 - **Impresión / PDF (Currículum vitae / Documentos técnicos)**: Mínimo `12 mm` de ancho.
 
 ### 3.4. Reglas de Uso Incorrecto (Prohibiciones Estrictas)
-- ❌ **No distorsionar**: No comprimir o alargar la relación de aspecto.
-- ❌ **No aplicar sombras agresivas**: Prohibido usar sombras paralelas de color negro saturado o resplandores de neón.
-- ❌ **No alterar la paleta**: Prohibido teñir el isotipo en colores no autorizados (ej. verde flúor, magenta).
-- ❌ **No colocar sobre fondos fotográficos ruidosos**: Si el fondo es una imagen, debe colocarse sobre un contenedor con superficie sólida o una máscara oscura con opacidad mínima del 85%.
+- **No distorsionar**: No comprimir o alargar la relación de aspecto.
+- **No aplicar sombras agresivas**: Prohibido usar sombras paralelas de color negro saturado o resplandores de neón.
+- **No alterar la paleta**: Prohibido teñir el isotipo en colores no autorizados (ej. verde flúor, magenta).
+- **No colocar sobre fondos fotográficos ruidosos**: Si el fondo es una imagen, debe colocarse sobre un contenedor con superficie sólida o una máscara oscura con opacidad mínima del 85%.
 
 ---
 

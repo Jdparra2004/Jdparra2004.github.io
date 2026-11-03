@@ -1,28 +1,100 @@
-[
-    {
-    "id": "interpreter-notepad",
-    "title": "Interpreter Notepad",
-    "shortDescription": "Intérprete de expresiones matemáticas con entorno gráfico.",
-    "description": "Interpreter Notepad es una aplicación de escritorio diseñada para evaluar expresiones matemáticas, facilitar pruebas lógicas y apoyar procesos de aprendizaje en programación e ingeniería.",
+{
+  "projects": [
+  {
+    "id": "sensor-nir-glucosa",
+    "title": "Simulador NIR de Glucosa — Bioingeniería",
+    "shortDescription": "Evaluación paramétrica y simulación numérica para el monitoreo no invasivo de glucosa en sudor mediante espectroscopia de infrarrojo cercano (NIR).",
+    "description": "Herramienta computacional de bioingeniería que integra la física de la espectroscopia de infrarrojo cercano (NIR), la dinámica de fluidos en microcanales y un motor de inferencia analítica para estimar cuantitativamente la concentración de glucosa en medios acuosos diluidos. Implementa la Ley de Beer-Lambert corregida por el fenómeno de desplazamiento volumétrico de agua, validación del régimen laminar mediante los números adimensionales de Reynolds y Péclet, modelado de incertidumbre fotométrica gaussiana y un panel interactivo en Streamlit con clasificación fisiológica in silico.",
     "gallery": [
-    "../assets/img/proyectos/canvas.png",
-    "../assets/img/proyectos/ventu.jpg"
+      "../assets/img/proyectos/canvas.png"
     ],
-    "status": "active",
+    "status": "Activo · Investigación",
     "technologies": [
-        "Python",
-        "Tkinter"
+      "Python",
+      "NumPy",
+      "Pandas",
+      "Streamlit",
+      "Plotly",
+      "Espectroscopia NIR",
+      "Microfluídica"
     ],
-    "repository": "https://github.com/Jdparra2004/interprete-notepad",
+    "repository": "https://github.com/Jdparra2004/Sensor-NIR-De-Glucosa",
     "license": "MIT",
-    "downloads": [
-        {
-        "version": "v1.0.0",
-        "date": "2025-01-10",
-        "type": "exe",
-        "platform": "Windows",
-        "url": "https://github.com/Jdparra2004/interpreter-notepad/releases/download/v1.0.0/InterpreterNotepad.exe"
-        }
-    ]
-    }
-]
+    "downloads": []
+  },
+  {
+    "id": "optimizacion-multiobjetivo",
+    "title": "Optimización Multiobjetivo de Cadenas Logísticas",
+    "shortDescription": "Modelado matemático mono y multiobjetivo para cadenas de suministro de biocombustibles derivados de residuos en Colombia.",
+    "description": "Desarrollo de modelos de optimización matemática orientados al diseño y planificación de cadenas logísticas de biocombustibles a partir de biomasa residual en Colombia. Evalúa simultáneamente criterios económicos, ambientales y de impacto social (generación de empleo y desarrollo regional). Esta investigación derivó en el artículo publicado en Renewable Energies, Environment and Power Quality Journal (DOI: 10.24084/reepqj26-370) y obtuvo el Primer Puesto en la categoría Investigación Terminada en el Encuentro de Semilleros Multicampus de la Universidad Pontificia Bolivariana.",
+    "gallery": [
+      "../assets/img/proyectos/muestra.jpg"
+    ],
+    "status": "Publicado · DOI 10.24084/reepqj26-370",
+    "technologies": [
+      "Python",
+      "Optimización Multiobjetivo",
+      "Investigación de Operaciones",
+      "Frentes de Pareto",
+      "Transición Energética"
+    ],
+    "repository": "https://github.com/Jdparra2004/Multiobjetivo",
+    "license": "MIT",
+    "downloads": []
+  },
+  {
+    "id": "simulacion-difusion-hidrogeno",
+    "title": "Difusión de Hidrógeno y Estrés Mecánico (Diferencias Finitas)",
+    "shortDescription": "Simulador numérico 3D por diferencias finitas para evaluar la difusión de hidrógeno y perfiles de esfuerzo radial y tangencial.",
+    "description": "Sistema modular en Python para el análisis del transporte de masa y fragilización por hidrógeno en paredes cilíndricas y materiales de ingeniería. Resuelve las ecuaciones diferenciales parciales de difusión mediante esquemas de diferencias finitas y acopla el campo de concentraciones con el cálculo de esfuerzos mecánicos radiales y tangenciales, generando reconstrucciones tridimensionales del perfil de concentración y tensión.",
+    "gallery": [
+      "../assets/img/proyectos/ventu.jpg"
+    ],
+    "status": "Finalizado · Métodos Numéricos",
+    "technologies": [
+      "Python",
+      "Diferencias Finitas",
+      "Matplotlib 3D",
+      "Fenómenos de Transporte",
+      "Mecánica de Materiales"
+    ],
+    "repository": "https://github.com/Jdparra2004/Simulacion_Hidrogeno",
+    "license": "MIT",
+    "downloads": []
+  },
+  {
+    "id": "funciones-base-radial-rbf",
+    "title": "Aproximación e Interpolación con Funciones de Base Radial (RBF)",
+    "shortDescription": "Implementación computacional de redes y funciones de base radial para interpolación multivariable y ajuste de superficies.",
+    "description": "Desarrollo académico y numérico centrado en el uso de Funciones de Base Radial (RBF) para la reconstrucción de superficies, interpolación de datos dispersos y resolución numérica de sistemas en ingeniería química. Incluye cuadernos interactivos con análisis de condicionamiento matricial, selección de parámetros de forma y comparación frente a esquemas polinómicos tradicionales.",
+    "gallery": [],
+    "status": "Finalizado · Computación Científica",
+    "technologies": [
+      "Python",
+      "Jupyter Notebook",
+      "Álgebra Lineal Numérica",
+      "Interpolación Multivariable"
+    ],
+    "repository": "https://github.com/Jdparra2004/RBF",
+    "license": "MIT",
+    "downloads": []
+  },
+  {
+    "id": "simuladores-dinamica-academicos",
+    "title": "Simuladores Físicos: Balística y Sistema Riel-Esfera",
+    "shortDescription": "Suite de simuladores académicos en Python para el estudio interactivo de cinemática y dinámica de partículas.",
+    "description": "Conjunto de aplicaciones educativas desarrolladas en Python para modelar y visualizar fenómenos clásicos de la física mecánica: el movimiento parabólico de proyectiles bajo distintas condiciones iniciales y la dinámica de una esfera sobre un riel. Diseñados como material de apoyo para cursos universitarios de física y programación aplicada.",
+    "gallery": [],
+    "status": "Activo · Docencia Universitaria",
+    "technologies": [
+      "Python",
+      "Física Computacional",
+      "Interfaz Gráfica (GUI)",
+      "Modelado Cinemático"
+    ],
+    "repository": "https://github.com/Jdparra2004/Simulador-Movimiento-de-un-Proyectil",
+    "license": "MIT",
+    "downloads": []
+  }
+  ]
+}

@@ -1,25 +1,21 @@
 /* 
-    CONTACT.JS — Lógica del formulario de contacto
+    CONTACT.JS — Lógica del formulario de contacto con Netlify Forms
     Autor: Juan David Parra Cantor
     Descripción:
-        Maneja la interacción del formulario de contacto,
-        valida los campos y envía el mensaje usando EmailJS.
-        Incluye autorespuesta automática al usuario.
- */
+        Valida el consentimiento expreso de Habeas Data (Ley 1581 de 2012)
+        y procesa el envío nativo mediante Netlify Forms (URL-encoded POST).
+*/
 
 document.addEventListener("DOMContentLoaded", function () {
-
-    /* Referencias al formulario y elementos */
     const form = document.getElementById("contactForm");
+    if (!form) return;
+
     const subjectSelect = document.getElementById("subject");
     const customSubjectContainer = document.getElementById("customSubjectContainer");
     const customSubjectInput = document.getElementById("customSubject");
     const statusText = document.getElementById("formStatus");
     const submitBtn = document.getElementById("submitBtn");
 
-    /* 
-        Control del campo "Otro" en Asunto
-    */
     subjectSelect.addEventListener("change", function () {
         if (subjectSelect.value === "Otro") {
             customSubjectContainer.style.display = "block";
@@ -31,70 +27,42 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    /* 
-        Envío del formulario
-    */
     form.addEventListener("submit", function (e) {
         e.preventDefault();
 
-        /* Validación de consentimiento de Habeas Data */
         const legalConsent = document.getElementById("legalConsent");
-        if (legalConsent && !legalConsent.checked) {
-            statusText.textContent = "Debes autorizar el tratamiento de datos para continuar.";
-            statusText.style.color = "red";
+        if (!legalConsent || !legalConsent.checked) {
+            statusText.textContent = "Debes autorizar el tratamiento de datos personales (Habeas Data) para continuar.";
+            statusText.style.color = "var(--color-status-error, #C55A57)";
             return;
         }
 
-        /* Estado visual inicial */
         submitBtn.disabled = true;
         submitBtn.textContent = "Enviando...";
         statusText.textContent = "";
 
-        /* Resolver asunto final */
-        const subjectFinal =
-            subjectSelect.value === "Otro"
-                ? customSubjectInput.value
-                : subjectSelect.value;
+        const formData = new FormData(form);
+        if (subjectSelect.value === "Otro" && customSubjectInput.value.trim() !== "") {
+            formData.set("subject", customSubjectInput.value.trim());
+        }
 
-        /* Parámetros enviados a los templates de EmailJS */
-        const templateParams = {
-            name: document.getElementById("name").value,
-            email: document.getElementById("email").value,
-            subject: subjectFinal,
-            message: document.getElementById("message").value,
-            time: new Date().toLocaleString()
-        };
-
-        /* 
-            Envío principal (correo que te llega a ti)
-        */
-        emailjs
-            .send(
-                "service_1i5dw85",      // Service ID
-                "template_754zb2j",     // Template principal (admin)
-                templateParams
-            )
-            .then(function () {
-
-                /* 
-                    Autorespuesta al usuario
-                    Se utiliza un segundo template en EmailJS
-                */
-                emailjs.send(
-                    "service_1i5dw85",      // Mismo servicio
-                    "template_rcpxxey", //ID template respuesta
-                    templateParams
-                );
-
-                statusText.textContent = "Mensaje enviado correctamente.";
-                statusText.style.color = "green";
+        fetch("/", {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: new URLSearchParams(formData).toString()
+        })
+            .then(function (response) {
+                if (!response.ok) {
+                    throw new Error("Respuesta no satisfactoria del servidor");
+                }
+                statusText.textContent = "Mensaje registrado correctamente. Te responderé a la brevedad.";
+                statusText.style.color = "var(--color-status-success, #2E7D5B)";
                 form.reset();
                 customSubjectContainer.style.display = "none";
             })
             .catch(function () {
-                statusText.textContent =
-                    "Ocurrió un error al enviar el mensaje. Intenta nuevamente.";
-                statusText.style.color = "red";
+                statusText.textContent = "No fue posible procesar el envío en este momento. También puedes escribir directamente a juan.parrac@outlook.es.";
+                statusText.style.color = "var(--color-status-error, #C55A57)";
             })
             .finally(function () {
                 submitBtn.disabled = false;

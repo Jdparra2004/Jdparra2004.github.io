@@ -1,0 +1,60 @@
+backend:
+  name: git-gateway
+  branch: main
+
+locale: "es"
+site_url: "https://juan-david-parra.netlify.app"
+display_url: "https://juan-david-parra.netlify.app"
+
+media_folder: "assets/img/proyectos"
+public_folder: "/assets/img/proyectos"
+
+collections:
+  - name: "catalogo_blog"
+    label: "Publicaciones del Blog"
+    files:
+      - name: "posts_json"
+        label: "Catálogo de Artículos (data/posts.json)"
+        file: "data/posts.json"
+        fields:
+          - label: "Artículos Publicados"
+            name: "posts"
+            widget: "list"
+            fields:
+              - { label: "ID (slug sin espacios)", name: "id", widget: "string" }
+              - { label: "Título", name: "title", widget: "string" }
+              - { label: "Fecha (YYYY-MM-DD)", name: "date", widget: "string" }
+              - { label: "Autor", name: "author", widget: "string", default: "Juan David Parra Cantor (jaidi20)" }
+              - { label: "Categoría", name: "category", widget: "string", default: "Investigación y Optimización" }
+              - { label: "Tiempo de lectura", name: "readTime", widget: "string", default: "6 min de lectura" }
+              - { label: "Enlace DOI (opcional)", name: "doi", widget: "string", required: false }
+              - { label: "Repositorio GitHub (opcional)", name: "repository", widget: "string", required: false }
+              - { label: "Resumen ejecutivo", name: "summary", widget: "text" }
+              - label: "Etiquetas"
+                name: "tags"
+                widget: "list"
+                field: { label: "Etiqueta", name: "tag", widget: "string" }
+              - { label: "Cuerpo en texto/párrafos (alternativo a bloques)", name: "body", widget: "markdown", required: false }
+
+  - name: "catalogo_proyectos"
+    label: "Catálogo de Proyectos"
+    files:
+      - name: "projects_json"
+        label: "Listado de Proyectos (data/projects.json)"
+        file: "data/projects.json"
+        fields:
+          - label: "Proyectos"
+            name: "projects"
+            widget: "list"
+            fields:
+              - { label: "ID", name: "id", widget: "string" }
+              - { label: "Título", name: "title", widget: "string" }
+              - { label: "Descripción corta", name: "shortDescription", widget: "string" }
+              - { label: "Descripción completa", name: "description", widget: "text" }
+              - { label: "Estado", name: "status", widget: "string", default: "Activo" }
+              - { label: "Repositorio GitHub", name: "repository", widget: "string" }
+              - { label: "Licencia", name: "license", widget: "string", default: "MIT" }
+              - label: "Tecnologías"
+                name: "technologies"
+                widget: "list"
+                field: { label: "Tecnología", name: "tech", widget: "string" }

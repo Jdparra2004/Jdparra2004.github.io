@@ -5,6 +5,7 @@
 
 [build]
   publish = "."
+  functions = "netlify/functions"
 
 # ------------------------------------------------------------------------------
 # 1. Redirecciones y Rutas Limpias (Clean URLs)
@@ -43,6 +44,11 @@
 [[redirects]]
   from = "/terminos-condiciones"
   to = "/terminos-condiciones.html"
+  status = 200
+
+[[redirects]]
+  from = "/admin"
+  to = "/admin/index.html"
   status = 200
 
 # Redirección personalizada de error 404

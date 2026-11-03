@@ -3,29 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog — Juan David Parra Cantor</title>
+    <title>Blog Técnico — Juan David Parra Cantor</title>
 
-    <!-- CSS global -->
     <link rel="stylesheet" href="assets/css/theme.css">
     <link rel="stylesheet" href="assets/css/styles.css">
 
-    <!-- Fuentes locales -->
-    <style>
-        @font-face {
-            font-family: 'Bricolage Grotesque';
-            src: url('assets/fonts/BricolageGrotesque/BricolageGrotesque-Regular.ttf');
-        }
-        @font-face {
-            font-family: 'Dancing Script';
-            src: url('assets/fonts/DancingScript/DancingScript-Regular.ttf');
-        }
-        @font-face {
-            font-family: 'Myriad Bengali';
-            src: url('assets/fonts/MyriadBengali/MyriadBengali-Regular.ttf');
-        }
-    </style>
-
-    <!-- Favicon -->
     <link rel="icon" href="assets/img/favicon/favicon.ico" type="image/x-icon">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon/favicon-16x16.png">
@@ -33,67 +15,47 @@
 
 <body>
     <div class="page-wrapper">
-        <!-- HEADER -->
         <header class="header">
             <div class="header-container">
                 <a href="/">
-                <img src="assets/img/perfil/logo.png" alt="Logo" class="logo">
+                    <img src="assets/img/perfil/logo.png" alt="Logo Juan David Parra" class="logo">
                 </a>
                 <nav class="nav">
                     <a href="index.html">Inicio</a>
                     <a href="about.html">Sobre mí</a>
-                    <a href="projects.html" class="active">Proyectos</a>
-                    <a href="blog.html">Blog</a>
+                    <a href="projects.html">Proyectos</a>
+                    <a href="blog.html" class="active">Blog</a>
                     <a href="contacto.html">Contacto</a>
                 </nav>
             </div>
         </header>
 
         <main>
-            <!-- HERO / TÍTULO PRINCIPAL -->
             <section class="hero" style="padding: 60px 40px;">
                 <div class="hero-text">
-                    <h1>Mi Blog</h1>
-                    <p>Un poco de mis interéses, recursos gratuitos y más. Todo en formato de nota, con 
-                        información clara y concisa.</p>
+                    <h1>Blog & Notas de Investigación</h1>
+                    <p>
+                        Artículos técnicos sobre ingeniería química computacional, optimización multiobjetivo,
+                        transición energética, bioingeniería y métodos numéricos en Python.
+                    </p>
                 </div>
             </section>
 
-            <!-- GRID DE Blog -->
-            <section class="highlight" style="margin-top: 40px;">
-                <h2>Listado completo</h2>
-
-                <div class="cards">
-
-                    <!-- Proyecto 1 -->
-                    <div class="card">
-                        <h3>Interpreter Notepad</h3>
-                        <p>Editor clínico con backend embebido en Electron, historial, generación automática y más.</p>
-                        <a href="blog/blog_template.html" class="card-btn">Explorar Nota</a>
+            <section class="projects-section">
+                <div class="projects-container">
+                    <div class="blog-section-header">
+                        <h2>Publicaciones y Artículos Técnicos</h2>
+                        <a href="admin/index.html" class="admin-access-link">Acceso editorial (jaidi20)</a>
                     </div>
-
-                    <!-- Proyecto 2 -->
-                    <div class="card">
-                        <h3>ThermoSolver</h3>
-                        <p>Calculadora termodinámica avanzada con módulos independientes y estructura modular.</p>
-                        <a href="/blog/Nota1.html" class="card-btn">Explorar Nota</a>
-                    </div>
-
-                    <!-- Proyecto 3 -->
-                    <div class="card">
-                        <h3>Blog / Documentación</h3>
-                        <p>Mi espacio técnico, análisis, guías, investigación y documentación extendida.</p>
-                        <a href="blog.html" class="card-btn">Ver artículos</a>
-                    </div>
+                    <div id="blogGrid" class="projects-grid"></div>
                 </div>
             </section>
         </main>
 
-        <!-- FOOTER INSTITUCIONAL -->
         <footer class="footer">
             <div class="footer-container">
                 <div class="footer-top">
-                    <p class="footer-copy">© 2026 Juan David Parra Cantor · Ingeniería de Software & Cómputo Científico</p>
+                    <p class="footer-copy">© 2026 Juan David Parra Cantor · Ingeniería Química, Optimización & Computación Científica</p>
                     <nav class="footer-legal-links" aria-label="Enlaces legales">
                         <a href="terminos-condiciones.html">Términos y Condiciones</a>
                         <span class="divider">·</span>
@@ -111,7 +73,7 @@
         </footer>
     </div>
 
-    <!-- Script de Gestión de Cookies -->
+    <script src="assets/js/blog.js"></script>
     <script src="assets/js/cookies.js" defer></script>
 </body>
 </html>

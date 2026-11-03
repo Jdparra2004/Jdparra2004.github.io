@@ -20,8 +20,8 @@ document.addEventListener("DOMContentLoaded", function () {
     /* Cargar el JSON de proyectos */
     fetch("../data/projects.json")
         .then(response => response.json())
-        .then(projects => {
-
+        .then(data => {
+            const projects = Array.isArray(data) ? data : (data.projects || []);
             const project = projects.find(p => p.id === projectId);
 
             if (!project) {

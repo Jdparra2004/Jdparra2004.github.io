@@ -1,0 +1,233 @@
+{
+  "posts": [
+  {
+    "id": "optimizacion-multiobjetivo-biocombustibles-colombia",
+    "title": "Impacto social en la optimización de cadenas logísticas de biocombustibles en Colombia: Enfoque Mono vs. Multiobjetivo",
+    "date": "2026-06-27",
+    "author": "Juan David Parra Cantor (jaidi20)",
+    "category": "Investigación y Optimización",
+    "readTime": "7 min de lectura",
+    "doi": "https://doi.org/10.24084/reepqj26-370",
+    "repository": "https://github.com/Jdparra2004/Multiobjetivo",
+    "summary": "Análisis comparativo entre formulaciones monoobjetivo y multiobjetivo para el diseño de cadenas de suministro de biocombustibles derivados de residuos en Colombia, integrando métricas de impacto social y rentabilidad económica.",
+    "tags": [
+      "Optimización Multiobjetivo",
+      "Biocombustibles",
+      "Transición Energética",
+      "Python",
+      "DOI 10.24084/reepqj26-370"
+    ],
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "La planificación de cadenas de suministro para biocombustibles de segunda generación en economías emergentes suele abordarse desde una perspectiva estrictamente financiera: minimizar los costos logísticos o maximizar el valor presente neto. Sin embargo, cuando se trabaja con biomasa residual en el contexto colombiano, omitir la dimensión social produce configuraciones de red que concentran la infraestructura en corredores industriales ya consolidados y desaprovechan el potencial de desarrollo en regiones rurales vulnerables."
+      },
+      {
+        "type": "heading",
+        "text": "1. El dilema entre eficiencia económica e impacto territorial"
+      },
+      {
+        "type": "paragraph",
+        "text": "En el marco del trabajo desarrollado dentro del Semillero de Automática y Diseño (A+D) y el Semillero de Termofluidos y Conversión de Energía de la Universidad Pontificia Bolivariana, formulamos un modelo matemático para evaluar el diseño de la red logística de biocombustibles derivados de residuos en Colombia. El estudio fue publicado en Renewable Energies, Environment and Power Quality Journal (ISSN 3020-531X, DOI: 10.24084/reepqj26-370) y distinguido con el Primer Puesto en la categoría Investigación Terminada en el Encuentro de Semilleros Multicampus UPB."
+      },
+      {
+        "type": "paragraph",
+        "text": "El problema central consiste en decidir la ubicación de plantas de procesamiento, rutas de transporte y flujos de materia prima y producto terminado entre nodos de oferta de biomasa residual y centros de consumo energético."
+      },
+      {
+        "type": "heading",
+        "text": "2. Formulación Monoobjetivo frente a Multiobjetivo"
+      },
+      {
+        "type": "paragraph",
+        "text": "Para contrastar el comportamiento del sistema, implementamos dos esquemas de resolución en Python:"
+      },
+      {
+        "type": "list",
+        "items": [
+          "Enfoque Monoobjetivo: Minimización exclusiva del costo total anualizado de la cadena (inversión de capital CAPEX, costos operativos OPEX y costos de transporte terrestre entre municipios).",
+          "Enfoque Multiobjetivo: Optimización simultánea del costo económico y de un indicador compuesto de impacto social, que pondera la generación de empleo directo e indirecto ajustada por índices de necesidades básicas insatisfechas y desempleo regional."
+        ]
+      },
+      {
+        "type": "code",
+        "text": "# Esquema conceptual de evaluación en el frente de Pareto\n# Minimizar f1(x): Costo logístico y operativo total\n# Maximizar f2(x): Índice de impacto social territorial\n\ndef evaluar_solucion(flujos, plantas_activas, parametros):\n    costo_transporte = sum(\n        flujos[i, j] * parametros.costo_km[i, j]\n        for (i, j) in parametros.rutas\n    )\n    costo_fijo = sum(\n        plantas_activas[p] * parametros.capex_anual[p]\n        for p in parametros.plantas\n    )\n    impacto_social = sum(\n        plantas_activas[p] * parametros.empleos[p] * parametros.factor_vulnerabilidad[p]\n        for p in parametros.plantas\n    )\n    return (costo_transporte + costo_fijo), impacto_social"
+      },
+      {
+        "type": "heading",
+        "text": "3. Hallazgos clave en el Frente de Pareto"
+      },
+      {
+        "type": "paragraph",
+        "text": "Al construir el frente de Pareto observamos que un incremento marginal en el costo logístico total (entre el 4 % y el 9 % respecto al óptimo económico puro) permite incrementar de manera sustancial el indicador de impacto social regional, descentralizando la ubicación de nodos de pretratamiento hacia municipios con alta disponibilidad de residuos agroindustriales."
+      },
+      {
+        "type": "paragraph",
+        "text": "Esta evidencia demuestra que las herramientas de optimización multiobjetivo no solo sirven para calcular rutas más económicas, sino para ofrecer a los tomadores de decisiones un abanico cuantitativo de compromisos entre competitividad industrial y equidad territorial en la transición energética."
+      }
+    ]
+  },
+  {
+    "id": "simulador-optico-nir-glucosa-bioingenieria",
+    "title": "Modelado computacional de un sensor óptico NIR no invasivo para monitoreo de glucosa en sudor",
+    "date": "2026-10-04",
+    "author": "Juan David Parra Cantor (jaidi20)",
+    "category": "Bioingeniería y Simulación",
+    "readTime": "8 min de lectura",
+    "doi": "",
+    "repository": "https://github.com/Jdparra2004/Sensor-NIR-De-Glucosa",
+    "summary": "Diseño in silico de un sensor óptico en el infrarrojo cercano (NIR) acoplado a una cámara microfluídica laminar, incorporando el efecto de desplazamiento volumétrico de agua en la Ley de Beer-Lambert.",
+    "tags": [
+      "Bioingeniería",
+      "Espectroscopia NIR",
+      "Microfluídica",
+      "Python",
+      "Streamlit"
+    ],
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "Antes de fabricar un prototipo físico de biosensado óptico, la simulación numérica paramétrica permite acotar las dimensiones geométricas del canal, elegir las longitudes de onda óptimas y cuantificar la relación señal-ruido esperada. En este artículo describo la arquitectura matemática y computacional detrás del simulador de detección de glucosa en sudor mediante espectroscopia de infrarrojo cercano (NIR)."
+      },
+      {
+        "type": "heading",
+        "text": "1. Ley de Beer-Lambert con desplazamiento volumétrico de agua"
+      },
+      {
+        "type": "paragraph",
+        "text": "En soluciones acuosas diluidas como el sudor humano, donde las concentraciones fisiológicas de glucosa son significativamente menores que en sangre, aplicar la Ley de Beer-Lambert clásica conduce a errores sistemáticos. Cada molécula de glucosa disuelta desplaza un volumen equivalente de moléculas de agua. Dado que el agua posee bandas de absorción intensas en el espectro NIR, la absorbancia neta detectada resulta del balance entre la absorción intrínseca de la glucosa y la disminución de la absorción del agua desplazada:"
+      },
+      {
+        "type": "code",
+        "text": "# Absorbancia diferencial neta con desplazamiento de agua\n# A(lambda, C) = [epsilon_g(lambda) - epsilon_w(lambda) * delta_w] * C * L\n\nDELTA_W_GLUCOSA = 6.15  # Coeficiente de desplazamiento volumétrico\n\ndef calcular_absorbancia_neta(conc_mM, camino_optico_mm, eps_glucosa, eps_agua):\n    coef_efectivo = eps_glucosa - (eps_agua * DELTA_W_GLUCOSA)\n    return coef_efectivo * conc_mM * camino_optico_mm"
+      },
+      {
+        "type": "heading",
+        "text": "2. Validación del régimen microfluídico"
+      },
+      {
+        "type": "paragraph",
+        "text": "Para que la lectura óptica sea estable y representativa del estado metabólico en tiempo real, el flujo de sudor a través de la microcámara debe mantenerse en régimen estrictamente laminar y con baja dispersión axial. El motor del simulador evalúa de forma automática tres criterios físicos:"
+      },
+      {
+        "type": "list",
+        "items": [
+          "Número de Reynolds (Re): Verificación de flujo laminar (Re << 1 en microcanales epidérmicos) a partir del diámetro hidráulico y la velocidad superficial.",
+          "Número de Péclet (Pe): Relación entre el transporte advectivo y el transporte difusivo molecular de la glucosa.",
+          "Tiempo de residencia hidráulico: Tiempo necesario para renovar el volumen de la celda óptica ante cambios en la tasa de sudoración."
+        ]
+      },
+      {
+        "type": "heading",
+        "text": "3. Inferencia inversa y análisis de incertidumbre"
+      },
+      {
+        "type": "paragraph",
+        "text": "En un escenario real, el fotodetector entrega una señal de tensión contaminada por ruido electrónico y fluctuaciones térmicas. El simulador incorpora un generador de ruido gaussiano parametrizable e invierte el modelo óptico para estimar la concentración de glucosa con intervalos de confianza estadísticos, presentando los resultados en un panel interactivo construido con Streamlit y respaldado por una suite de pruebas unitarias reproducibles."
+      }
+    ]
+  },
+  {
+    "id": "difusion-hidrogeno-diferencias-finitas-python",
+    "title": "Simulación numérica de la difusión de hidrógeno y esfuerzos mecánicos mediante diferencias finitas",
+    "date": "2026-04-15",
+    "author": "Juan David Parra Cantor (jaidi20)",
+    "category": "Métodos Numéricos y Transporte",
+    "readTime": "6 min de lectura",
+    "doi": "",
+    "repository": "https://github.com/Jdparra2004/Simulacion_Hidrogeno",
+    "summary": "Resolución numérica en Python del transporte transitorio de hidrógeno en geometrías cilíndricas y su acoplamiento con los perfiles de esfuerzo radial y tangencial.",
+    "tags": [
+      "Métodos Numéricos",
+      "Diferencias Finitas",
+      "Hidrógeno",
+      "Fenómenos de Transporte",
+      "Python"
+    ],
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "El almacenamiento y transporte de hidrógeno como vector energético plantea un desafío clásico en ingeniería de materiales y procesos: la difusión atómica del hidrógeno hacia el interior de la red cristalina del metal, fenómeno que induce deformaciones locales y fragilización estructural."
+      },
+      {
+        "type": "heading",
+        "text": "1. Discretización por diferencias finitas en coordenadas cilíndricas"
+      },
+      {
+        "type": "paragraph",
+        "text": "Para modelar la evolución del perfil de concentración a través del espesor de una pared cilíndrica, discretizamos la segunda ley de Fick en coordenadas radiales. El dominio espacial se divide en nodos equidistantes desde el radio interno hasta el radio externo, aproximando las derivadas espaciales mediante diferencias centradas de segundo orden."
+      },
+      {
+        "type": "code",
+        "text": "# Esquema de discretización radial para difusión en pared cilíndrica\n# dC/dt = D * (d2C/dr2 + (1/r) * dC/dr)\n\nfor i in range(1, n_nodos - 1):\n    r_i = radios[i]\n    d2c_dr2 = (C[i + 1] - 2.0 * C[i] + C[i - 1]) / (dr ** 2)\n    dc_dr = (C[i + 1] - C[i - 1]) / (2.0 * dr)\n    C_nuevo[i] = C[i] + dt * D_ef * (d2c_dr2 + (1.0 / r_i) * dc_dr)"
+      },
+      {
+        "type": "heading",
+        "text": "2. Acoplamiento con esfuerzos radiales y tangenciales"
+      },
+      {
+        "type": "paragraph",
+        "text": "A medida que el hidrógeno penetra en la matriz sólida, provoca una dilatación volumétrica proporcional a la concentración local, análoga a los esfuerzos térmicos en un cilindro de pared gruesa. El módulo de cálculo integra numéricamente el perfil de concentración en cada paso de tiempo para evaluar:"
+      },
+      {
+        "type": "list",
+        "items": [
+          "Esfuerzo radial (sigma_r): Nulo en las superficies libres interna y externa, con valores compresivos o tractivos en el interior del espesor según el gradiente de concentración.",
+          "Esfuerzo circunferencial o tangencial (sigma_theta): Responsable principal de la nucleación y propagación de microfisuras radiales en la pared del conducto."
+        ]
+      },
+      {
+        "type": "heading",
+        "text": "3. Modularización y visualización tridimensional"
+      },
+      {
+        "type": "paragraph",
+        "text": "El proyecto se estructuró en paquetes modulares independientes en Python: un núcleo numérico para las matrices de diferencias finitas (`utils/H2_stress_DF.py` y `difussionH2_stress_DF.py`), un módulo de reconstrucción volumétrica 3D y una interfaz gráfica para la inspección de perfiles tensionales."
+      }
+    ]
+  },
+  {
+    "id": "funciones-base-radial-metodos-numericos-ingenieria",
+    "title": "Interpolación multivariable con Funciones de Base Radial (RBF) en Ingeniería Química",
+    "date": "2026-02-10",
+    "author": "Juan David Parra Cantor (jaidi20)",
+    "category": "Computación Científica",
+    "readTime": "5 min de lectura",
+    "doi": "",
+    "repository": "https://github.com/Jdparra2004/RBF",
+    "summary": "Fundamentos matemáticos e implementación en Python de redes de Funciones de Base Radial para reconstruir superficies termodinámicas y datos experimentales dispersos sin malla estructurada.",
+    "tags": [
+      "Funciones de Base Radial",
+      "Álgebra Lineal Numérica",
+      "Python",
+      "Ingeniería Química"
+    ],
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "En la práctica experimental de la ingeniería química —como la medición de equilibrios de fases, cinéticas de reacción o mapas de eficiencia en equipos de transferencia de calor— los datos rara vez se distribuyen sobre una cuadrícula cartesiana perfecta. Los métodos de interpolación polinómica tradicionales presentan oscilaciones espurias (fenómeno de Runge) o exigen mallas estructuradas. Las Funciones de Base Radial (RBF) ofrecen una alternativa libre de malla sumamente versátil."
+      },
+      {
+        "type": "heading",
+        "text": "1. Formulación matemática del interpolador RBF"
+      },
+      {
+        "type": "paragraph",
+        "text": "Dado un conjunto de N puntos dispersos en un espacio multidimensional, una aproximación por RBF expresa la función desconocida como una combinación lineal de funciones cuya magnitud depende únicamente de la distancia euclidiana respecto a cada centro o nodo de colocación:"
+      },
+      {
+        "type": "code",
+        "text": "import numpy as np\n\ndef kernel_multicuadrico(r, epsilon=1.0):\n    return np.sqrt(1.0 + (epsilon * r) ** 2)\n\ndef ajustar_rbf(nodos, valores, epsilon=1.0):\n    # Matriz de distancias euclidianas entre todos los pares de nodos\n    diff = nodos[:, np.newaxis, :] - nodos[np.newaxis, :, :]\n    distancias = np.linalg.norm(diff, axis=-1)\n    Phi = kernel_multicuadrico(distancias, epsilon)\n    pesos = np.linalg.solve(Phi, valores)\n    return pesos"
+      },
+      {
+        "type": "heading",
+        "text": "2. El compromiso entre precisión y condicionamiento matricial"
+      },
+      {
+        "type": "paragraph",
+        "text": "En los cuadernos computacionales desarrollados en el repositorio analizamos el papel crítico del parámetro de forma (epsilon) en kernels gaussianos, multicuádricos e inversos multicuádricos. Valores pequeños del parámetro producen funciones base más planas y una mayor exactitud de interpolación, pero incrementan drásticamente el número de condición de la matriz de interpolación, requiriendo técnicas de regularización de Tikhonov o descomposición en valores singulares (SVD)."
+      }
+    ]
+  }
+  ]
+}
