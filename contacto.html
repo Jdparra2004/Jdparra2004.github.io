@@ -73,7 +73,7 @@
 
                     <h2 class="contact-title">Envíame un mensaje</h2>
 
-                    <form id="contactForm" class="contact-form">
+                    <form id="contactForm" class="contact-form" name="contacto" method="POST" data-netlify="true">
 
                         <!-- Nombre -->
                         <div class="form-group">
@@ -113,6 +113,14 @@
                             <textarea id="message" name="message" rows="6" placeholder="Escribe tu mensaje..." required></textarea>
                         </div>
 
+                        <!-- Consentimiento Legal Habeas Data (Ley 1581 de 2012 / SIC) -->
+                        <div class="form-group form-consent">
+                            <label class="checkbox-label" for="legalConsent">
+                                <input type="checkbox" id="legalConsent" name="legalConsent" required>
+                                <span>He leído y autorizo el tratamiento de mis datos personales según la <a href="politica-privacidad.html" target="_blank">Política de Tratamiento de Datos (Habeas Data)</a> y los <a href="terminos-condiciones.html" target="_blank">Términos y Condiciones</a>.</span>
+                            </label>
+                        </div>
+
                         <!-- Estado -->
                         <p id="formStatus" class="form-status"></p>
 
@@ -127,11 +135,30 @@
 
         </main>
 
-        <!-- Footer simple  -->
+        <!-- FOOTER INSTITUCIONAL -->
         <footer class="footer">
-            <p class="footer-texto">© 2026 Juan David Parra Cantor</p>
+            <div class="footer-container">
+                <div class="footer-top">
+                    <p class="footer-copy">© 2026 Juan David Parra Cantor · Ingeniería de Software & Cómputo Científico</p>
+                    <nav class="footer-legal-links" aria-label="Enlaces legales">
+                        <a href="terminos-condiciones.html">Términos y Condiciones</a>
+                        <span class="divider">·</span>
+                        <a href="politica-privacidad.html">Tratamiento de Datos (Habeas Data)</a>
+                        <span class="divider">·</span>
+                        <a href="javascript:void(0)" onclick="window.abrirConfiguracionCookies && window.abrirConfiguracionCookies()">Configuración de Cookies</a>
+                    </nav>
+                </div>
+                <div class="footer-bottom">
+                    <p class="footer-sic">
+                        Vigilado por la Superintendencia de Industria y Comercio — SIC · <a href="https://www.sic.gov.co" target="_blank" rel="noopener noreferrer">www.sic.gov.co</a>
+                    </p>
+                </div>
+            </div>
         </footer>
     </div>
+
+    <!-- Script de Gestión de Cookies -->
+    <script src="assets/js/cookies.js" defer></script>
 
     <!-- EmailJS SDK -->
     <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>

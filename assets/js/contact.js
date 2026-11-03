@@ -37,6 +37,14 @@ document.addEventListener("DOMContentLoaded", function () {
     form.addEventListener("submit", function (e) {
         e.preventDefault();
 
+        /* Validación de consentimiento de Habeas Data */
+        const legalConsent = document.getElementById("legalConsent");
+        if (legalConsent && !legalConsent.checked) {
+            statusText.textContent = "Debes autorizar el tratamiento de datos para continuar.";
+            statusText.style.color = "red";
+            return;
+        }
+
         /* Estado visual inicial */
         submitBtn.disabled = true;
         submitBtn.textContent = "Enviando...";

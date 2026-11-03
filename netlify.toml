@@ -35,6 +35,16 @@
   to = "/contacto.html"
   status = 200
 
+[[redirects]]
+  from = "/politica-privacidad"
+  to = "/politica-privacidad.html"
+  status = 200
+
+[[redirects]]
+  from = "/terminos-condiciones"
+  to = "/terminos-condiciones.html"
+  status = 200
+
 # Redirección personalizada de error 404
 [[redirects]]
   from = "/*"
