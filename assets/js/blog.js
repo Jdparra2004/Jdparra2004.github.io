@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function cargarListadoArticulos(contenedor) {
-        fetch("data/posts.json")
+        fetch("data/posts.json?v=2")
             .then(res => res.json())
             .then(data => {
                 const posts = Array.isArray(data) ? data : (data.posts || []);
@@ -68,7 +68,7 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-        fetch("../data/posts.json")
+        fetch("../data/posts.json?v=2")
             .then(res => res.json())
             .then(data => {
                 const posts = Array.isArray(data) ? data : (data.posts || []);
@@ -88,7 +88,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             return `<h2>${bloque.text}</h2>`;
                         }
                         if (bloque.type === "equation") {
-                            return `<div class="math-block">$$${bloque.text}$$</div>`;
+                            return `<div class="math-block" data-latex="${escaparAtributo(bloque.text)}">$$${bloque.text}$$</div>`;
                         }
                         if (bloque.type === "code") {
                             return `<pre class="code-block"><code>${escaparHtml(bloque.text)}</code></pre>`;
@@ -141,12 +141,33 @@ document.addEventListener("DOMContentLoaded", function () {
             });
     }
 
-    // Renderiza LaTeX con MathJax una vez que el contenido dinámico está en el DOM
+    // Renderiza LaTeX con KaTeX una vez que el contenido dinámico está en el DOM
     function renderizarEcuaciones(contenedor, intentos = 0) {
-        if (window.MathJax && typeof window.MathJax.typesetPromise === "function") {
-            window.MathJax.typesetPromise([contenedor]).catch(err => console.error(err));
-        } else if (intentos < 50) {
-            setTimeout(() => renderizarEcuaciones(contenedor, intentos + 1), 100);
+        if (typeof window.renderMathInElement === "function" && window.katex) {
+            try {
+                // Primero renderiza todos los bloques de ecuaciones dedicados (.math-block)
+                contenedor.querySelectorAll(".math-block").forEach(bloque => {
+                    const raw = bloque.getAttribute("data-latex") || bloque.textContent.replace(/^\$\$|\$\$$/g, "");
+                    window.katex.render(raw, bloque, {
+                        displayMode: true,
+                        throwOnError: false
+                    });
+                });
+                // Luego renderiza las expresiones en línea \( ... \) y $$ ... $$ en párrafos y listas
+                window.renderMathInElement(contenedor, {
+                    delimiters: [
+                        { left: "$$", right: "$$", display: true },
+                        { left: "\\[", right: "\\]", display: true },
+                        { left: "\\(", right: "\\)", display: false }
+                    ],
+                    ignoredTags: ["script", "noscript", "style", "textarea", "pre", "code"],
+                    throwOnError: false
+                });
+            } catch (err) {
+                console.error("Error renderizando LaTeX:", err);
+            }
+        } else if (intentos < 60) {
+            setTimeout(() => renderizarEcuaciones(contenedor, intentos + 1), 80);
         }
     }
 
@@ -167,6 +188,14 @@ document.addEventListener("DOMContentLoaded", function () {
     function escaparHtml(str) {
         return String(str)
             .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;");
+    }
+
+    function escaparAtributo(str) {
+        return String(str)
+            .replace(/&/g, "&amp;")
+            .replace(/"/g, "&quot;")
             .replace(/</g, "&lt;")
             .replace(/>/g, "&gt;");
     }

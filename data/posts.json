@@ -71,7 +71,7 @@
       },
       {
         "type": "code",
-        "text": "# Esquema conceptual de evaluación en el frente de Pareto\n# Minimizar f1(x): Costo logístico y operativo total\n# Maximizar f2(x): Índice de impacto social territorial\n\ndef evaluar_solucion(flujos, plantas_activas, parametros):\n    costo_transporte = sum(\n        flujos[i, j] * parametros.costo_km[i, j]\n        for (i, j) in parametros.rutas\n    )\n    costo_fijo = sum(\n        plantas_activas[p] * parametros.capex_anual[p]\n        for p in parametros.plantas\n    )\n    impacto_social = sum(\n        plantas_activas[p] * parametros.empleos[p] * parametros.factor_vulnerabilidad[p]\n        for p in parametros.plantas\n    )\n    return (costo_transporte + costo_fijo), impacto_social"
+        "text": "def evaluar_solucion(flujos, plantas_activas, parametros):\n    costo_transporte = sum(\n        flujos[i, j] * parametros.costo_km[i, j]\n        for (i, j) in parametros.rutas\n    )\n    costo_fijo = sum(\n        plantas_activas[p] * parametros.capex_anual[p]\n        for p in parametros.plantas\n    )\n    impacto_social = sum(\n        plantas_activas[p] * parametros.empleos[p] * parametros.factor_vulnerabilidad[p]\n        for p in parametros.plantas\n    )\n    return (costo_transporte + costo_fijo), impacto_social"
       },
       {
         "type": "heading",
@@ -127,7 +127,7 @@
       },
       {
         "type": "code",
-        "text": "# Absorbancia diferencial neta con desplazamiento de agua\n# A(lambda, C) = [epsilon_g(lambda) - epsilon_w(lambda) * delta_w] * C * L\n\nDELTA_W_GLUCOSA = 6.15  # Coeficiente de desplazamiento volumétrico\n\ndef calcular_absorbancia_neta(conc_mM, camino_optico_mm, eps_glucosa, eps_agua):\n    coef_efectivo = eps_glucosa - (eps_agua * DELTA_W_GLUCOSA)\n    return coef_efectivo * conc_mM * camino_optico_mm"
+        "text": "DELTA_W_GLUCOSA = 6.15  # Coeficiente de desplazamiento volumétrico\n\ndef calcular_absorbancia_neta(conc_mM, camino_optico_mm, eps_glucosa, eps_agua):\n    coef_efectivo = eps_glucosa - (eps_agua * DELTA_W_GLUCOSA)\n    return coef_efectivo * conc_mM * camino_optico_mm"
       },
       {
         "type": "heading",
@@ -203,7 +203,7 @@
       },
       {
         "type": "code",
-        "text": "# Esquema de discretización radial para difusión en pared cilíndrica\n# dC/dt = D * (d2C/dr2 + (1/r) * dC/dr)\n\nfor i in range(1, n_nodos - 1):\n    r_i = radios[i]\n    d2c_dr2 = (C[i + 1] - 2.0 * C[i] + C[i - 1]) / (dr ** 2)\n    dc_dr = (C[i + 1] - C[i - 1]) / (2.0 * dr)\n    C_nuevo[i] = C[i] + dt * D_ef * (d2c_dr2 + (1.0 / r_i) * dc_dr)"
+        "text": "for i in range(1, n_nodos - 1):\n    r_i = radios[i]\n    d2c_dr2 = (C[i + 1] - 2.0 * C[i] + C[i - 1]) / (dr ** 2)\n    dc_dr = (C[i + 1] - C[i - 1]) / (2.0 * dr)\n    C_nuevo[i] = C[i] + dt * D_ef * (d2c_dr2 + (1.0 / r_i) * dc_dr)"
       },
       {
         "type": "heading",

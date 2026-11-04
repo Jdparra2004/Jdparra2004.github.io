@@ -11,20 +11,11 @@
     <link rel="icon" href="../assets/img/favicon/favicon.ico" type="image/x-icon">
     <link rel="icon" type="image/png" sizes="32x32" href="../assets/img/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/favicon/favicon-16x16.png">
-    <!-- MathJax: renderizado de ecuaciones LaTeX ($$...$$ en bloque, \( ... \) en línea) -->
-    <script>
-        window.MathJax = {
-            tex: {
-                inlineMath: [["\\(", "\\)"]],
-                displayMath: [["$$", "$$"], ["\\[", "\\]"]]
-            },
-            options: { skipHtmlTags: ["script", "noscript", "style", "textarea", "pre", "code"] },
-            startup: { typeset: false }
-        };
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
+    <!-- KaTeX: renderizado instantáneo de ecuaciones LaTeX ($$...$$ en bloque, \( ... \) en línea) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
 </head>
-
 <body>
     <div class="page-wrapper">
         <header class="header">
@@ -69,7 +60,7 @@
         </footer>
     </div>
 
-    <script src="../assets/js/blog.js"></script>
+    <script src="../assets/js/blog.js?v=2"></script>
     <script src="../assets/js/cookies.js" defer></script>
 </body>
 </html>
