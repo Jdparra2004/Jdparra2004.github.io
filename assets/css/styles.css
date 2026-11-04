@@ -1003,6 +1003,15 @@ main {
     margin: 20px 0;
 }
 
+.math-block {
+    margin: 22px 0;
+    padding: 14px 18px;
+    overflow-x: auto;
+    background: rgba(214, 169, 95, 0.06);
+    border-left: 3px solid var(--color-accent, #D6A95F);
+    border-radius: var(--radius-md, 10px);
+}
+
 .blog-article-footer {
     margin-top: 36px;
     padding-top: 24px;

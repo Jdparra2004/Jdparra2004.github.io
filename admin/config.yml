@@ -35,6 +35,22 @@ collections:
                 widget: "list"
                 field: { label: "Etiqueta", name: "tag", widget: "string" }
               - { label: "Cuerpo en texto/párrafos (alternativo a bloques)", name: "body", widget: "markdown", required: false }
+              - label: "Contenido por bloques"
+                name: "content"
+                widget: "list"
+                required: false
+                typeKey: "type"
+                hint: "Ecuaciones: usa un bloque 'Ecuación LaTeX' (sin $$) o \\( ... \\) dentro de párrafos y listas."
+                types:
+                  - { label: "Párrafo", name: "paragraph", widget: "object", fields: [{ label: "Texto", name: "text", widget: "text" }] }
+                  - { label: "Subtítulo", name: "heading", widget: "object", fields: [{ label: "Texto", name: "text", widget: "string" }] }
+                  - { label: "Ecuación LaTeX", name: "equation", widget: "object", fields: [{ label: "LaTeX (sin $$)", name: "text", widget: "text" }] }
+                  - { label: "Bloque de código", name: "code", widget: "object", fields: [{ label: "Código", name: "text", widget: "code", output_code_only: true }] }
+                  - label: "Lista"
+                    name: "list"
+                    widget: "object"
+                    fields:
+                      - { label: "Elementos", name: "items", widget: "list", field: { label: "Elemento", name: "item", widget: "text" } }
 
   - name: "catalogo_proyectos"
     label: "Catálogo de Proyectos"

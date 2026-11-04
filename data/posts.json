@@ -28,7 +28,7 @@
       },
       {
         "type": "paragraph",
-        "text": "En el marco del trabajo desarrollado dentro del Semillero de Automática y Diseño (A+D) y el Semillero de Termofluidos y Conversión de Energía de la Universidad Pontificia Bolivariana, formulamos un modelo matemático para evaluar el diseño de la red logística de biocombustibles derivados de residuos en Colombia. El estudio fue publicado en Renewable Energies, Environment and Power Quality Journal (ISSN 3020-531X, DOI: 10.24084/reepqj26-370) y distinguido con el Primer Puesto en la categoría Investigación Terminada en el Encuentro de Semilleros Multicampus UPB."
+        "text": "En el marco del trabajo desarrollado dentro del Semillero de Automática y Diseño (A+D) de la Universidad Pontificia Bolivariana, formulamos un modelo matemático para evaluar el diseño de la red logística de biocombustibles derivados de residuos en Colombia. El estudio fue publicado en Renewable Energies, Environment and Power Quality Journal (ISSN 3020-531X, DOI: 10.24084/reepqj26-370) y distinguido con el Primer Puesto en la categoría Investigación Terminada en el Encuentro de Semilleros Multicampus UPB."
       },
       {
         "type": "paragraph",
@@ -48,6 +48,26 @@
           "Enfoque Monoobjetivo: Minimización exclusiva del costo total anualizado de la cadena (inversión de capital CAPEX, costos operativos OPEX y costos de transporte terrestre entre municipios).",
           "Enfoque Multiobjetivo: Optimización simultánea del costo económico y de un indicador compuesto de impacto social, que pondera la generación de empleo directo e indirecto ajustada por índices de necesidades básicas insatisfechas y desempleo regional."
         ]
+      },
+      {
+        "type": "paragraph",
+        "text": "Formalmente, sea \\(F_{ij}\\) el flujo entre los nodos \\(i\\) y \\(j\\), \\(y_p \\in \\{0,1\\}\\) la decisión de instalar la planta \\(p\\), \\(c_{ij}\\) el costo unitario de transporte, \\(E_p\\) los empleos generados y \\(V_p\\) el factor de vulnerabilidad del municipio. El problema biobjetivo se plantea como:"
+      },
+      {
+        "type": "equation",
+        "text": "\\min_{F,\\,y}\\; f_1 = \\sum_{(i,j)\\in\\mathcal{R}} c_{ij}\\,F_{ij} + \\sum_{p\\in\\mathcal{P}} \\mathrm{CAPEX}_p\\,y_p + \\mathrm{OPEX}"
+      },
+      {
+        "type": "equation",
+        "text": "\\max_{y}\\; f_2 = \\sum_{p\\in\\mathcal{P}} E_p\\,V_p\\,y_p"
+      },
+      {
+        "type": "paragraph",
+        "text": "El frente de Pareto se construye mediante el método \\(\\varepsilon\\)-restricción, minimizando \\(f_1\\) sujeto a \\(f_2 \\geq \\varepsilon_k\\) para una secuencia creciente de niveles \\(\\varepsilon_k\\):"
+      },
+      {
+        "type": "equation",
+        "text": "\\min_{F,\\,y}\\; f_1(F,y) \\quad \\text{s.a.} \\quad f_2(y) \\geq \\varepsilon_k,\\qquad \\sum_{j} F_{ij} \\leq S_i \\;\\; \\forall i"
       },
       {
         "type": "code",
@@ -98,6 +118,14 @@
         "text": "En soluciones acuosas diluidas como el sudor humano, donde las concentraciones fisiológicas de glucosa son significativamente menores que en sangre, aplicar la Ley de Beer-Lambert clásica conduce a errores sistemáticos. Cada molécula de glucosa disuelta desplaza un volumen equivalente de moléculas de agua. Dado que el agua posee bandas de absorción intensas en el espectro NIR, la absorbancia neta detectada resulta del balance entre la absorción intrínseca de la glucosa y la disminución de la absorción del agua desplazada:"
       },
       {
+        "type": "equation",
+        "text": "A(\\lambda, C) = \\left[\\varepsilon_g(\\lambda) - \\delta_w\\,\\varepsilon_w(\\lambda)\\right] C\\,L"
+      },
+      {
+        "type": "paragraph",
+        "text": "donde \\(\\varepsilon_g\\) y \\(\\varepsilon_w\\) son las absortividades molares de la glucosa y del agua, \\(\\delta_w \\approx 6.15\\) es el coeficiente de desplazamiento volumétrico, \\(C\\) la concentración de glucosa y \\(L\\) el camino óptico de la celda."
+      },
+      {
         "type": "code",
         "text": "# Absorbancia diferencial neta con desplazamiento de agua\n# A(lambda, C) = [epsilon_g(lambda) - epsilon_w(lambda) * delta_w] * C * L\n\nDELTA_W_GLUCOSA = 6.15  # Coeficiente de desplazamiento volumétrico\n\ndef calcular_absorbancia_neta(conc_mM, camino_optico_mm, eps_glucosa, eps_agua):\n    coef_efectivo = eps_glucosa - (eps_agua * DELTA_W_GLUCOSA)\n    return coef_efectivo * conc_mM * camino_optico_mm"
       },
@@ -112,9 +140,9 @@
       {
         "type": "list",
         "items": [
-          "Número de Reynolds (Re): Verificación de flujo laminar (Re << 1 en microcanales epidérmicos) a partir del diámetro hidráulico y la velocidad superficial.",
-          "Número de Péclet (Pe): Relación entre el transporte advectivo y el transporte difusivo molecular de la glucosa.",
-          "Tiempo de residencia hidráulico: Tiempo necesario para renovar el volumen de la celda óptica ante cambios en la tasa de sudoración."
+          "Número de Reynolds \\(\\left(\\mathrm{Re} = \\dfrac{\\rho\\, v\\, D_h}{\\mu}\\right)\\): Verificación de flujo laminar (\\(\\mathrm{Re} \\ll 1\\) en microcanales epidérmicos) a partir del diámetro hidráulico y la velocidad superficial.",
+          "Número de Péclet \\(\\left(\\mathrm{Pe} = \\dfrac{v\\, L}{\\mathcal{D}}\\right)\\): Relación entre el transporte advectivo y el transporte difusivo molecular de la glucosa.",
+          "Tiempo de residencia hidráulico \\(\\left(\\tau = \\dfrac{V}{Q}\\right)\\): Tiempo necesario para renovar el volumen de la celda óptica ante cambios en la tasa de sudoración."
         ]
       },
       {
@@ -158,6 +186,22 @@
         "text": "Para modelar la evolución del perfil de concentración a través del espesor de una pared cilíndrica, discretizamos la segunda ley de Fick en coordenadas radiales. El dominio espacial se divide en nodos equidistantes desde el radio interno hasta el radio externo, aproximando las derivadas espaciales mediante diferencias centradas de segundo orden."
       },
       {
+        "type": "equation",
+        "text": "\\frac{\\partial C}{\\partial t} = D\\left(\\frac{\\partial^2 C}{\\partial r^2} + \\frac{1}{r}\\frac{\\partial C}{\\partial r}\\right), \\qquad r_i \\leq r \\leq r_o"
+      },
+      {
+        "type": "paragraph",
+        "text": "Con un esquema explícito en el tiempo (paso \\(\\Delta t\\)) y espaciamiento radial \\(\\Delta r\\), la concentración en el nodo \\(i\\) se actualiza como:"
+      },
+      {
+        "type": "equation",
+        "text": "C_i^{n+1} = C_i^{n} + \\Delta t\\, D\\left(\\frac{C_{i+1}^{n} - 2C_i^{n} + C_{i-1}^{n}}{\\Delta r^2} + \\frac{1}{r_i}\\,\\frac{C_{i+1}^{n} - C_{i-1}^{n}}{2\\,\\Delta r}\\right)"
+      },
+      {
+        "type": "paragraph",
+        "text": "La estabilidad del esquema explícito exige respetar el criterio \\(\\dfrac{D\\,\\Delta t}{\\Delta r^2} \\leq \\dfrac{1}{2}\\)."
+      },
+      {
         "type": "code",
         "text": "# Esquema de discretización radial para difusión en pared cilíndrica\n# dC/dt = D * (d2C/dr2 + (1/r) * dC/dr)\n\nfor i in range(1, n_nodos - 1):\n    r_i = radios[i]\n    d2c_dr2 = (C[i + 1] - 2.0 * C[i] + C[i - 1]) / (dr ** 2)\n    dc_dr = (C[i + 1] - C[i - 1]) / (2.0 * dr)\n    C_nuevo[i] = C[i] + dt * D_ef * (d2c_dr2 + (1.0 / r_i) * dc_dr)"
       },
@@ -172,8 +216,8 @@
       {
         "type": "list",
         "items": [
-          "Esfuerzo radial (sigma_r): Nulo en las superficies libres interna y externa, con valores compresivos o tractivos en el interior del espesor según el gradiente de concentración.",
-          "Esfuerzo circunferencial o tangencial (sigma_theta): Responsable principal de la nucleación y propagación de microfisuras radiales en la pared del conducto."
+          "Esfuerzo radial \\(\\sigma_r\\): Nulo en las superficies libres interna y externa, con valores compresivos o tractivos en el interior del espesor según el gradiente de concentración.",
+          "Esfuerzo circunferencial o tangencial \\(\\sigma_\\theta\\): Responsable principal de la nucleación y propagación de microfisuras radiales en la pared del conducto."
         ]
       },
       {
@@ -216,6 +260,18 @@
         "text": "Dado un conjunto de N puntos dispersos en un espacio multidimensional, una aproximación por RBF expresa la función desconocida como una combinación lineal de funciones cuya magnitud depende únicamente de la distancia euclidiana respecto a cada centro o nodo de colocación:"
       },
       {
+        "type": "equation",
+        "text": "s(\\mathbf{x}) = \\sum_{j=1}^{N} w_j\\, \\phi\\!\\left(\\lVert \\mathbf{x} - \\mathbf{x}_j \\rVert\\right), \\qquad \\phi(r) = \\sqrt{1 + (\\varepsilon r)^2}"
+      },
+      {
+        "type": "paragraph",
+        "text": "Imponiendo la condición de interpolación \\(s(\\mathbf{x}_i) = f_i\\) en los \\(N\\) nodos se obtiene el sistema lineal simétrico:"
+      },
+      {
+        "type": "equation",
+        "text": "\\Phi\\,\\mathbf{w} = \\mathbf{f}, \\qquad \\Phi_{ij} = \\phi\\!\\left(\\lVert \\mathbf{x}_i - \\mathbf{x}_j \\rVert\\right)"
+      },
+      {
         "type": "code",
         "text": "import numpy as np\n\ndef kernel_multicuadrico(r, epsilon=1.0):\n    return np.sqrt(1.0 + (epsilon * r) ** 2)\n\ndef ajustar_rbf(nodos, valores, epsilon=1.0):\n    # Matriz de distancias euclidianas entre todos los pares de nodos\n    diff = nodos[:, np.newaxis, :] - nodos[np.newaxis, :, :]\n    distancias = np.linalg.norm(diff, axis=-1)\n    Phi = kernel_multicuadrico(distancias, epsilon)\n    pesos = np.linalg.solve(Phi, valores)\n    return pesos"
       },
@@ -225,7 +281,7 @@
       },
       {
         "type": "paragraph",
-        "text": "En los cuadernos computacionales desarrollados en el repositorio analizamos el papel crítico del parámetro de forma (epsilon) en kernels gaussianos, multicuádricos e inversos multicuádricos. Valores pequeños del parámetro producen funciones base más planas y una mayor exactitud de interpolación, pero incrementan drásticamente el número de condición de la matriz de interpolación, requiriendo técnicas de regularización de Tikhonov o descomposición en valores singulares (SVD)."
+        "text": "En los cuadernos computacionales desarrollados en el repositorio analizamos el papel crítico del parámetro de forma \\(\\varepsilon\\) en kernels gaussianos, multicuádricos e inversos multicuádricos. Valores pequeños del parámetro producen funciones base más planas y una mayor exactitud de interpolación, pero incrementan drásticamente el número de condición \\(\\kappa(\\Phi) = \\lVert \\Phi \\rVert\\,\\lVert \\Phi^{-1} \\rVert\\) de la matriz de interpolación, requiriendo técnicas de regularización de Tikhonov \\(\\left(\\Phi + \\lambda I\\right)\\mathbf{w} = \\mathbf{f}\\) o descomposición en valores singulares (SVD)."
       }
     ]
   }

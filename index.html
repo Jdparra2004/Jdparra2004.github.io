@@ -117,5 +117,17 @@
     </div>
 
     <script src="assets/js/cookies.js" defer></script>
+    <!-- Netlify Identity: solo se carga cuando el enlace trae un token (invitación, recuperación o confirmación) -->
+    <script>
+        (function () {
+            if (!/(invite|recovery|confirmation|email_change)_token=/.test(window.location.hash)) return;
+            var s = document.createElement("script");
+            s.src = "https://identity.netlify.com/v1/netlify-identity-widget.js";
+            s.onload = function () {
+                window.netlifyIdentity.on("login", function () { window.location.href = "/admin/"; });
+            };
+            document.head.appendChild(s);
+        })();
+    </script>
 </body>
 </html>

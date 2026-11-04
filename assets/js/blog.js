@@ -87,6 +87,9 @@ document.addEventListener("DOMContentLoaded", function () {
                         if (bloque.type === "heading") {
                             return `<h2>${bloque.text}</h2>`;
                         }
+                        if (bloque.type === "equation") {
+                            return `<div class="math-block">$$${bloque.text}$$</div>`;
+                        }
                         if (bloque.type === "code") {
                             return `<pre class="code-block"><code>${escaparHtml(bloque.text)}</code></pre>`;
                         }
@@ -129,11 +132,22 @@ document.addEventListener("DOMContentLoaded", function () {
                         </div>
                     </footer>
                 `;
+
+                renderizarEcuaciones(contenedor);
             })
             .catch(err => {
                 contenedor.innerHTML = "<p>Error al cargar el contenido del artículo.</p>";
                 console.error(err);
             });
+    }
+
+    // Renderiza LaTeX con MathJax una vez que el contenido dinámico está en el DOM
+    function renderizarEcuaciones(contenedor, intentos = 0) {
+        if (window.MathJax && typeof window.MathJax.typesetPromise === "function") {
+            window.MathJax.typesetPromise([contenedor]).catch(err => console.error(err));
+        } else if (intentos < 50) {
+            setTimeout(() => renderizarEcuaciones(contenedor, intentos + 1), 100);
+        }
     }
 
     function formatearFecha(fechaIso) {
