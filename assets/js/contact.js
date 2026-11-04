@@ -1,11 +1,11 @@
 /* 
-    CONTACT.JS — Lógica del formulario de contacto (Netlify Forms + FormSubmit gratuito)
+    CONTACT.JS — Lógica del formulario de contacto (EmailJS + respaldo en Netlify Forms)
     Autor: Juan David Parra Cantor
     Descripción:
-        Valida el consentimiento expreso de Habeas Data (Ley 1581 de 2012),
-        almacena el envío en Netlify Forms y despacha simultáneamente la
-        notificación por correo electrónico de forma 100 % gratuita a
-        juan.parrac@outlook.es sin requerir el plan Pro de Netlify.
+        Maneja la interacción del formulario de contacto, valida el
+        consentimiento expreso de Habeas Data (Ley 1581 de 2012) y envía
+        el mensaje usando EmailJS (correo principal + autorespuesta automática
+        al usuario), guardando copia en Netlify Forms.
 */
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -43,65 +43,52 @@ document.addEventListener("DOMContentLoaded", function () {
         submitBtn.textContent = "Enviando...";
         statusText.textContent = "";
 
-        const formData = new FormData(form);
-        const asuntoElegido = (subjectSelect.value === "Otro" && customSubjectInput.value.trim() !== "")
-            ? customSubjectInput.value.trim()
-            : subjectSelect.value;
+        const subjectFinal =
+            subjectSelect.value === "Otro" && customSubjectInput.value.trim() !== ""
+                ? customSubjectInput.value.trim()
+                : subjectSelect.value;
 
-        if (asuntoElegido) {
-            formData.set("subject", asuntoElegido);
-        }
-
-        // 1. Registro en el panel de Netlify Forms (gratuito en plan Starter)
-        const netlifyPromise = fetch("/", {
-            method: "POST",
-            headers: { "Content-Type": "application/x-www-form-urlencoded" },
-            body: new URLSearchParams(formData).toString()
-        }).then(function (r) {
-            if (!r.ok) throw new Error("Netlify error");
-            return r;
-        });
-
-        // 2. Envío directo y gratuito al correo vía FormSubmit AJAX (sin plan Pro)
-        const emailPayload = {
-            _subject: "[Portafolio Web] " + (asuntoElegido || "Nuevo mensaje de contacto"),
-            _template: "table",
-            _captcha: "false",
-            Nombre: formData.get("name"),
-            Correo: formData.get("email"),
-            Asunto: asuntoElegido,
-            Mensaje: formData.get("message"),
-            Habeas_Data: formData.get("legalConsent")
+        const templateParams = {
+            name: document.getElementById("name").value,
+            email: document.getElementById("email").value,
+            subject: subjectFinal,
+            message: document.getElementById("message").value,
+            time: new Date().toLocaleString()
         };
 
-        const emailPromise = fetch("https://formsubmit.co/ajax/juan.parrac@outlook.es", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": "application/json"
-            },
-            body: JSON.stringify(emailPayload)
-        }).then(function (r) {
-            if (!r.ok) throw new Error("Email error");
-            return r.json();
-        });
+        // Respaldo opcional silencioso en Netlify Forms
+        try {
+            const formData = new FormData(form);
+            formData.set("subject", subjectFinal);
+            fetch("/", {
+                method: "POST",
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body: new URLSearchParams(formData).toString()
+            }).catch(function () {});
+        } catch (_) {}
 
-        Promise.allSettled([netlifyPromise, emailPromise])
-            .then(function (results) {
-                const netlifyOk = results[0].status === "fulfilled";
-                const emailOk = results[1].status === "fulfilled";
+        // Envío principal mediante EmailJS (te llega a ti + autorespuesta al remitente)
+        emailjs
+            .send(
+                "service_1i5dw85",      // Service ID
+                "template_754zb2j",     // Template principal (admin)
+                templateParams
+            )
+            .then(function () {
+                // Autorespuesta automática al usuario
+                emailjs.send(
+                    "service_1i5dw85",
+                    "template_rcpxxey",
+                    templateParams
+                );
 
-                if (netlifyOk || emailOk) {
-                    statusText.textContent = "Mensaje enviado y registrado correctamente. Te responderé a la brevedad.";
-                    statusText.style.color = "var(--color-status-success, #2E7D5B)";
-                    form.reset();
-                    customSubjectContainer.style.display = "none";
-                } else {
-                    throw new Error("Ambos canales fallaron");
-                }
+                statusText.textContent = "Mensaje enviado correctamente. Revisaré tu solicitud y te responderé pronto.";
+                statusText.style.color = "var(--color-status-success, #2E7D5B)";
+                form.reset();
+                customSubjectContainer.style.display = "none";
             })
             .catch(function () {
-                statusText.textContent = "No fue posible procesar el envío en este momento. También puedes escribir directamente a juan.parrac@outlook.es.";
+                statusText.textContent = "Ocurrió un error al enviar el mensaje. Intenta nuevamente.";
                 statusText.style.color = "var(--color-status-error, #C55A57)";
             })
             .finally(function () {
