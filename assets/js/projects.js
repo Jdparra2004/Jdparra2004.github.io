@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const projectsGrid = document.getElementById("projectsGrid");
     if (!projectsGrid) return;
 
-    fetch("data/projects.json")
+    fetch("data/projects.json?v=3")
         .then(response => response.json())
         .then(data => {
             const projects = Array.isArray(data) ? data : (data.projects || []);
@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         <a href="projects/project.html?id=${encodeURIComponent(project.id)}" class="card-btn">
                             Explorar documentación
                         </a>
-                        ${project.repository ? `<a href="${project.repository}" target="_blank" rel="noopener noreferrer" class="card-link-secondary">Repositorio</a>` : ""}
+                        ${project.repository ? `<a href="${project.repository}" target="_blank" rel="noopener noreferrer" class="card-link-secondary">Repositorio</a>` : (project.downloads && project.downloads.length ? `<a href="${project.downloads[0].url.replace(/^\.\.\//, '')}" target="_blank" rel="noopener noreferrer" class="card-link-secondary">Ver Cartel (PDF)</a>` : "")}
                     </div>
                 `;
 

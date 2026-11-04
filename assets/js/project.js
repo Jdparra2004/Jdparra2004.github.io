@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     /* Cargar el JSON de proyectos */
-    fetch("../data/projects.json")
+    fetch("../data/projects.json?v=3")
         .then(response => response.json())
         .then(data => {
             const projects = Array.isArray(data) ? data : (data.projects || []);
@@ -77,24 +77,31 @@ document.addEventListener("DOMContentLoaded", function () {
             techList.appendChild(li);
         });
 
-        /* Obtener fechas desde GitHub */
-        fetch(project.repository.replace("https://github.com/", "https://api.github.com/repos/"))
-            .then(response => response.json())
-            .then(repoData => {
-                document.getElementById("projectStartDate").textContent =
-                    new Date(repoData.created_at).toLocaleDateString();
+        /* Obtener fechas desde GitHub o desde el propio JSON */
+        const repoSection = document.getElementById("projectRepository").parentElement;
+        if (project.repository && project.repository.includes("github.com/")) {
+            fetch(project.repository.replace("https://github.com/", "https://api.github.com/repos/"))
+                .then(response => response.json())
+                .then(repoData => {
+                    document.getElementById("projectStartDate").textContent =
+                        repoData.created_at ? new Date(repoData.created_at).toLocaleDateString() : (project.startDate || "No disponible");
 
-                document.getElementById("projectLastUpdate").textContent =
-                    new Date(repoData.updated_at).toLocaleDateString();
-            })
-            .catch(() => {
-                document.getElementById("projectStartDate").textContent = "No disponible";
-                document.getElementById("projectLastUpdate").textContent = "No disponible";
-            });
+                    document.getElementById("projectLastUpdate").textContent =
+                        repoData.updated_at ? new Date(repoData.updated_at).toLocaleDateString() : (project.lastUpdate || "No disponible");
+                })
+                .catch(() => {
+                    document.getElementById("projectStartDate").textContent = project.startDate || "No disponible";
+                    document.getElementById("projectLastUpdate").textContent = project.lastUpdate || "No disponible";
+                });
 
-        /* Repositorio */
-        const repoLink = document.getElementById("projectRepository");
-        repoLink.href = project.repository;
+            const repoLink = document.getElementById("projectRepository");
+            repoLink.href = project.repository;
+            if (repoSection) repoSection.style.display = "block";
+        } else {
+            document.getElementById("projectStartDate").textContent = project.startDate || "2025";
+            document.getElementById("projectLastUpdate").textContent = project.lastUpdate || "2025";
+            if (repoSection) repoSection.style.display = "none";
+        }
 
         /* Descargas */
         const downloadsContainer = document.getElementById("projectDownloads");

@@ -88,70 +88,74 @@
     ]
   },
   {
-    "id": "simulador-optico-nir-glucosa-bioingenieria",
-    "title": "Modelado computacional de un sensor óptico NIR no invasivo para monitoreo de glucosa en sudor",
-    "date": "2026-10-04",
+    "id": "compostaje-acelerado-saccharomyces-cerevisiae-colaeiq-2025",
+    "title": "Revalorización de residuos de poda universitaria mediante inoculación con Saccharomyces cerevisiae hacia una economía circular",
+    "date": "2025-08-08",
     "author": "Juan David Parra Cantor (jaidi20)",
-    "category": "Bioingeniería y Simulación",
-    "readTime": "8 min de lectura",
+    "category": "Bioprocesos y Economía Circular",
+    "readTime": "7 min de lectura",
     "doi": "",
-    "repository": "https://github.com/Jdparra2004/Sensor-NIR-De-Glucosa",
-    "summary": "Diseño in silico de un sensor óptico en el infrarrojo cercano (NIR) acoplado a una cámara microfluídica laminar, incorporando el efecto de desplazamiento volumétrico de agua en la Ley de Beer-Lambert.",
+    "repository": "",
+    "summary": "Evaluación experimental de la aceleración del proceso de compostaje aeróbico mediante biorreactores de 121 L inoculados con Saccharomyces cerevisiae comercial, logrando reducir en un 50 % el tiempo de producción de fertilizante orgánico. Trabajo ganador en el Concurso de Carteles del XXX COLAEIQ Honduras 2025.",
     "tags": [
-      "Bioingeniería",
-      "Espectroscopia NIR",
-      "Microfluídica",
-      "Python",
-      "Streamlit"
+      "Economía Circular",
+      "Bioprocesos",
+      "Saccharomyces cerevisiae",
+      "Biorreactores",
+      "XXX COLAEIQ Honduras 2025"
     ],
     "content": [
       {
         "type": "paragraph",
-        "text": "Antes de fabricar un prototipo físico de biosensado óptico, la simulación numérica paramétrica permite acotar las dimensiones geométricas del canal, elegir las longitudes de onda óptimas y cuantificar la relación señal-ruido esperada. En este artículo describo la arquitectura matemática y computacional detrás del simulador de detección de glucosa en sudor mediante espectroscopia de infrarrojo cercano (NIR)."
+        "text": "El manejo convencional de residuos lignocelulósicos de poda en campus universitarios suele realizarse mediante pilas de compostaje pasivo cuyos tiempos de estabilización rondan las 12 semanas, con mermas volumétricas cercanas al 60 %. En esta investigación —presentada y premiada en el Concurso de Carteles del XXX Congreso Latinoamericano de Estudiantes de Ingeniería Química (COLAEIQ 2025) en la Universidad Nacional Autónoma de Honduras (Tegucigalpa)— evaluamos la intensificación biotecnológica del proceso mediante la inoculación controlada de la levadura comercial Saccharomyces cerevisiae."
       },
       {
         "type": "heading",
-        "text": "1. Ley de Beer-Lambert con desplazamiento volumétrico de agua"
+        "text": "1. Diseño del inóculo en biorreactores y sistema de rotación"
       },
       {
         "type": "paragraph",
-        "text": "En soluciones acuosas diluidas como el sudor humano, donde las concentraciones fisiológicas de glucosa son significativamente menores que en sangre, aplicar la Ley de Beer-Lambert clásica conduce a errores sistemáticos. Cada molécula de glucosa disuelta desplaza un volumen equivalente de moléculas de agua. Dado que el agua posee bandas de absorción intensas en el espectro NIR, la absorbancia neta detectada resulta del balance entre la absorción intrínseca de la glucosa y la disminución de la absorción del agua desplazada:"
+        "text": "Para garantizar una población microbiana activa antes de su incorporación al lecho sólido, se operaron dos biorreactores aireados por burbujeo de \\(V_b = 121\\;\\mathrm{L}\\) cada uno, formulados con sacarosa comercial y extracto de levadura (Saccharomyces cerevisiae) en concentraciones iguales:"
       },
       {
         "type": "equation",
-        "text": "A(\\lambda, C) = \\left[\\varepsilon_g(\\lambda) - \\delta_w\\,\\varepsilon_w(\\lambda)\\right] C\\,L"
+        "text": "C_{\\text{sacarosa}} = 15\\;\\mathrm{g\\,L^{-1}}, \\qquad C_{S.\\,cerevisiae} = 15\\;\\mathrm{g\\,L^{-1}}, \\qquad D_{\\text{inóculo}} = \\frac{V_{\\text{inóculo}}}{V_{\\text{celda}}} = 42.86\\;\\mathrm{L\\,m^{-3}}"
       },
       {
         "type": "paragraph",
-        "text": "donde \\(\\varepsilon_g\\) y \\(\\varepsilon_w\\) son las absortividades molares de la glucosa y del agua, \\(\\delta_w \\approx 6.15\\) es el coeficiente de desplazamiento volumétrico, \\(C\\) la concentración de glucosa y \\(L\\) el camino óptico de la celda."
-      },
-      {
-        "type": "code",
-        "text": "DELTA_W_GLUCOSA = 6.15  # Coeficiente de desplazamiento volumétrico\n\ndef calcular_absorbancia_neta(conc_mM, camino_optico_mm, eps_glucosa, eps_agua):\n    coef_efectivo = eps_glucosa - (eps_agua * DELTA_W_GLUCOSA)\n    return coef_efectivo * conc_mM * camino_optico_mm"
+        "text": "El material vegetal triturado se dispuso en un sistema rotativo de seis celdas de compostaje de \\(V_c = 2.8\\;\\mathrm{m^3}\\) cada una (carga inicial de \\(450\\;\\mathrm{kg}\\) equivalentes a 10 carretillas por celda y \\(120\\;\\mathrm{L}\\) de inóculo en el arranque), realizando volteos y reinoculaciones semanales acompañadas del monitoreo de pH, temperatura interna en cinco orientaciones cardinales, humedad relativa y volumen."
       },
       {
         "type": "heading",
-        "text": "2. Validación del régimen microfluídico"
+        "text": "2. Cinética de reducción volumétrica y control de la acidificación"
       },
       {
         "type": "paragraph",
-        "text": "Para que la lectura óptica sea estable y representativa del estado metabólico en tiempo real, el flujo de sudor a través de la microcámara debe mantenerse en régimen estrictamente laminar y con baja dispersión axial. El motor del simulador evalúa de forma automática tres criterios físicos:"
+        "text": "Uno de los cuellos de botella del compostaje aeróbico en su fase mesofílica inicial es la acumulación de ácidos orgánicos de cadena corta que deprimen el pH e inhiben la actividad microbiana. La adición de Saccharomyces cerevisiae permitió amortiguar dicha caída y sostener un régimen alcalino óptimo junto con una menor pérdida de volumen útil \\(\\Delta V_{\\%}\\):"
+      },
+      {
+        "type": "equation",
+        "text": "\\Delta V_{\\%} = \\left(1 - \\frac{V_f}{V_0}\\right)\\times 100\\% = 54.33\\% < 60\\%_{\\text{tradicional}}, \\qquad \\overline{\\mathrm{pH}} = 8.10 \\in [5.5,\\, 8.5]"
       },
       {
         "type": "list",
         "items": [
-          "Número de Reynolds \\(\\left(\\mathrm{Re} = \\dfrac{\\rho\\, v\\, D_h}{\\mu}\\right)\\): Verificación de flujo laminar (\\(\\mathrm{Re} \\ll 1\\) en microcanales epidérmicos) a partir del diámetro hidráulico y la velocidad superficial.",
-          "Número de Péclet \\(\\left(\\mathrm{Pe} = \\dfrac{v\\, L}{\\mathcal{D}}\\right)\\): Relación entre el transporte advectivo y el transporte difusivo molecular de la glucosa.",
-          "Tiempo de residencia hidráulico \\(\\left(\\tau = \\dfrac{V}{Q}\\right)\\): Tiempo necesario para renovar el volumen de la celda óptica ante cambios en la tasa de sudoración."
+          "Estabilidad de pH \\(\\left(\\overline{\\mathrm{pH}} = 8.10\\right)\\): La actividad metabólica de la levadura contrarrestó la acidificación temprana y mantuvo el lecho por encima de \\(\\mathrm{pH} > 6.5\\) durante todo el ciclo.",
+          "Régimen termofílico \\(\\left(T \\in [40\\,^\\circ\\mathrm{C},\\, 60\\,^\\circ\\mathrm{C}]\\right)\\): Temperaturas internas compatibles con la higienización del material y la degradación acelerada de fracciones hemicelulósicas.",
+          "Reducción del tiempo de proceso en un \\(50\\%\\): Obtención de compost maduro en la mitad del tiempo requerido por el método tradicional de 12 semanas de la universidad, aun operando con una humedad media de \\(\\overline{H} = 49.85\\%\\)."
         ]
       },
       {
+        "type": "code",
+        "text": "# Balance de indicadores experimentales del sistema de compostaje inoculado\nV_celda_m3 = 2.8\nV_inoculo_L = 120.0\n\ndosis_L_m3 = V_inoculo_L / V_celda_m3          # 42.86 L/m^3\nreduccion_vol_pct = 54.33                      # vs. 60.0 % método tradicional\nahorro_tiempo_pct = 50.0                       # 6 semanas vs. 12 semanas\npH_medio = 8.10                                # Rango óptimo aeróbico [5.5 - 8.5]"
+      },
+      {
         "type": "heading",
-        "text": "3. Inferencia inversa y análisis de incertidumbre"
+        "text": "3. Impacto hacia una economía circular universitaria"
       },
       {
         "type": "paragraph",
-        "text": "En un escenario real, el fotodetector entrega una señal de tensión contaminada por ruido electrónico y fluctuaciones térmicas. El simulador incorpora un generador de ruido gaussiano parametrizable e invierte el modelo óptico para estimar la concentración de glucosa con intervalos de confianza estadísticos, presentando los resultados en un panel interactivo construido con Streamlit y respaldado por una suite de pruebas unitarias reproducibles."
+        "text": "Este desarrollo —realizado junto a Simón Herrera y Dylan Ciro-Sánchez bajo la asesoría académica de la profesora Margarita Enid Carmona en la Escuela de Ingeniería de la Universidad Pontificia Bolivariana— demuestra que la bioaumentación con levaduras comerciales de bajo costo permite cerrar el ciclo de nutrientes en el mismo lugar donde se generan los residuos de poda, produciendo un biofertilizante con mayor volumen útil retenido y menor huella temporal."
       }
     ]
   },

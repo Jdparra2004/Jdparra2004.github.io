@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function cargarListadoArticulos(contenedor) {
-        fetch("data/posts.json?v=2")
+        fetch("data/posts.json?v=3")
             .then(res => res.json())
             .then(data => {
                 const posts = Array.isArray(data) ? data : (data.posts || []);
@@ -68,7 +68,7 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-        fetch("../data/posts.json?v=2")
+        fetch("../data/posts.json?v=3")
             .then(res => res.json())
             .then(data => {
                 const posts = Array.isArray(data) ? data : (data.posts || []);

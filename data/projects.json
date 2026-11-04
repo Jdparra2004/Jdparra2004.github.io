@@ -1,26 +1,44 @@
 {
   "projects": [
   {
-    "id": "sensor-nir-glucosa",
-    "title": "Simulador NIR de Glucosa — Bioingeniería",
-    "shortDescription": "Evaluación paramétrica y simulación numérica para el monitoreo no invasivo de glucosa en sudor mediante espectroscopia de infrarrojo cercano (NIR).",
-    "description": "Herramienta computacional de bioingeniería que integra la física de la espectroscopia de infrarrojo cercano (NIR), la dinámica de fluidos en microcanales y un motor de inferencia analítica para estimar cuantitativamente la concentración de glucosa en medios acuosos diluidos. Implementa la Ley de Beer-Lambert corregida por el fenómeno de desplazamiento volumétrico de agua, validación del régimen laminar mediante los números adimensionales de Reynolds y Péclet, modelado de incertidumbre fotométrica gaussiana y un panel interactivo en Streamlit con clasificación fisiológica in silico.",
-    "gallery": [
-      "../assets/img/proyectos/canvas.png"
-    ],
-    "status": "Activo · Investigación",
+    "id": "compostaje-economia-circular-colaeiq",
+    "title": "Revalorización de Residuos de Poda mediante Biorreactores con S. cerevisiae",
+    "shortDescription": "Optimización biotecnológica del compostaje aeróbico hacia una economía circular. Trabajo ganador en el Concurso de Carteles del XXX COLAEIQ Honduras 2025.",
+    "description": "Estudio experimental de ingeniería química y ambiental enfocado en la aceleración del compostaje de residuos de poda universitaria mediante inoculación dirigida con Saccharomyces cerevisiae comercial. Se diseñó y operó un sistema de dos biorreactores aireados de 121 L (sacarosa 15 g/L y levadura 15 g/L) aplicando 42.86 L/m³ de inóculo sobre seis celdas de rotación de 2.8 m³ cada una (450 kg por celda). El seguimiento semanal de variables fisicoquímicas demostró una estabilización alcalina del pH (media de 8.10 frente a la acidificación inicial), régimen termofílico activo (40–60 °C), retención de volumen útil con 54.33 % de reducción (superando el 60 % de merma tradicional) y una disminución del 50 % en el tiempo total de producción de fertilizante orgánico respecto al proceso convencional de 12 semanas. Investigación distinguida y ganadora en el Concurso de Carteles del XXX Congreso Latinoamericano de Estudiantes de Ingeniería Química (COLAEIQ 2025) en la Universidad Nacional Autónoma de Honduras (Tegucigalpa).",
+    "gallery": [],
+    "status": "Ganador Concurso de Carteles · XXX COLAEIQ Honduras 2025",
     "technologies": [
-      "Python",
-      "NumPy",
-      "Pandas",
-      "Streamlit",
-      "Plotly",
-      "Espectroscopia NIR",
-      "Microfluídica"
+      "Bioprocesos",
+      "Saccharomyces cerevisiae",
+      "Biorreactores (121 L)",
+      "Economía Circular",
+      "Control de pH y Temperatura",
+      "Ingeniería Ambiental"
     ],
-    "repository": "https://github.com/Jdparra2004/Sensor-NIR-De-Glucosa",
-    "license": "MIT",
-    "downloads": []
+    "repository": "",
+    "startDate": "Marzo 2025",
+    "lastUpdate": "Agosto 2025 (XXX COLAEIQ — UNAH, Honduras)",
+    "license": "Investigación Académica UPB",
+    "downloads": [
+      {
+        "version": "Cartel Científico Oficial",
+        "platform": "XXX COLAEIQ Honduras 2025 — UPB Medellín",
+        "url": "../assets/docs/Cartel-COLAEIQ-2025-Compostaje.pdf",
+        "type": "PDF"
+      },
+      {
+        "version": "Abstract de Investigación",
+        "platform": "Ambiente y Energía — Economía Circular",
+        "url": "../assets/docs/Abstract-COLAEIQ-2025-Compostaje.pdf",
+        "type": "PDF"
+      },
+      {
+        "version": "Certificado Oficial de Reconocimiento",
+        "platform": "UNAH · Tegucigalpa, Honduras (8 ago. 2025)",
+        "url": "../assets/docs/Certificado-COLAEIQ-2025-Compostaje.pdf",
+        "type": "PDF"
+      }
+    ]
   },
   {
     "id": "optimizacion-multiobjetivo",
@@ -63,6 +81,24 @@
     "downloads": []
   },
   {
+    "id": "analisis-termodinamico-hidrogeno-notebooks",
+    "title": "Modelado Termodinámico y Energético del Hidrógeno en Jupyter",
+    "shortDescription": "Cuadernos computacionales en Python para el estudio de propiedades, almacenamiento y balances del vector energético hidrógeno.",
+    "description": "Repositorio de análisis numérico e ingeniería química desarrollado en Jupyter Notebooks (Python) para evaluar el comportamiento físico-químico del hidrógeno como vector en la transición energética. Integra rutinas de cálculo de propiedades de transporte, balances de materia y energía, curvas de compresión/almacenamiento y visualización paramétrica reproducible.",
+    "gallery": [],
+    "status": "Finalizado · Transición Energética",
+    "technologies": [
+      "Python",
+      "Jupyter Notebook",
+      "Termodinámica",
+      "Vectores Energéticos",
+      "Modelado Numérico"
+    ],
+    "repository": "https://github.com/Jdparra2004/Hidrogeno",
+    "license": "MIT",
+    "downloads": []
+  },
+  {
     "id": "funciones-base-radial-rbf",
     "title": "Aproximación e Interpolación con Funciones de Base Radial (RBF)",
     "shortDescription": "Implementación computacional de redes y funciones de base radial para interpolación multivariable y ajuste de superficies.",
@@ -93,6 +129,41 @@
       "Modelado Cinemático"
     ],
     "repository": "https://github.com/Jdparra2004/Simulador-Movimiento-de-un-Proyectil",
+    "license": "MIT",
+    "downloads": []
+  },
+  {
+    "id": "simulador-riel-y-esfera",
+    "title": "Simulador Dinámico: Sistema No Lineal Riel y Esfera",
+    "shortDescription": "Modelado físico-matemático y simulación en Python del acoplamiento rotacional y traslacional de una esfera sobre un riel.",
+    "description": "Aplicación académica desarrollada en Python orientada al análisis de sistemas dinámicos clásicos de control y mecánica: el movimiento de rodadura sin deslizamiento de una esfera sobre un riel basculante. Resuelve las ecuaciones de movimiento acopladas (energía cinética traslacional, inercia rotacional y torque gravitacional) para visualizar trayectorias, velocidades y estabilidad del sistema.",
+    "gallery": [],
+    "status": "Finalizado · Física Computacional",
+    "technologies": [
+      "Python",
+      "Dinámica de Sistemas",
+      "Mecánica Clásica",
+      "Simulación Numérica"
+    ],
+    "repository": "https://github.com/Jdparra2004/Riel-y-Esfera",
+    "license": "MIT",
+    "downloads": []
+  },
+  {
+    "id": "algoritmos-programacion-interfaces-python",
+    "title": "Repositorio de Algoritmia Científica e Interfaces Gráficas en Python",
+    "shortDescription": "Colección de soluciones algorítmicas, interfaces gráficas (GUI) y material práctico de programación aplicada a ingeniería.",
+    "description": "Compendio de módulos en Python y cuadernos computacionales desarrollados como material de referencia para los cursos de Elementos de Programación y Métodos Numéricos en la Universidad Pontificia Bolivariana. Reúne implementaciones de estructuras de datos, resolución de problemas de evaluación algorítmica (Talleres-Parcial y Parcial3) y construcción de interfaces gráficas de usuario interactivas (TallerGUI).",
+    "gallery": [],
+    "status": "Activo · Monitoría Académica UPB",
+    "technologies": [
+      "Python",
+      "Interfaces Gráficas (GUI)",
+      "Jupyter Notebook",
+      "Algoritmia",
+      "Docencia Universitaria"
+    ],
+    "repository": "https://github.com/Jdparra2004/Talleres-Parcial",
     "license": "MIT",
     "downloads": []
   }
