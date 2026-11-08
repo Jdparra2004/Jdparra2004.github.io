@@ -303,8 +303,8 @@ export const translations: Record<Locale, TranslationDictionary> = {
     legal: {
       privacyTitle: "Política de Privacidad y Tratamiento de Datos Personales",
       termsTitle: "Términos y Condiciones de Uso",
-      habeasDataNote: "Cumplimiento normativo Ley 1581 de 2012 (Habeas Data) y Decreto 1377 de 2013 · República de Colombia.",
-      allRightsReserved: "Todos los derechos reservados. Desarrollado con Next.js & React.",
+      habeasDataNote: "",
+      allRightsReserved: "Todos los derechos reservados.",
     },
     modal: {
       close: "Cerrar",
@@ -475,8 +475,8 @@ export const translations: Record<Locale, TranslationDictionary> = {
     legal: {
       privacyTitle: "Privacy Policy & Personal Data Protection",
       termsTitle: "Terms and Conditions of Use",
-      habeasDataNote: "Regulatory compliance under Colombian Law 1581 of 2012 (Habeas Data) and Decree 1377 of 2013.",
-      allRightsReserved: "All rights reserved. Built with Next.js & React.",
+      habeasDataNote: "",
+      allRightsReserved: "All rights reserved.",
     },
     modal: {
       close: "Close",

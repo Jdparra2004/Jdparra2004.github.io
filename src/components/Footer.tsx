@@ -6,7 +6,7 @@ import { useLanguage } from "@/context/LanguageContext";
 import { ExternalLink, ShieldCheck, Heart } from "lucide-react";
 
 export default function Footer() {
-  const { t } = useLanguage();
+  const { locale, t } = useLanguage();
   const currentYear = new Date().getFullYear();
 
   return (
@@ -114,13 +114,10 @@ export default function Footer() {
 
         </div>
 
-        {/* Regulatory & Bottom bar */}
-        <div className="pt-8 border-t border-brand-border dark:border-brand-dark-border flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-brand-ink-tertiary dark:text-brand-dark-ink-tertiary">
+        {/* Bottom bar */}
+        <div className="pt-6 border-t border-brand-border/50 dark:border-brand-dark-border/50 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-brand-ink-tertiary dark:text-brand-dark-ink-tertiary">
           <p className="text-center sm:text-left">
-            © {currentYear} Juan David Parra Cantor. {t.legal.allRightsReserved}
-          </p>
-          <p className="text-[11px] text-center sm:text-right font-mono-code">
-            {t.legal.habeasDataNote}
+            © {currentYear} Juan David Parra Cantor · {locale === "es" ? "Ingeniería Química, Optimización & Computación Científica" : "Chemical Engineering, Optimization & Scientific Computing"}
           </p>
         </div>
 
