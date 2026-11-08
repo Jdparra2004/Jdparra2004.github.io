@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Panel Editorial (jaidi20) — Juan David Parra Cantor</title>
+    <link rel="icon" href="../assets/img/favicon/favicon.ico" type="image/x-icon">
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+</head>
+<body>
+    <!-- Decap CMS (anteriormente Netlify CMS) para gestión de blog y proyectos vía Git Gateway -->
+    <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+    <script>
+        if (window.netlifyIdentity) {
+            window.netlifyIdentity.on("init", function (user) {
+                if (!user) {
+                    window.netlifyIdentity.on("login", function () {
+                        document.location.href = "/admin/";
+                    });
+                }
+            });
+        }
+    </script>
+</body>
+</html>
