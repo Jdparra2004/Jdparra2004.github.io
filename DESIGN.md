@@ -26,18 +26,18 @@ colors:
   surface-card: "#FFFFFF"
   
   # Canvas & Surfaces (Dark Theme / Framing)
-  dark-canvas: "#121417"
-  dark-surface-1: "#1A1D21"
-  dark-surface-2: "#22262C"
-  dark-surface-3: "#2C3138"
-  dark-surface-card: "#181B1F"
+  dark-canvas: "#161A22"
+  dark-surface-1: "#1D222B"
+  dark-surface-2: "#242A36"
+  dark-surface-3: "#2C3341"
+  dark-surface-card: "#1E242F"
   
   # Borders & Dividers
-  border-hairline: "#E2E5EA"
-  border-subtle: "#D0D5DD"
+  border-hairline: "#DDE2E8"
+  border-subtle: "#CFD5DF"
   border-focus: "#1E3A5F"
-  dark-border-hairline: "#262B33"
-  dark-border-subtle: "#333A44"
+  dark-border-hairline: "#2C3341"
+  dark-border-subtle: "#3A4456"
   
   # Typography / Inks
   ink-primary: "#111418"
