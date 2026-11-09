@@ -129,8 +129,14 @@ export interface TranslationDictionary {
   legal: {
     privacyTitle: string;
     termsTitle: string;
-    habeasDataNote: string;
     allRightsReserved: string;
+    frameworkEyebrow: string;
+    privacyEyebrow: string;
+    termsSubtitle: string;
+    privacySubtitle: string;
+    backHome: string;
+    termsSections: Array<{ title: string; content: string }>;
+    privacySections: Array<{ title: string; content: string }>;
   };
   modal: {
     close: string;
@@ -303,8 +309,51 @@ export const translations: Record<Locale, TranslationDictionary> = {
     legal: {
       privacyTitle: "Política de Privacidad y Tratamiento de Datos Personales",
       termsTitle: "Términos y Condiciones de Uso",
-      habeasDataNote: "",
+      frameworkEyebrow: "Marco Normativo",
+      privacyEyebrow: "Habeas Data · Colombia",
+      termsSubtitle: "Ley 527 de 1999 (Mensajes de Datos) & Ley 23 de 1982 (Propiedad Intelectual)",
+      privacySubtitle: "Ley Estatutaria 1581 de 2012 y Decreto 1377 de 2013 · República de Colombia",
+      backHome: "Volver al inicio",
       allRightsReserved: "Todos los derechos reservados.",
+      termsSections: [
+        {
+          title: "1. Propiedad Intelectual y Derechos de Autor",
+          content:
+            "Los contenidos, textos, modelos computacionales, figuras, abstracts científicos y proyectos publicados en este portal son autoría de Juan David Parra Cantor y sus respectivos coautores e instituciones académicas colaboradoras (Universidad Pontificia Bolivariana). El material bajo licencias de código abierto (MIT) se rige bajo los términos explicitados en sus repositorios oficiales en GitHub.",
+        },
+        {
+          title: "2. Citas Científicas y Reutilización Académica",
+          content:
+            "Se autoriza el uso académico y cita de los resúmenes, ecuaciones y algoritmos siempre que se atribuya adecuadamente la autoría correspondiente y los identificadores persistentes asociados (por ejemplo, DOI: 10.24084/reepqj26-370 o referencia a las memorias del XXX COLAEIQ Honduras 2025).",
+        },
+        {
+          title: "3. Descargo de Responsabilidad",
+          content:
+            "Los modelos numéricos, simulaciones y cuadernos interactivos se proporcionan con propósitos investigativos y educativos. Aunque se procura la máxima exactitud físico-química y matemática, el autor no se hace responsable por usos no autorizados o interpretaciones externas descontextualizadas de los resultados experimentales.",
+        },
+      ],
+      privacySections: [
+        {
+          title: "1. Identificación del Responsable del Tratamiento",
+          content:
+            "El responsable del tratamiento de los datos personales recolectados a través de este portal web es Juan David Parra Cantor, identificado con ORCID 0009-0008-0321-000X, domiciliado en Medellín, Colombia, estudiante de Ingeniería Química e investigador de la Universidad Pontificia Bolivariana.",
+        },
+        {
+          title: "2. Finalidad de la Recolección de Datos",
+          content:
+            "Los datos personales suministrados voluntariamente en el formulario de contacto (nombre, correo electrónico, asunto y contenido del mensaje) se tratarán con la exclusiva finalidad de atender solicitudes académicas, consultas técnicas, invitaciones de investigación o propuestas de colaboración profesional.",
+        },
+        {
+          title: "3. Derechos de los Titulares (Ley 1581 de 2012)",
+          content:
+            "De conformidad con la legislación colombiana, el titular de los datos tiene derecho a conocer, actualizar, rectificar y solicitar la supresión de sus datos personales, así como a revocar la autorización otorgada en cualquier momento mediante comunicación remitida a través del canal de contacto.",
+        },
+        {
+          title: "4. Política de Cookies y Almacenamiento Local",
+          content:
+            "Este sitio utiliza almacenamiento local técnico (localStorage) para recordar la preferencia de idioma (Español / Inglés) y la preferencia de visualización (modo oscuro / claro). No se emplean cookies de rastreo publicitario ni cesión a terceras partes sin autorización previa.",
+        },
+      ],
     },
     modal: {
       close: "Cerrar",
@@ -475,8 +524,51 @@ export const translations: Record<Locale, TranslationDictionary> = {
     legal: {
       privacyTitle: "Privacy Policy & Personal Data Protection",
       termsTitle: "Terms and Conditions of Use",
-      habeasDataNote: "",
+      frameworkEyebrow: "Regulatory Framework",
+      privacyEyebrow: "Data Privacy · Habeas Data Colombia",
+      termsSubtitle: "Law 527 of 1999 (Data Messages) & Law 23 of 1982 (Copyright & Intellectual Property) · Republic of Colombia",
+      privacySubtitle: "Statutory Law 1581 of 2012 & Regulatory Decree 1377 of 2013 · Republic of Colombia",
+      backHome: "Back to Home",
       allRightsReserved: "All rights reserved.",
+      termsSections: [
+        {
+          title: "1. Intellectual Property & Copyright",
+          content:
+            "All contents, texts, computational models, figures, scientific abstracts, and projects published on this website are the authorship of Juan David Parra Cantor and respective coauthors and collaborative academic institutions (Universidad Pontificia Bolivariana). Materials published under open-source licenses (MIT) are governed by the terms specified in their official GitHub repositories.",
+        },
+        {
+          title: "2. Scientific Citation & Academic Reuse",
+          content:
+            "Academic use and citation of abstracts, equations, models, and algorithms is authorized provided that proper authorship attribution and persistent identifiers are included (e.g., DOI: 10.24084/reepqj26-370 or reference to the proceedings of the XXX COLAEIQ Honduras 2025).",
+        },
+        {
+          title: "3. Disclaimer of Liability",
+          content:
+            "Numerical models, simulations, and interactive notebooks are provided solely for scientific research and educational purposes. While maximum physicochemical and mathematical rigor is pursued, the author assumes no responsibility for unauthorized uses or out-of-context third-party interpretations of experimental or modeled findings.",
+        },
+      ],
+      privacySections: [
+        {
+          title: "1. Identification of the Data Controller",
+          content:
+            "The controller responsible for processing personal data collected through this website is Juan David Parra Cantor, identified with ORCID 0009-0008-0321-000X, based in Medellín, Colombia, Chemical Engineering student and researcher at Universidad Pontificia Bolivariana.",
+        },
+        {
+          title: "2. Purpose of Data Collection",
+          content:
+            "Personal information voluntarily provided via the contact form (name, email address, subject, and message content) is processed exclusively to handle academic inquiries, technical questions, research collaboration opportunities, or professional proposals.",
+        },
+        {
+          title: "3. Rights of Data Subjects (Law 1581 of 2012)",
+          content:
+            "In compliance with Colombian data protection regulations, data subjects have the right to access, update, rectify, and request the deletion of their personal information, as well as revoke consent at any time by contacting via the direct communication channels.",
+        },
+        {
+          title: "4. Cookie & Local Storage Policy",
+          content:
+            "This website only uses technical local storage (localStorage) to remember language preferences (Spanish / English) and color theme choices (dark / light). No advertising or tracking cookies are employed, and personal data is never transferred to third parties without prior authorization.",
+        },
+      ],
     },
     modal: {
       close: "Close",

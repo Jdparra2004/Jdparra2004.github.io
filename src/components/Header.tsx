@@ -9,9 +9,14 @@ import ThemeToggle from "./ThemeToggle";
 import { Menu, X, FileText } from "lucide-react";
 
 export default function Header() {
-  const { t } = useLanguage();
+  const { locale, t } = useLanguage();
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const cvUrl =
+    locale === "en"
+      ? "/assets/docs/Juan David Parra Cantor - CV English.pdf"
+      : "/assets/docs/Juan David Parra Cantor - CV.pdf";
 
   const navLinks = [
     { href: "/", label: t.nav.home },
@@ -73,7 +78,7 @@ export default function Header() {
           <ThemeToggle />
 
           <a
-            href="/assets/docs/Juan David Parra Cantor - CV.pdf"
+            href={cvUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="hidden lg:inline-flex items-center gap-2 px-4 py-2 rounded-full border border-brand-primary dark:border-brand-gold/80 bg-brand-primary-light/40 dark:bg-brand-gold/10 text-brand-primary dark:text-brand-gold text-xs font-semibold tracking-pill uppercase hover:bg-brand-primary hover:text-white dark:hover:bg-brand-gold dark:hover:text-brand-dark-canvas transition-all duration-200"
@@ -117,13 +122,13 @@ export default function Header() {
           </nav>
           <div className="pt-4 border-t border-brand-border dark:border-brand-dark-border flex flex-col gap-3">
             <a
-              href="/assets/docs/Juan David Parra Cantor - CV.pdf"
+              href={cvUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-full bg-brand-primary text-white dark:bg-brand-gold dark:text-brand-dark-canvas text-xs font-semibold tracking-pill uppercase"
             >
               <FileText className="w-4 h-4" />
-              <span>Descargar Curriculum (PDF)</span>
+              <span>{locale === "es" ? "Descargar Curriculum (PDF)" : "Download Resume (PDF)"}</span>
             </a>
           </div>
         </div>

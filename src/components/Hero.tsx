@@ -6,7 +6,12 @@ import { useLanguage } from "@/context/LanguageContext";
 import { ArrowUpRight, BookOpen, Compass, Award, ExternalLink, MapPin } from "lucide-react";
 
 export default function Hero() {
-  const { t } = useLanguage();
+  const { locale, t } = useLanguage();
+
+  const cvUrl =
+    locale === "en"
+      ? "/assets/docs/Juan David Parra Cantor - CV English.pdf"
+      : "/assets/docs/Juan David Parra Cantor - CV.pdf";
 
   return (
     <section className="relative overflow-hidden border-b border-brand-border dark:border-brand-dark-border py-12 lg:py-20">
@@ -139,16 +144,18 @@ export default function Hero() {
                       Juan David Parra Cantor
                     </h3>
                     <p className="text-xs text-brand-dark-ink-secondary">
-                      Investigación en Optimización & Biorreactores
+                      {locale === "es"
+                        ? "Investigación en Optimización & Biorreactores"
+                        : "Research in Optimization & Bioreactors"}
                     </p>
                   </div>
 
                   <a
-                    href="/assets/docs/Juan David Parra Cantor - CV.pdf"
+                    href={cvUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="p-2 rounded-full bg-brand-gold/20 text-brand-gold hover:bg-brand-gold hover:text-brand-dark-canvas transition-colors"
-                    aria-label="Ver CV en PDF"
+                    aria-label={locale === "es" ? "Ver CV en PDF" : "View Resume PDF"}
                   >
                     <ArrowUpRight className="w-4 h-4" />
                   </a>

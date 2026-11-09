@@ -16,6 +16,11 @@ export default function HomePage() {
   const { locale, t } = useLanguage();
   const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null);
 
+  const cvUrl =
+    locale === "en"
+      ? "/assets/docs/Juan David Parra Cantor - CV English.pdf"
+      : "/assets/docs/Juan David Parra Cantor - CV.pdf";
+
   const featuredProjects = projectsData.filter((p) => p.featured);
   const recentPosts = postsData.slice(0, 3);
 
@@ -161,7 +166,7 @@ export default function HomePage() {
                 {t.nav.contact}
               </Link>
               <a
-                href="/assets/docs/Juan David Parra Cantor - CV.pdf"
+                href={cvUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-8 py-3.5 rounded-full border border-white/40 hover:bg-white/10 text-white font-semibold text-xs tracking-pill uppercase transition-colors"

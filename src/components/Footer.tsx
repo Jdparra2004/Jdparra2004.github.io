@@ -29,7 +29,9 @@ export default function Footer() {
               </span>
             </div>
             <p className="text-xs leading-relaxed text-brand-ink-tertiary dark:text-brand-dark-ink-tertiary max-w-md">
-              Ingeniería Química · Computación Científica en Python · Optimización Multiobjetivo · Transición Energética. Universidad Pontificia Bolivariana (Medellín, Colombia).
+              {locale === "es"
+                ? "Ingeniería Química · Computación Científica en Python · Optimización Multiobjetivo · Transición Energética. Universidad Pontificia Bolivariana (Medellín, Colombia)."
+                : "Chemical Engineering · Scientific Computing in Python · Multiobjective Optimization · Energy Transition. Universidad Pontificia Bolivariana (Medellín, Colombia)."}
             </p>
             <div className="flex items-center gap-2 text-xs font-semibold text-brand-gold">
               <ShieldCheck className="w-4 h-4" />
@@ -40,7 +42,7 @@ export default function Footer() {
           {/* Col 2: Navigation */}
           <div className="space-y-3">
             <h5 className="text-xs font-bold tracking-widest text-brand-ink dark:text-brand-dark-ink uppercase">
-              Navegación
+              {locale === "es" ? "Navegación" : "Navigation"}
             </h5>
             <ul className="space-y-2 text-xs">
               <li>
@@ -74,7 +76,7 @@ export default function Footer() {
           {/* Col 3: Legal & Direct Links */}
           <div className="space-y-3">
             <h5 className="text-xs font-bold tracking-widest text-brand-ink dark:text-brand-dark-ink uppercase">
-              Enlaces & Legal
+              {locale === "es" ? "Enlaces & Legal" : "Links & Legal"}
             </h5>
             <ul className="space-y-2 text-xs">
               <li>
@@ -84,7 +86,7 @@ export default function Footer() {
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1 hover:text-brand-gold transition-colors"
                 >
-                  <span>Perfil ORCID</span>
+                  <span>{locale === "es" ? "Perfil ORCID" : "ORCID Profile"}</span>
                   <ExternalLink className="w-3 h-3" />
                 </a>
               </li>

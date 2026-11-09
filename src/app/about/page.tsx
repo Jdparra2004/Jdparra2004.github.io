@@ -8,6 +8,11 @@ import Link from "next/link";
 export default function AboutPage() {
   const { locale, t } = useLanguage();
 
+  const cvUrl =
+    locale === "en"
+      ? "/assets/docs/Juan David Parra Cantor - CV English.pdf"
+      : "/assets/docs/Juan David Parra Cantor - CV.pdf";
+
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20 space-y-20">
       
@@ -35,7 +40,7 @@ export default function AboutPage() {
 
           <div className="flex flex-wrap gap-4 pt-4">
             <a
-              href="/assets/docs/Juan David Parra Cantor - CV.pdf"
+              href={cvUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-brand-primary text-white hover:bg-brand-primary-hover dark:bg-brand-gold dark:text-brand-dark-canvas dark:hover:bg-brand-gold-hover font-semibold text-xs tracking-pill uppercase transition-all shadow-md"
