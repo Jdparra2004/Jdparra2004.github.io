@@ -1,0 +1,165 @@
+/* ============================================================
+   THEME.CSS — Variables de Marca y Tokens de Diseño Oficiales
+   Portafolio Profesional de Juan David Parra Cantor
+   Estándar: DESIGN.md & UI-UX Pro Max (2026)
+   ============================================================ */
+
+/* Declaración de Fuentes Locales Canónicas */
+@font-face {
+  font-family: 'Bricolage Grotesque';
+  src: url('../fonts/BricolageGrotesque/BricolageGrotesque-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Bricolage Grotesque';
+  src: url('../fonts/BricolageGrotesque/BricolageGrotesque-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Myriad Bengali';
+  src: url('../fonts/MyriadBengali/fonnts.com-Myriad_Bengali.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Myriad Bengali';
+  src: url('../fonts/MyriadBengali/myriad-bengali-bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Dancing Script';
+  src: url('../fonts/DancingScript/DancingScript-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Dancing Script';
+  src: url('../fonts/DancingScript/DancingScript-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* ==========================================================
+     1. COLORES DE MARCA & ROLES SEMÁNTICOS
+     ========================================================== */
+  /* Marca Primaria: Azul Acero Profundo */
+  --color-primary: #1E3A5F;
+  --color-primary-hover: #2A4E7E;
+  --color-primary-focus: #152A45;
+  --color-primary-light: #EAF0F8;
+  --color-primary-subtle: rgba(30, 58, 95, 0.08);
+
+  /* Acentos de Excelencia y Humanismo */
+  --color-accent-gold: #D6A95F;
+  --color-accent-gold-hover: #C49746;
+  --color-accent-gold-subtle: rgba(214, 169, 95, 0.12);
+
+  --color-accent-coral: #E3A5A0;
+  --color-accent-coral-subtle: rgba(227, 165, 160, 0.12);
+
+  /* Lienzo y Superficies (Modo Claro Editorial) */
+  --color-canvas: #F8F9FA;
+  --color-surface: #FFFFFF;
+  --color-surface-subtle: #F1F3F5;
+  --color-surface-muted: #E9ECEF;
+
+  /* Lienzo y Superficies (Modo Oscuro / Framing) */
+  --color-dark-canvas: #121417;
+  --color-dark-surface: #1A1D21;
+  --color-dark-surface-elevated: #22262C;
+
+  /* Bordes y Líneas Divisorias (Hairlines) */
+  --color-border-hairline: #E2E5EA;
+  --color-border-subtle: #D0D5DD;
+  --color-dark-border: #262B33;
+
+  /* Tinta Tipográfica (Text Inks) */
+  --color-ink-primary: #111418;
+  --color-ink-secondary: #475467;
+  --color-ink-tertiary: #667085;
+  --color-ink-inverse: #FFFFFF;
+  --color-dark-ink-primary: #F8F9FA;
+  --color-dark-ink-secondary: #C4CBD4;
+  --color-dark-ink-tertiary: #8A94A6;
+
+  /* Semántica y Estados Operativos */
+  --color-status-success: #2E7D5B;
+  --color-status-warning: #D97706;
+  --color-status-error: #C55A57;
+  --color-status-info: #2563EB;
+
+  /* Retrocompatibilidad con variables previas */
+  --color-bg: var(--color-canvas);
+  --color-white: var(--color-surface);
+  --color-text: var(--color-ink-primary);
+  --color-text-light: var(--color-ink-secondary);
+  --color-muted: var(--color-ink-tertiary);
+  --color-border: var(--color-border-hairline);
+
+  /* ==========================================================
+     2. TIPOGRAFÍAS
+     ========================================================== */
+  --font-title: 'Bricolage Grotesque', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body: 'Myriad Bengali', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-accent: 'Dancing Script', cursive;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  /* ==========================================================
+     3. ESCALA DE ESPACIADO MODULAR (Base 4px / 8px)
+     ========================================================== */
+  --space-2xs: 4px;
+  --space-xs: 8px;
+  --space-sm: 12px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+  --space-3xl: 64px;
+  --space-section: 80px;
+
+  /* ==========================================================
+     4. CURVATURA DE BORDES (Radius)
+     ========================================================== */
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-pill: 9999px;
+  --radius-full: 9999px;
+
+  /* ==========================================================
+     5. SISTEMA DE ELEVACIÓN Y SOMBRAS TÉCNICAS
+     ========================================================== */
+  --shadow-subtle: 0 1px 3px rgba(18, 20, 23, 0.05), 0 1px 2px rgba(18, 20, 23, 0.03);
+  --shadow-soft: 0 2px 8px -2px rgba(18, 20, 23, 0.05), 0 1px 3px 0 rgba(18, 20, 23, 0.03);
+  --shadow-card: 0 4px 16px -2px rgba(18, 20, 23, 0.06), 0 2px 6px -1px rgba(18, 20, 23, 0.03);
+  --shadow-hover: 0 12px 28px -4px rgba(18, 20, 23, 0.09), 0 4px 10px -2px rgba(18, 20, 23, 0.04);
+  --shadow-strong: 0 20px 40px -8px rgba(18, 20, 23, 0.12), 0 6px 16px -4px rgba(18, 20, 23, 0.06);
+
+  /* Anillos de Enfoque Accesibles (WCAG Focus Visible) */
+  --focus-ring-gold: 0 0 0 3px rgba(214, 169, 95, 0.35);
+  --focus-ring-primary: 0 0 0 3px rgba(30, 58, 95, 0.25);
+
+  /* ==========================================================
+     6. TRANSICIONES & MICRO-INTERACCIONES
+     ========================================================== */
+  --transition-fast: 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-normal: 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-medium: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}

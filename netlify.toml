@@ -1,64 +1,14 @@
 # ==============================================================================
-# Configuración Oficial de Despliegue en Netlify
+# Configuración Oficial de Despliegue en Netlify (Next.js Static Export)
 # Portafolio Profesional de Juan David Parra Cantor
 # ==============================================================================
 
 [build]
-  publish = "."
-  functions = "netlify/functions"
+  command = "npm run build"
+  publish = "out"
 
 # ------------------------------------------------------------------------------
-# 1. Redirecciones y Rutas Limpias (Clean URLs)
-# ------------------------------------------------------------------------------
-
-[[redirects]]
-  from = "/inicio"
-  to = "/index.html"
-  status = 200
-
-[[redirects]]
-  from = "/proyectos"
-  to = "/projects.html"
-  status = 200
-
-[[redirects]]
-  from = "/sobre-mi"
-  to = "/about.html"
-  status = 200
-
-[[redirects]]
-  from = "/blog"
-  to = "/blog.html"
-  status = 200
-
-[[redirects]]
-  from = "/contacto"
-  to = "/contacto.html"
-  status = 200
-
-[[redirects]]
-  from = "/politica-privacidad"
-  to = "/politica-privacidad.html"
-  status = 200
-
-[[redirects]]
-  from = "/terminos-condiciones"
-  to = "/terminos-condiciones.html"
-  status = 200
-
-[[redirects]]
-  from = "/admin"
-  to = "/admin/index.html"
-  status = 200
-
-# Redirección personalizada de error 404
-[[redirects]]
-  from = "/*"
-  to = "/404.html"
-  status = 404
-
-# ------------------------------------------------------------------------------
-# 2. Cabeceras de Seguridad y Políticas HTTP
+# 1. Cabeceras de Seguridad y Políticas HTTP
 # ------------------------------------------------------------------------------
 
 [[headers]]
@@ -70,30 +20,21 @@
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "camera=(), microphone=(), geolocation=()"
 
-# ------------------------------------------------------------------------------
-# 3. Optimización de Caché y Entrega de Assets
-# ------------------------------------------------------------------------------
+# Inmutabilidad para chunks estáticos de Next.js
+[[headers]]
+  for = "/_next/static/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
 
-# Fuentes locales (Inmutables por 1 año para rendimiento óptimo)
+# Fuentes locales y recursos inmutables
 [[headers]]
   for = "/assets/fonts/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
     Access-Control-Allow-Origin = "*"
 
-# Imágenes, favicons y recursos gráficos (Caché por 30 días)
+# Imágenes, favicons y documentos PDF
 [[headers]]
-  for = "/assets/img/*"
+  for = "/assets/*"
   [headers.values]
     Cache-Control = "public, max-age=2592000"
-
-# Archivos CSS y JavaScript (Caché de revalidación rápida con stale-while-revalidate)
-[[headers]]
-  for = "/assets/css/*"
-  [headers.values]
-    Cache-Control = "public, max-age=86400, stale-while-revalidate=604800"
-
-[[headers]]
-  for = "/assets/js/*"
-  [headers.values]
-    Cache-Control = "public, max-age=86400, stale-while-revalidate=604800"
