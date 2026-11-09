@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { useLanguage } from "@/context/LanguageContext";
 import { Send, CheckCircle2, AlertCircle, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
+import emailjs from "@emailjs/browser";
 
 export default function ContactPage() {
   const { locale, t } = useLanguage();
@@ -11,11 +12,39 @@ export default function ContactPage() {
     name: "",
     email: "",
     subject: "",
+    customSubject: "",
     message: "",
     consent: false,
   });
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
+
+  const subjectOptions = [
+    {
+      value: "Colaboración en investigación",
+      label: locale === "es" ? "Colaboración en investigación" : "Research Collaboration",
+    },
+    {
+      value: "Proyecto profesional / Consultoría",
+      label: locale === "es" ? "Proyecto profesional / Consultoría" : "Professional Project / Consulting",
+    },
+    {
+      value: "Asesoría académica (Química / Python)",
+      label: locale === "es" ? "Asesoría académica (Química / Python)" : "Academic Mentoring (Chemistry / Python)",
+    },
+    {
+      value: "Consulta técnica sobre repositorio",
+      label: locale === "es" ? "Consulta técnica sobre repositorio" : "Technical Inquiry about Repository",
+    },
+    {
+      value: "Consulta / Reclamo Habeas Data (PQR)",
+      label: locale === "es" ? "Consulta / Reclamo Habeas Data (PQR)" : "Data Privacy (Habeas Data) Inquiry",
+    },
+    {
+      value: "Otro",
+      label: locale === "es" ? "Otro asunto" : "Other subject",
+    },
+  ];
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -32,28 +61,99 @@ export default function ContactPage() {
 
     setStatus("sending");
 
-    try {
-      const response = await fetch("/", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams({
-          "form-name": "contact",
-          name: formData.name,
-          email: formData.email,
-          subject: formData.subject,
-          message: formData.message,
-          consent: formData.consent ? "accepted" : "no",
-        }).toString(),
-      });
+    const subjectFinal =
+      formData.subject === "Otro" && formData.customSubject.trim() !== ""
+        ? formData.customSubject.trim()
+        : formData.subject || (locale === "es" ? "Contacto general desde el portafolio" : "Portfolio General Inquiry");
 
-      if (response.ok) {
-        setStatus("success");
-        setFormData({ name: "", email: "", subject: "", message: "", consent: false });
-      } else {
-        setStatus("success");
-      }
-    } catch {
+    const templateParams = {
+      name: formData.name,
+      email: formData.email,
+      subject: subjectFinal,
+      message: formData.message,
+      time: new Date().toLocaleString(),
+    };
+
+    try {
+      // 1. Envío principal mediante EmailJS (directo a tu bandeja de entrada)
+      await emailjs.send(
+        "service_1i5dw85",     // Service ID oficial
+        "template_754zb2j",    // Template principal (admin)
+        templateParams,
+        "gj8TMdXOaWDqBYHnp"    // Public Key
+      );
+
+      // 2. Autorespuesta automática al remitente (no bloqueante)
+      emailjs
+        .send(
+          "service_1i5dw85",
+          "template_rcpxxey",
+          templateParams,
+          "gj8TMdXOaWDqBYHnp"
+        )
+        .catch(() => {});
+
+      // 3. Respaldo silencioso en Netlify Forms
+      try {
+        fetch("/", {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: new URLSearchParams({
+            "form-name": "contact",
+            name: formData.name,
+            email: formData.email,
+            subject: subjectFinal,
+            message: formData.message,
+            consent: "accepted",
+          }).toString(),
+        }).catch(() => {});
+      } catch (_) {}
+
       setStatus("success");
+      setFormData({
+        name: "",
+        email: "",
+        subject: "",
+        customSubject: "",
+        message: "",
+        consent: false,
+      });
+    } catch (err) {
+      console.error("EmailJS Error:", err);
+
+      // Fallback secundario vía REST API de EmailJS
+      try {
+        const restRes = await fetch("https://api.emailjs.com/api/v1.0/email/send", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            service_id: "service_1i5dw85",
+            template_id: "template_754zb2j",
+            user_id: "gj8TMdXOaWDqBYHnp",
+            template_params: templateParams,
+          }),
+        });
+
+        if (restRes.ok) {
+          setStatus("success");
+          setFormData({
+            name: "",
+            email: "",
+            subject: "",
+            customSubject: "",
+            message: "",
+            consent: false,
+          });
+          return;
+        }
+      } catch (_) {}
+
+      setStatus("error");
+      setErrorMessage(
+        locale === "es"
+          ? "Ocurrió un error al enviar el mensaje. Por favor intenta de nuevo o escríbeme directamente."
+          : "An error occurred while sending your message. Please try again or reach out directly."
+      );
     }
   };
 
@@ -83,7 +183,7 @@ export default function ContactPage() {
             data-netlify="true"
             data-netlify-honeypot="bot-field"
             onSubmit={handleSubmit}
-            className="space-y-6"
+            className="space-y-5"
           >
             <input type="hidden" name="form-name" value="contact" />
             <p className="hidden">
@@ -126,14 +226,37 @@ export default function ContactPage() {
               <label className="block text-xs font-semibold tracking-pill uppercase text-brand-ink dark:text-brand-dark-ink">
                 {t.contactPage.subjectLabel}
               </label>
-              <input
-                type="text"
+              <select
                 value={formData.subject}
                 onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                placeholder={t.contactPage.subjectPlaceholder}
                 className="w-full px-4 py-3 rounded-lg border border-brand-border dark:border-brand-dark-border bg-brand-surface dark:bg-brand-dark-surface text-xs text-brand-ink dark:text-brand-dark-ink focus:outline-none focus:border-brand-gold transition-colors"
-              />
+              >
+                <option value="">
+                  {locale === "es" ? "Selecciona una línea de interés..." : "Select an area of interest..."}
+                </option>
+                {subjectOptions.map((opt, i) => (
+                  <option key={i} value={opt.value}>
+                    {opt.label}
+                  </option>
+                ))}
+              </select>
             </div>
+
+            {formData.subject === "Otro" && (
+              <div className="space-y-1.5 animate-fadeIn">
+                <label className="block text-xs font-semibold tracking-pill uppercase text-brand-gold">
+                  {locale === "es" ? "Especifica el asunto *" : "Specify Subject *"}
+                </label>
+                <input
+                  type="text"
+                  required
+                  value={formData.customSubject}
+                  onChange={(e) => setFormData({ ...formData, customSubject: e.target.value })}
+                  placeholder={locale === "es" ? "Escribe el asunto específico..." : "Describe the specific subject..."}
+                  className="w-full px-4 py-3 rounded-lg border border-brand-gold/60 bg-brand-surface dark:bg-brand-dark-surface text-xs text-brand-ink dark:text-brand-dark-ink focus:outline-none focus:border-brand-gold transition-colors"
+                />
+              </div>
+            )}
 
             <div className="space-y-1.5">
               <label className="block text-xs font-semibold tracking-pill uppercase text-brand-ink dark:text-brand-dark-ink">
@@ -193,7 +316,7 @@ export default function ContactPage() {
           </form>
         </div>
 
-        {/* Sidebar Info - Clean Editorial Layout (No AI Card Overload) */}
+        {/* Sidebar Info */}
         <div className="lg:col-span-5 space-y-8 pt-2 lg:pl-6 lg:border-l border-brand-border/60 dark:border-brand-dark-border/60">
           
           <div className="space-y-2">
